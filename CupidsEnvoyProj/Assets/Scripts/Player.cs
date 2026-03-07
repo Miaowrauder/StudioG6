@@ -1,8 +1,15 @@
+using System.Linq;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
     public int speed = 5;
+    public int health = 10;
+    public int strength = 1;
+    public LayerMask m_LayerMask;
 
     void Start()
     {
@@ -29,6 +36,22 @@ public class Player : MonoBehaviour
         if (Input.GetKey("d"))
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            //Basic attack animation, get the zombies in the direction facing.
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+            print("Dead");
         }
     }
 }
