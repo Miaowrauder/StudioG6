@@ -4,7 +4,7 @@ public class Spawner : MonoBehaviour
 {
     public GameObject[] zombieTypes;
     private GameObject[] spawnPoints;
-    public float spawnTime = 3;
+    public float spawnTime = 3; //Make curve later
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
     private void SpawnZombie()
     {
         int spawnAt = Random.Range(0, spawnPoints.Length);
-        print(spawnAt);
+
         Instantiate(zombieTypes[Random.Range(0, zombieTypes.Length)], spawnPoints[spawnAt].transform.position, spawnPoints[spawnAt].transform.rotation);
     } 
 }

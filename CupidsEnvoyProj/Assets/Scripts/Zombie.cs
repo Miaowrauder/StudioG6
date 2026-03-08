@@ -1,17 +1,19 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Zombie : MonoBehaviour
 {
     private NavMeshAgent navigation;
-    public Player player;
+    private Animation attackAnimation;
+    private Player player;
     public int health = 2;
     public int strength = 1;
+    public int meleeRange = 3;
     
     void Start()
     {
         navigation = GetComponent<NavMeshAgent>();
+        attackAnimation = GetComponent<Animation>();
         player = FindObjectOfType<Player>();
     }
 
@@ -19,9 +21,14 @@ public class Zombie : MonoBehaviour
     void Update()
     {
         navigation.destination = player.transform.position;
+
+        if (Vector3.Distance(player.transform.position, transform.position) < meleeRange)
+        {
+            attackAnimation.Play();
+        }
     }
 
-    public IEnumerator TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         health -= damage;
 
@@ -29,9 +36,14 @@ public class Zombie : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        yield return new WaitForSeconds(1);
     }
 
-    //Once in range, attack animation
+    private void Attack()
+    {
+        if (Vector3.Distance(player.transform.position, transform.position) < meleeRange)
+        {
+            player.TakeDamage(strength);
+            print("Zombie Attack");
+        }
+    }
 }
