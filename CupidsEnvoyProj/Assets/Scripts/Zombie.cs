@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class Zombie : MonoBehaviour
 {
     private NavMeshAgent navigation;
-    private Animation attackAnimation;
+    private Animator animator;
     private Player player;
     public int health = 2;
     public int strength = 1;
@@ -13,7 +13,7 @@ public class Zombie : MonoBehaviour
     void Start()
     {
         navigation = GetComponent<NavMeshAgent>();
-        attackAnimation = GetComponent<Animation>();
+        animator = GetComponent<Animator>();
         player = FindObjectOfType<Player>();
     }
 
@@ -22,9 +22,9 @@ public class Zombie : MonoBehaviour
     {
         navigation.destination = player.transform.position;
 
-        if (Vector3.Distance(player.transform.position, transform.position) < meleeRange)
+        if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Attacking"))
         {
-            attackAnimation.Play();
+            animator.SetTrigger("Attack_Melee");
         }
     }
 
@@ -43,7 +43,6 @@ public class Zombie : MonoBehaviour
         if (Vector3.Distance(player.transform.position, transform.position) < meleeRange)
         {
             player.TakeDamage(strength);
-            print("Zombie Attack");
         }
     }
 }

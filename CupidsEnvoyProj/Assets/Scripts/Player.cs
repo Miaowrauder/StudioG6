@@ -6,12 +6,7 @@ public class Player : MonoBehaviour
     public int health = 10;
     public int strength = 1;
     public LayerMask m_LayerMask;
-
-    void Start()
-    {
-        
-    }
-
+    
     void Update()
     {
         if (Input.GetKey("w"))
@@ -47,8 +42,7 @@ public class Player : MonoBehaviour
 
         if (health <= 0)
         {
-            //Destroy(gameObject);
-            print("Dead");
+            //Game over
         }
     }
 }
