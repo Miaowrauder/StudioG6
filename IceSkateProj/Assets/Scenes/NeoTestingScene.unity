@@ -856,7 +856,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieTypes:
   - {fileID: 5150029297707364534, guid: eb951d79dc49a4e408651e642d6752c5, type: 3}
-  spawnTime: 3
+  currentZombie: 0
+  maxZombies: 5
+  minZombieDifficulty: 0
+  maxZombieDifficulty: 0
+  spawnTime: 2
 --- !u!4 &1485545876
 Transform:
   m_ObjectHideFlags: 0

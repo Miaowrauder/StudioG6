@@ -71,6 +71,7 @@ MonoBehaviour:
   health: 2
   strength: 1
   meleeRange: 3
+  difficulty: 0
 --- !u!195 &7437043268884192377
 NavMeshAgent:
   m_ObjectHideFlags: 0

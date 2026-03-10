@@ -9,6 +9,7 @@ public class Zombie : MonoBehaviour
     public int health = 2;
     public int strength = 1;
     public int meleeRange = 3;
+    public int difficulty = 1;
     
     void Start()
     {
