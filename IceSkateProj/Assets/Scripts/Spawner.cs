@@ -4,25 +4,27 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject[] zombieTypes;
-    private GameObject[] spawnPoints;
-    public int currentZombie, maxZombies, minZombieDifficulty, maxZombieDifficulty; //Work out difficulties in future
+    private GameObject[] spawnLocations;
+    private GameManager gameManager;
     public float spawnTime = 3; //Make curve later, adapt to wave system
+    private int spawnPoints;
+
 
     void Start()
     {
-        spawnPoints = GameObject.FindGameObjectsWithTag("Spawn Point");
-        startWave();
+        gameManager = FindAnyObjectByType<GameManager>();
+        spawnLocations = GameObject.FindGameObjectsWithTag("Spawn Point");
     }
 
-    public void startWave()
+    public void startWave(int spawnAbility)
     {
-        currentZombie = 0;
+        spawnPoints = spawnAbility;
         StartCoroutine("SpawnZombie");
     }
 
     IEnumerator SpawnZombie()
     {
-        while (currentZombie < maxZombies)
+        while (spawnPoints > 0)
         {
             if (zombieTypes.Length == 0)
             {
@@ -30,16 +32,27 @@ public class Spawner : MonoBehaviour
                 break;
             }
 
-            int spawnAt = Random.Range(0, spawnPoints.Length);
-            int zombieSelected = Random.Range(0, zombieTypes.Length);
+            int spawnAt = Random.Range(0, spawnLocations.Length);
+            int zombieSelected = -1;
 
-            Instantiate(zombieTypes[zombieSelected], spawnPoints[spawnAt].transform.position, spawnPoints[spawnAt].transform.rotation);
-            currentZombie++;
-            print("Current Zombie: "+currentZombie);
+            while (zombieSelected == -1)
+            {
+                zombieSelected = Random.Range(0, zombieTypes.Length);
+                int spawnCost = zombieTypes[zombieSelected].GetComponent<Zombie>().spawnCost;
+                if (spawnPoints - spawnCost < 0)
+                {
+                    zombieSelected = -1;
+                }
+                else
+                {
+                    spawnPoints -= spawnCost;
+                }
+            }
+
+            Instantiate(zombieTypes[zombieSelected], spawnLocations[spawnAt].transform.position, spawnLocations[spawnAt].transform.rotation);
+            gameManager.currentEnemies++;
 
             yield return new WaitForSeconds(spawnTime);
         }
-        
-        print("Wave finished"); // Send signal back to wave/game manager
     } 
 }

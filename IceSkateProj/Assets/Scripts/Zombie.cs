@@ -6,20 +6,22 @@ public class Zombie : MonoBehaviour
     private NavMeshAgent navigation;
     private Animator animator;
     private Player player;
+    private GameManager gameManager;
     public int health = 2;
     public int strength = 1;
     public int meleeRange = 3;
-    public int difficulty = 1;
+    public int spawnCost = 10;
     
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         navigation = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         navigation.destination = player.transform.position;
 
@@ -35,6 +37,7 @@ public class Zombie : MonoBehaviour
 
         if (health <= 0)
         {
+            gameManager.GetComponent<GameManager>().currentEnemies--;
             Destroy(gameObject);
         }
     }
