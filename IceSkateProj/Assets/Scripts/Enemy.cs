@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Zombie : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     private NavMeshAgent navigation;
     private Animator animator;
-    private Player player;
+    private PlayerCombat player;
     private GameManager gameManager;
     public int health = 2;
     public int strength = 1;
@@ -17,7 +17,7 @@ public class Zombie : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         navigation = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        player = FindObjectOfType<Player>();
+        player = FindObjectOfType<PlayerCombat>();
     }
 
     // Update is called once per frame

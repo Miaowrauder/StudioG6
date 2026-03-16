@@ -20,6 +20,7 @@ public int currentEnemies = 0;
             waveNumber++;
             int waveSpawnPoints = baseSpawnPoints*waveNumber;
             spawner.startWave(waveSpawnPoints); //Make scale better, maybe 
+            print("Wave "+waveNumber);
         }
     }
 }

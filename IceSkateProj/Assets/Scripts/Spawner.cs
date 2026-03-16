@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject[] zombieTypes;
+    public GameObject[] enemyTypes;
     private GameObject[] spawnLocations;
     private GameManager gameManager;
     public float spawnTime = 3; //Make curve later, adapt to wave system
@@ -19,29 +19,29 @@ public class Spawner : MonoBehaviour
     public void startWave(int spawnAbility)
     {
         spawnPoints = spawnAbility;
-        StartCoroutine("SpawnZombie");
+        StartCoroutine("SpawnEnemy");
     }
 
-    IEnumerator SpawnZombie()
+    IEnumerator SpawnEnemy()
     {
         while (spawnPoints > 0)
         {
-            if (zombieTypes.Length == 0)
+            if (enemyTypes.Length == 0)
             {
-                print("No valid zombies");
+                print("No valid enemies");
                 break;
             }
 
             int spawnAt = Random.Range(0, spawnLocations.Length);
-            int zombieSelected = -1;
+            int enemySelected = -1;
 
-            while (zombieSelected == -1)
+            while (enemySelected == -1)
             {
-                zombieSelected = Random.Range(0, zombieTypes.Length);
-                int spawnCost = zombieTypes[zombieSelected].GetComponent<Zombie>().spawnCost;
+                enemySelected = Random.Range(0, enemyTypes.Length);
+                int spawnCost = enemyTypes[enemySelected].GetComponent<Enemy>().spawnCost;
                 if (spawnPoints - spawnCost < 0)
                 {
-                    zombieSelected = -1;
+                    enemySelected = -1;
                 }
                 else
                 {
@@ -49,7 +49,8 @@ public class Spawner : MonoBehaviour
                 }
             }
 
-            Instantiate(zombieTypes[zombieSelected], spawnLocations[spawnAt].transform.position, spawnLocations[spawnAt].transform.rotation);
+            print("points: "+spawnPoints);
+            Instantiate(enemyTypes[enemySelected], spawnLocations[spawnAt].transform.position, spawnLocations[spawnAt].transform.rotation);
             gameManager.currentEnemies++;
 
             yield return new WaitForSeconds(spawnTime);
