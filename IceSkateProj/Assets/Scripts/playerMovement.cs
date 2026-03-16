@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    public float moveSpeed, maxSpeed;
+    public float moveSpeed, maxSpeed, fallDelay;
     private float checkSpeed, diagMaxSpeed; //changes between max and diag to adjust speed checks
     private float currentSpeed;
     private Rigidbody rb;
@@ -19,6 +20,13 @@ public class playerMovement : MonoBehaviour
     public Vector2[] trailPoint; //saved trail points
     private iceCutter myCutter;
     public int passedStartPoint;
+    private int castInt;
+    public Transform[] castPos;
+    public LayerMask layerMask;
+    private bool[] isHole = new bool[4];
+
+
+    RaycastHit hit;
                             
     // Start is called before the first frame update
     void Start()
@@ -80,6 +88,8 @@ public class playerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
+        DownCast();
+
         if(canMove)
         {
             Move();
@@ -161,6 +171,52 @@ public class playerMovement : MonoBehaviour
         else if(rb.velocity.z < -checkSpeed)
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -checkSpeed);
+        }
+
+    }
+
+    private void Fall()
+    {
+        canMove = false;
+        rb.velocity = new Vector3(rb.velocity.x/2, -10, rb.velocity.z/2);
+        gameObject.GetComponent<CapsuleCollider>().isTrigger = true;
+    }
+
+    private void CancelFall()
+    {
+        canMove = true;
+        gameObject.GetComponent<CapsuleCollider>().isTrigger = false;
+    }
+
+    void DownCast() 
+    {
+        castInt++; //does 1 corner per frame, cycling
+
+        if(castInt >= 4)
+        {
+            castInt = 0;
+        }
+
+        if(Physics.Raycast(castPos[castInt].transform.position, Vector3.down, out hit, 999f, layerMask, QueryTriggerInteraction.Collide));
+        {
+                if(hit.collider.gameObject.tag == ("Hole"))
+                {
+                    isHole[castInt] = true;
+                }
+                else
+                {   
+                isHole[castInt] = false;
+                }
+        }
+
+        if(isHole[0] && isHole[1] && isHole[2] && isHole[3])
+        {
+            Invoke("Fall", fallDelay);
+        }
+        else
+        {
+            CancelInvoke("Fall");
+            //CancelFall();
         }
 
     }
