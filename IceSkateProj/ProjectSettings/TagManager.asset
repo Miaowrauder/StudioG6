@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spawn Point
   - Hole
+  - Spawned
   layers:
   - Default
   - TransparentFX

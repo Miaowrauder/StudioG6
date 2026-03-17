@@ -209,7 +209,7 @@ public class playerMovement : MonoBehaviour
             castInt = 0;
         }
 
-        if(Physics.Raycast(castPos[castInt].transform.position, Vector3.down, out hit, 999f, layerMask, QueryTriggerInteraction.Collide));
+        if(Physics.Raycast(castPos[castInt].transform.position, Vector3.down, out hit, 999f, layerMask, QueryTriggerInteraction.Ignore));
         {
                 if(hit.collider.gameObject.tag == ("Hole"))
                 {
@@ -217,7 +217,7 @@ public class playerMovement : MonoBehaviour
                 }
                 else
                 {   
-                isHole[castInt] = false;
+                    isHole[castInt] = false;
                 }
         }
 

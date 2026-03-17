@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.ProBuilder;
 using UnityEngine.ProBuilder.MeshOperations;
+using UnityEngine.AI;
+using Unity.AI.Navigation;
 
 public class iceCutter : MonoBehaviour
 {
@@ -10,14 +12,16 @@ public class iceCutter : MonoBehaviour
     private Vector3[] actualPoints;
     public int startPoint;
     public bool triggerCut;
-    public Material holeEdgeMat, shaderMat, sheetMat;
-    public float sheetDropSpeed;
+    public Material holeEdgeMat, shaderMat, sheetMat, invisMat;
+    public float sheetDropSpeed, bakeDelay;
 
-    ProBuilderMesh[] summonedMesh = new ProBuilderMesh[3];
-    GameObject[] generatedObject = new GameObject[3];
+    ProBuilderMesh[] summonedMesh = new ProBuilderMesh[4];
+    GameObject[] generatedObject = new GameObject[4];
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {   
+        gameManager = FindObjectOfType<GameManager>();
         passedPoints = new Vector2[99];
     }
 
@@ -53,12 +57,14 @@ public class iceCutter : MonoBehaviour
         FormCutShape();
     }
 
+    //bit of repetition below, but i prefer the finer control over each hole piece.
     private void GenerateHole()
     {
         generatedObject[0] = new GameObject(); //generates hole w/ flipped normals
         generatedObject[0].transform.position = new Vector3(generatedObject[0].transform.position.x, generatedObject[0].transform.position.y+1.4f, generatedObject[0].transform.position.z); // move it down so it fully interesects ice
         summonedMesh[0] = generatedObject[0].gameObject.AddComponent<ProBuilderMesh>();
-        generatedObject[0].GetComponent<MeshRenderer>().material = holeEdgeMat; 
+        generatedObject[0].GetComponent<MeshRenderer>().material = holeEdgeMat;
+        generatedObject[0].tag = ("Spawned");  
     }
 
     private void GenerateStencil()
@@ -78,11 +84,21 @@ public class iceCutter : MonoBehaviour
         generatedObject[2].transform.position = new Vector3(generatedObject[2].transform.position.x, generatedObject[2].transform.position.y+2f, generatedObject[2].transform.position.z); // move it down so it fully interesects ice
 
         summonedMesh[2] = generatedObject[2].gameObject.AddComponent<ProBuilderMesh>();
-        generatedObject[2].GetComponent<MeshRenderer>().material = sheetMat; 
+        generatedObject[2].GetComponent<MeshRenderer>().material = sheetMat;
+        generatedObject[2].tag = ("Spawned"); 
 
         sheetDropper iceScript = generatedObject[2].AddComponent<sheetDropper>();
 
         iceScript.dropSpeed = sheetDropSpeed;
+    }
+
+    private void GenerateMeshBlocker()
+    {
+        generatedObject[3] = new GameObject(); //generates tall mesh to block navmesh baking
+        generatedObject[3].transform.position = new Vector3(generatedObject[3].transform.position.x, generatedObject[3].transform.position.y, generatedObject[3].transform.position.z); // move it down so it fully interesects ice
+        summonedMesh[3] = generatedObject[3].gameObject.AddComponent<ProBuilderMesh>();
+        generatedObject[3].GetComponent<MeshRenderer>().material = invisMat;
+        generatedObject[3].tag = ("Spawned");  
     }
 
     private void FormCutShape()
@@ -94,11 +110,13 @@ public class iceCutter : MonoBehaviour
 
         GenerateDropSheet();
 
+        GenerateMeshBlocker();
+
         for(int i = 0; i < actualPoints.Length; i++) //size array to match usable (not 0,0) chain of points
         {
             if((actualPoints[i].x != 0) || (actualPoints[i].z != 0))
             {
-                Debug.Log(actualPoints[i]);
+                //Debug.Log(actualPoints[i]);
             }
             else
             {
@@ -112,7 +130,6 @@ public class iceCutter : MonoBehaviour
         //actually makes the meshes tangible
         summonedMesh[0].CreateShapeFromPolygon(actualPoints, 0.6f, true); //creates the hole mesh
         int faceCount = summonedMesh[0].faces.Count;
-
 
         bool success = true;
        
@@ -137,7 +154,13 @@ public class iceCutter : MonoBehaviour
         {
             summonedMesh[1].CreateShapeFromPolygon(actualPoints, 0.1f, false); //creates the stencil mesh
             summonedMesh[2].CreateShapeFromPolygon(actualPoints, 0.3f, false);//creates the drop sheet mesh 
+
+            summonedMesh[3].CreateShapeFromPolygon(actualPoints, 20f, false);//creates the temporary navmesh blocker mesh 
+            generatedObject[3].AddComponent<NavMeshModifier>();
+
             Debug.Log("Produced a shape with " + actualPoints.Length + " points");
+
+            gameManager.RebakeNavmesh(bakeDelay);
         }
         else
         {
