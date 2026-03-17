@@ -9,7 +9,6 @@ public class iceCutter : MonoBehaviour
     public Vector2[] passedPoints;
     private Vector3[] actualPoints;
     public int startPoint;
-    public GameObject debugLoopIndicator;
     public bool triggerCut;
     public Material holeEdgeMat, shaderMat, sheetMat;
     public float sheetDropSpeed;
@@ -57,7 +56,7 @@ public class iceCutter : MonoBehaviour
     private void GenerateHole()
     {
         generatedObject[0] = new GameObject(); //generates hole w/ flipped normals
-        generatedObject[0].transform.position = new Vector3(generatedObject[0].transform.position.x, generatedObject[0].transform.position.y-4.96f, generatedObject[0].transform.position.z); // move it down so it fully interesects ice
+        generatedObject[0].transform.position = new Vector3(generatedObject[0].transform.position.x, generatedObject[0].transform.position.y+1.4f, generatedObject[0].transform.position.z); // move it down so it fully interesects ice
         summonedMesh[0] = generatedObject[0].gameObject.AddComponent<ProBuilderMesh>();
         generatedObject[0].GetComponent<MeshRenderer>().material = holeEdgeMat; 
     }
@@ -111,7 +110,7 @@ public class iceCutter : MonoBehaviour
         Debug.Log(actualPoints);
 
         //actually makes the meshes tangible
-        summonedMesh[0].CreateShapeFromPolygon(actualPoints, 7.1f, true); //creates the hole mesh
+        summonedMesh[0].CreateShapeFromPolygon(actualPoints, 0.6f, true); //creates the hole mesh
         int faceCount = summonedMesh[0].faces.Count;
 
 
@@ -122,7 +121,7 @@ public class iceCutter : MonoBehaviour
             System.Array.Resize(ref actualPoints, actualPoints.Length-1); //remove last point of mesh
 
             Destroy(summonedMesh[0]);
-            summonedMesh[0].CreateShapeFromPolygon(actualPoints, 7.1f, true); //recreate hole mesh to retest in next loop
+            summonedMesh[0].CreateShapeFromPolygon(actualPoints, 0.6f, true); //recreate hole mesh to retest in next loop
             Debug.Log("Attempted Loop Shortening");
             faceCount = summonedMesh[0].faces.Count;
 

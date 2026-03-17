@@ -12,4 +12,14 @@ public class sheetDropper : MonoBehaviour
     {
         this.transform.position = new Vector3(transform.position.x, transform.position.y-dropSpeed, transform.position.z);
     }
+
+    void Start()
+    {
+        Invoke("Death", 3f);
+    }
+
+    private void Death()
+    {
+        Destroy(this.gameObject);
+    }
 }
