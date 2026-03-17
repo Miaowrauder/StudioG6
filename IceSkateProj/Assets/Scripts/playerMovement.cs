@@ -24,6 +24,8 @@ public class playerMovement : MonoBehaviour
     public Transform[] castPos;
     public LayerMask layerMask;
     private bool[] isHole = new bool[4];
+    public GameObject cutTrail;
+    private GameObject spawnedCutTrail;
 
 
     RaycastHit hit;
@@ -54,6 +56,11 @@ public class playerMovement : MonoBehaviour
 
     private void EndTrail()
     {
+        if(spawnedCutTrail != null)
+        {
+           Destroy(spawnedCutTrail); 
+        }
+        
         ClearMarkers();
         CancelInvoke("TrailGen");
         trailReset = true;
@@ -72,6 +79,11 @@ public class playerMovement : MonoBehaviour
                 ClearTrailPoints();
                 trailReset = false;
                 InvokeRepeating("TrailGen",Time.deltaTime, trailPointDelay);
+
+                Vector3 trailPos = new Vector3(this.transform.position.x, this.transform.position.y-1.5f, this.transform.position.z);
+                spawnedCutTrail = Instantiate(cutTrail, trailPos, Quaternion.identity);
+
+                spawnedCutTrail.transform.SetParent(this.transform);
             }
             
             
