@@ -11,7 +11,7 @@ public class iceCutter : MonoBehaviour
     public int startPoint;
     public GameObject debugLoopIndicator;
     public bool triggerCut;
-    public Material debugMat;
+    public Material holeMat;
     public GameObject rinkFloor;
 
     ProBuilderMesh summonedMesh;
@@ -59,7 +59,10 @@ public class iceCutter : MonoBehaviour
         temp.transform.position = new Vector3(temp.transform.position.x, temp.transform.position.y-5, temp.transform.position.z); // move it down so it fully interesects ice
 
         summonedMesh = temp.gameObject.AddComponent<ProBuilderMesh>();
-        temp.GetComponent<MeshRenderer>().material = debugMat; // temp for testing visibility
+        temp.GetComponent<MeshRenderer>().material = holeMat; // temp for testing visibility
+        MeshCollider tempColl = temp.gameObject.AddComponent<MeshCollider>();
+        
+        temp.tag = ("Hole");
 
         for(int i = 0; i < actualPoints.Length; i++) //size array to match usable (not 0,0) chain of points
         {
@@ -75,7 +78,7 @@ public class iceCutter : MonoBehaviour
         }
 
         Debug.Log(actualPoints);
-        summonedMesh.CreateShapeFromPolygon(actualPoints, 10, false); //creates the mesh
+        summonedMesh.CreateShapeFromPolygon(actualPoints, 7.1f, true); //creates the mesh
 
         Debug.Log("Produced a shape with " + actualPoints.Length + " points");
         
