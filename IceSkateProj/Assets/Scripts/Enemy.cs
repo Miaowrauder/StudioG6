@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,10 +8,13 @@ public class Enemy : MonoBehaviour
     private Animator animator;
     private PlayerCombat player;
     private GameManager gameManager;
+    public bool canMove = true, isRanged = true;
     public int health = 2;
     public int strength = 1;
     public int meleeRange = 3;
+    public int rangedRange = 8;
     public int spawnCost = 10;
+    public Projectile projectile;
     
     void Start()
     {
@@ -23,11 +27,37 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        navigation.destination = player.transform.position;
-
-        if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Attacking"))
+        if (canMove)
         {
-            animator.SetTrigger("Attack_Melee");
+            navigation.destination = player.transform.position;
+        }
+        else
+        {
+            navigation.destination = transform.position;
+        }
+
+        if (!isRanged)
+        {
+            if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && animator.GetCurrentAnimatorStateInfo(0).IsTag("Free"))
+            {
+                animator.SetTrigger("Attack_Melee");
+            }
+        }
+        else
+        {
+            if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && animator.GetCurrentAnimatorStateInfo(0).IsTag("Free"))
+            {
+                animator.SetTrigger("Attack_Ranged");
+            }
+
+            if (Vector3.Distance(transform.position, player.transform.position) <= rangedRange)
+            {
+                canMove = false;
+            }
+            else
+            {
+                canMove = true;
+            }
         }
     }
 
@@ -48,5 +78,10 @@ public class Enemy : MonoBehaviour
         {
             player.TakeDamage(strength);
         }
+    }
+
+    public void ProjectileThrow()
+    {
+        Projectile spawnedProjectile = Instantiate(projectile, transform.position, transform.rotation);
     }
 }
