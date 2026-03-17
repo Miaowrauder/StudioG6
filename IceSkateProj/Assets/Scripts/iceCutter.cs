@@ -11,10 +11,11 @@ public class iceCutter : MonoBehaviour
     public int startPoint;
     public GameObject debugLoopIndicator;
     public bool triggerCut;
-    public Material holeMat;
-    public GameObject rinkFloor;
+    public Material holeEdgeMat, shaderMat, sheetMat;
+    public float sheetDropSpeed;
 
-    ProBuilderMesh summonedMesh;
+    ProBuilderMesh[] summonedMesh = new ProBuilderMesh[3];
+    GameObject[] generatedObject = new GameObject[3];
     // Start is called before the first frame update
     void Start()
     {   
@@ -53,16 +54,46 @@ public class iceCutter : MonoBehaviour
         FormCutShape();
     }
 
+    private void GenerateHole()
+    {
+        generatedObject[0] = new GameObject(); //generates hole w/ flipped normals
+        generatedObject[0].transform.position = new Vector3(generatedObject[0].transform.position.x, generatedObject[0].transform.position.y-4.96f, generatedObject[0].transform.position.z); // move it down so it fully interesects ice
+        summonedMesh[0] = generatedObject[0].gameObject.AddComponent<ProBuilderMesh>();
+        generatedObject[0].GetComponent<MeshRenderer>().material = holeEdgeMat; 
+    }
+
+    private void GenerateStencil()
+    {
+        generatedObject[1] = new GameObject(); //generates stencil mask w/ unflipped normals
+        generatedObject[1].transform.position = new Vector3(generatedObject[1].transform.position.x, generatedObject[1].transform.position.y+1.93f, generatedObject[1].transform.position.z); // move it down so it fully interesects ice
+
+        summonedMesh[1] = generatedObject[1].gameObject.AddComponent<ProBuilderMesh>();
+        generatedObject[1].GetComponent<MeshRenderer>().material = shaderMat; 
+        MeshCollider tempColl = generatedObject[1].gameObject.AddComponent<MeshCollider>();
+        generatedObject[1].tag = ("Hole");
+    }
+
+    private void GenerateDropSheet()
+    {
+        generatedObject[2] = new GameObject(); //generates ice sheet w/ unflipped normals
+        generatedObject[2].transform.position = new Vector3(generatedObject[2].transform.position.x, generatedObject[2].transform.position.y+2f, generatedObject[2].transform.position.z); // move it down so it fully interesects ice
+
+        summonedMesh[2] = generatedObject[2].gameObject.AddComponent<ProBuilderMesh>();
+        generatedObject[2].GetComponent<MeshRenderer>().material = sheetMat; 
+
+        sheetDropper iceScript = generatedObject[2].AddComponent<sheetDropper>();
+
+        iceScript.dropSpeed = sheetDropSpeed;
+    }
+
     private void FormCutShape()
     {
-        var temp = new GameObject();
-        temp.transform.position = new Vector3(temp.transform.position.x, temp.transform.position.y-5, temp.transform.position.z); // move it down so it fully interesects ice
-
-        summonedMesh = temp.gameObject.AddComponent<ProBuilderMesh>();
-        temp.GetComponent<MeshRenderer>().material = holeMat; // temp for testing visibility
-        MeshCollider tempColl = temp.gameObject.AddComponent<MeshCollider>();
         
-        temp.tag = ("Hole");
+        GenerateHole();
+
+        GenerateStencil();
+
+        GenerateDropSheet();
 
         for(int i = 0; i < actualPoints.Length; i++) //size array to match usable (not 0,0) chain of points
         {
@@ -78,9 +109,44 @@ public class iceCutter : MonoBehaviour
         }
 
         Debug.Log(actualPoints);
-        summonedMesh.CreateShapeFromPolygon(actualPoints, 7.1f, true); //creates the mesh
 
-        Debug.Log("Produced a shape with " + actualPoints.Length + " points");
+        //actually makes the meshes tangible
+        summonedMesh[0].CreateShapeFromPolygon(actualPoints, 7.1f, true); //creates the hole mesh
+        int faceCount = summonedMesh[0].faces.Count;
+
+
+        bool success = true;
+       
+        while(faceCount == 0)
+        {
+            System.Array.Resize(ref actualPoints, actualPoints.Length-1); //remove last point of mesh
+
+            Destroy(summonedMesh[0]);
+            summonedMesh[0].CreateShapeFromPolygon(actualPoints, 7.1f, true); //recreate hole mesh to retest in next loop
+            Debug.Log("Attempted Loop Shortening");
+            faceCount = summonedMesh[0].faces.Count;
+
+            if(actualPoints.Length <= 2f)
+            {
+                success = false;
+                break;
+            }
+        }
+
+        //only generates other meshes when first is verified as spawned succesfully
+        if(success)
+        {
+            summonedMesh[1].CreateShapeFromPolygon(actualPoints, 0.1f, false); //creates the stencil mesh
+            summonedMesh[2].CreateShapeFromPolygon(actualPoints, 0.3f, false);//creates the drop sheet mesh 
+            Debug.Log("Produced a shape with " + actualPoints.Length + " points");
+        }
+        else
+        {
+            Debug.Log("Cut Failed!");
+        }
+        
+
+        
         
        // CutPiece();
     }
