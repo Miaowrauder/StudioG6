@@ -442,11 +442,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   maxSpeed: 5
+  fallDelay: 0
   canMove: 1
   trailPointDelay: 0
   tempTrailMarker: {fileID: 0}
   trailPoint: []
   passedStartPoint: 0
+  castPos: []
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  cutTrail: {fileID: 0}
 --- !u!54 &617347553
 Rigidbody:
   m_ObjectHideFlags: 0
