@@ -1,4 +1,4 @@
-
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,51 +6,58 @@ public class Enemy : MonoBehaviour
 {
     private NavMeshAgent navigation;
     private Animator animator;
-    private GameObject player;
+    private PlayerCombat player;
     private GameManager gameManager;
+    public bool canMove = true, isRanged = true;
     public int health = 2;
     public int strength = 1;
     public int meleeRange = 3;
+    public int rangedRange = 8;
     public int spawnCost = 10;
-
-    private int castInt;
-    public LayerMask layerMask;
-    public float fallDelay, fallSpeed;
-    private bool[] isHole = new bool[4];
-    public Transform[] castPos;
-    RaycastHit hit;
-    private bool isFalling, canAttack;
+    public Projectile projectile;
     
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         navigation = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        player = GameObject.Find("Player");
+        player = FindObjectOfType<PlayerCombat>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(!isFalling)
+        if (canMove)
         {
-           navigation.destination = player.transform.position; 
+            navigation.destination = player.transform.position;
         }
-        
-
-        if(Vector3.Distance(player.transform.position, transform.position) < meleeRange && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Attacking"))
+        else
         {
-            animator.SetTrigger("Attack_Melee");
+            navigation.destination = transform.position;
         }
 
-        DownCast();
-
-        if(isFalling)
+        if (!isRanged)
         {
-            navigation.enabled = false;
+            if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && animator.GetCurrentAnimatorStateInfo(0).IsTag("Free"))
+            {
+                animator.SetTrigger("Attack_Melee");
+            }
+        }
+        else
+        {
+            if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && animator.GetCurrentAnimatorStateInfo(0).IsTag("Free"))
+            {
+                animator.SetTrigger("Attack_Ranged");
+            }
 
-            this.transform.position = new Vector3(transform.position.x, transform.position.y-fallSpeed, transform.position.z);
-            
+            if (Vector3.Distance(transform.position, player.transform.position) <= rangedRange)
+            {
+                canMove = false;
+            }
+            else
+            {
+                canMove = true;
+            }
         }
     }
 
@@ -67,54 +74,14 @@ public class Enemy : MonoBehaviour
 
     private void Attack()
     {
-        if((Vector3.Distance(player.transform.position, transform.position) < meleeRange) && canAttack)
+        if (Vector3.Distance(player.transform.position, transform.position) < meleeRange)
         {
-            player.GetComponent<PlayerCombat>().TakeDamage(strength);
+            player.TakeDamage(strength);
         }
     }
 
-    void DownCast() 
+    public void ProjectileThrow()
     {
-        castInt++; //does 1 corner per frame, cycling
-
-        if(castInt >= 4)
-        {
-            castInt = 0;
-        }
-
-        if(Physics.Raycast(castPos[castInt].transform.position, Vector3.down, out hit, 999f, layerMask, QueryTriggerInteraction.Collide));
-        {
-                if(hit.collider.gameObject.tag == ("Hole"))
-                {
-                    isHole[castInt] = true;
-                }
-                else
-                {   
-                    isHole[castInt] = false;
-                }
-        }
-
-        if(isHole[0] && isHole[1] && isHole[2] && isHole[3])
-        {
-            Invoke("Fall", fallDelay);
-        }
-        else
-        {
-            CancelInvoke("Fall");
-            //CancelFall();
-        }
-
-    }
-
-    void Fall()
-    {
-        isFalling = true;
-
-        Invoke("Death", 2f);
-    }
-
-    private void Death()
-    {
-        TakeDamage(999);
+        Projectile spawnedProjectile = Instantiate(projectile, transform.position, transform.rotation);
     }
 }
