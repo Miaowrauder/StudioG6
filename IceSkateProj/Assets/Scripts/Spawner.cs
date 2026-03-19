@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.Serialization.Formatters;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -19,11 +20,14 @@ public class Spawner : MonoBehaviour
     public void startWave(int spawnAbility)
     {
         spawnPoints = spawnAbility;
+        gameManager.waveFinished = false;
         StartCoroutine("SpawnEnemy");
     }
 
     IEnumerator SpawnEnemy()
     {
+        yield return new WaitForSeconds(2);
+
         while (spawnPoints > 0)
         {
             if (enemyTypes.Length == 0)
@@ -55,5 +59,7 @@ public class Spawner : MonoBehaviour
 
             yield return new WaitForSeconds(spawnTime);
         }
+
+        gameManager.waveFinished = true;
     } 
 }

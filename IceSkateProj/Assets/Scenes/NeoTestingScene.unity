@@ -716,6 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8386890706c2a724985d3cd8c95b63ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveFinished: 1
   waveNumber: 0
   baseSpawnPoints: 50
   currentEnemies: 0

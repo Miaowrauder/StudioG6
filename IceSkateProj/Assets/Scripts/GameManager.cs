@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
 using Unity.AI.Navigation;
+using System.Collections;
+using System.Runtime.InteropServices;
 
 public class GameManager : MonoBehaviour
 {
 private Spawner spawner;
-private bool playWave = true;
+public bool waveFinished = true;
 public int waveNumber = 0;
 public int baseSpawnPoints = 50;
 public int currentEnemies = 0;
@@ -18,13 +20,18 @@ private NavMeshSurface navmeshSurface;
 
     void FixedUpdate()
     {
-        if (currentEnemies == 0)
+        if (currentEnemies == 0 && waveFinished)
         {
-            waveNumber++;
-            int waveSpawnPoints = baseSpawnPoints*waveNumber;
-            spawner.startWave(waveSpawnPoints); //Make scale better, maybe 
-            print("Wave "+waveNumber);
+            NewWave();
         }
+    }
+
+    void NewWave()
+    {
+        waveNumber++;
+        int waveSpawnPoints = baseSpawnPoints*waveNumber;
+        spawner.startWave(waveSpawnPoints); //Make scale better, maybe 
+        print("Wave "+waveNumber);
     }
 
     public void RebakeNavmesh(float delay)
