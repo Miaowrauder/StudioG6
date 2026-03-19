@@ -5,7 +5,6 @@ public class PlayerCombat : MonoBehaviour
 {
     public int health = 10;
     public int strength = 1;
-    public GameObject attackNorth;
 
     void Start()
     {

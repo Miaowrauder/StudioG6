@@ -319,6 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8386890706c2a724985d3cd8c95b63ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveFinished: 1
   waveNumber: 0
   baseSpawnPoints: 50
   currentEnemies: 0
@@ -838,6 +839,7 @@ GameObject:
   - component: {fileID: 1687485969}
   - component: {fileID: 1687485974}
   - component: {fileID: 1687485975}
+  - component: {fileID: 1687485976}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1013,6 +1015,20 @@ MonoBehaviour:
   invisMat: {fileID: 2100000, guid: 4f668594ee20e744db2537b5e8b9bccb, type: 2}
   sheetDropSpeed: 0.1
   bakeDelay: 0.5
+--- !u!114 &1687485976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687485968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7e11bc68a536e44185c374f5b491cb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  strength: 1
 --- !u!1 &1739190164
 GameObject:
   m_ObjectHideFlags: 0
