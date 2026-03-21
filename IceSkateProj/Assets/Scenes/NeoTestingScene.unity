@@ -427,7 +427,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   strength: 1
-  attackNorth: {fileID: 0}
+  power: 5
+  range: 50
+  modifier: 1
 --- !u!114 &617347552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -850,6 +852,7 @@ MonoBehaviour:
   enemyTypes:
   - {fileID: 5150029297707364534, guid: eb951d79dc49a4e408651e642d6752c5, type: 3}
   spawnTime: 2
+  waveStartDelay: 2
 --- !u!4 &1485545876
 Transform:
   m_ObjectHideFlags: 0

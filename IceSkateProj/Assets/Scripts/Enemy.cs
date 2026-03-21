@@ -1,20 +1,22 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Logic Settings")]
     private NavMeshAgent navigation;
     private Animator animator;
     private PlayerCombat player;
     private GameManager gameManager;
     public bool canMove = true, isRanged = true;
+    public Projectile projectile;
+    [Header("Customise Settings")]
+    public int spawnCost = 10;
+    public int waveEnabled;
     public int health = 2;
     public int strength = 1;
     public int meleeRange = 3;
     public int rangedRange = 8;
-    public int spawnCost = 10;
-    public Projectile projectile;
     
     void Start()
     {
