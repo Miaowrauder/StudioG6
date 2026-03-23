@@ -427,9 +427,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   strength: 1
-  power: 5
-  range: 50
-  modifier: 1
+  damageRange: 0
+  power: 0
+  pushRange: 0
 --- !u!114 &617347552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 617347546}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03ebf6e643569e64fb4e0fe59ca95dcd, type: 3}
   m_Name: 
@@ -480,7 +480,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!136 &617347554
 CapsuleCollider:

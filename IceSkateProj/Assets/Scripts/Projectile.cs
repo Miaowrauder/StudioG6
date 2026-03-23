@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
 
         if (transform.position == endPosition)
         {
-            //Cut hole and trigger effects, function and animation maybe
+            //Cut hole (put code here)
             Destroy(gameObject);
         }
     }

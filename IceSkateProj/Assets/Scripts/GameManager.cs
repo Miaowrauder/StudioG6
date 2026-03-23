@@ -8,9 +8,7 @@ public class GameManager : MonoBehaviour
 {
 private Spawner spawner;
 public bool waveFinished = true;
-public int waveNumber = 0;
-public int baseSpawnPoints = 50;
-public int currentEnemies = 0;
+public int waveNumber, baseSpawnPoints, currentEnemies;
 private NavMeshSurface navmeshSurface;
 
     void Start()

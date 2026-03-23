@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
     public GameObject[] enemyTypes;
     private GameObject[] spawnLocations;
     private GameManager gameManager;
-    public float spawnTime = 3, waveStartDelay = 2; //Make curve later, adapt to wave system
+    public float spawnTime, waveStartDelay; //Make curve later, adapt to wave system
     private int spawnPoints;
 
 
@@ -27,7 +27,6 @@ public class Spawner : MonoBehaviour
     IEnumerator SpawnEnemy()
     {
         yield return new WaitForSeconds(waveStartDelay);
-
         while (spawnPoints > 0)
         {
             if (enemyTypes.Length == 0)

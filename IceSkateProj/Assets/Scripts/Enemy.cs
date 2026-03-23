@@ -8,15 +8,16 @@ public class Enemy : MonoBehaviour
     private Animator animator;
     private PlayerCombat player;
     private GameManager gameManager;
-    public bool canMove = true, isRanged = true;
+    public bool canMove = true;
     public Projectile projectile;
     [Header("Customise Settings")]
-    public int spawnCost = 10;
+    public int spawnCost;
     public int waveEnabled;
-    public int health = 2;
-    public int strength = 1;
-    public int meleeRange = 3;
-    public int rangedRange = 8;
+    public int health;
+    public bool isRanged;
+    public int strength;
+    public int meleeRange;
+    public int rangedRange;
     
     void Start()
     {
@@ -29,6 +30,17 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // Check that an attack animation is playing, if so, stop moving
+        bool isFree = animator.GetCurrentAnimatorStateInfo(0).IsTag("Free");
+        if (!isFree)
+        {
+            canMove = false;
+        }
+        else
+        {
+            canMove = true;
+        }
+
         if (canMove)
         {
             navigation.destination = player.transform.position;
@@ -38,16 +50,17 @@ public class Enemy : MonoBehaviour
             navigation.destination = transform.position;
         }
 
+
         if (!isRanged)
         {
-            if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && animator.GetCurrentAnimatorStateInfo(0).IsTag("Free"))
+            if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && isFree)
             {
                 animator.SetTrigger("Attack_Melee");
             }
         }
         else
         {
-            if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && animator.GetCurrentAnimatorStateInfo(0).IsTag("Free"))
+            if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && isFree)
             {
                 animator.SetTrigger("Attack_Ranged");
             }

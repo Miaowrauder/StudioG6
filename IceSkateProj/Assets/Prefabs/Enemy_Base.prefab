@@ -164,15 +164,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  isRanged: 1
+  isRanged: 0
+  projectile: {fileID: 5446462394928568651, guid: fb05052046fe255418b11189e73a132b,
+    type: 3}
+  spawnCost: 10
+  waveEnabled: 0
   health: 2
   strength: 1
   meleeRange: 3
   rangedRange: 8
-  spawnCost: 10
-  waveEnabled: 0
-  projectile: {fileID: 5446462394928568651, guid: fb05052046fe255418b11189e73a132b,
-    type: 3}
 --- !u!1 &8316844955122756407
 GameObject:
   m_ObjectHideFlags: 0

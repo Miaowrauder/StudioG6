@@ -3,11 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCombat : MonoBehaviour
 {
-    public int health = 10;
-    public int strength = 1;
-    public float power = 5;
-    public float range = 10;
-    public float modifier = 1;
+    public int health;
+    [Header("Damage Attack")]
+    public int strength;
+    public float damageRange;
+    [Header("Push Attack")]
+    public int power;
+    public float pushRange;
     
     void Update()
     {
@@ -31,7 +33,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void DamageAttack()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, damageRange);
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.GetComponent<Enemy>() != null)
@@ -43,14 +45,15 @@ public class PlayerCombat : MonoBehaviour
 
     public void PushAttack()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, pushRange);
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.GetComponent<Enemy>() != null)
             {
-                if (GetComponent<Collider>().TryGetComponent<Rigidbody>(out Rigidbody rb))
+                if (hitCollider.GetComponent<Collider>().TryGetComponent<Rigidbody>(out Rigidbody rb))
                 {
-                    rb.AddExplosionForce(power, transform.position, range, 1, ForceMode.Force); //Use AddForce if method doesn't work
+                    print("push "+rb);
+                    rb.AddExplosionForce(power, transform.position, pushRange);
                 }
             }
         }
