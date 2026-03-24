@@ -1216,6 +1216,7 @@ GameObject:
   - component: {fileID: 1687485973}
   - component: {fileID: 1687485970}
   - component: {fileID: 1687485969}
+  - component: {fileID: 1687485978}
   - component: {fileID: 1687485974}
   - component: {fileID: 1687485975}
   - component: {fileID: 1687485976}
@@ -1361,8 +1362,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   strength: 1
-  damageRange: 0
-  power: 100
+  damageRange: 10
+  power: 1000
   pushRange: 10
 --- !u!33 &1687485977
 MeshFilter:
@@ -1372,6 +1373,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687485968}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &1687485978
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687485968}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 140abe18733e2b4479abe26155b6c0ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1718382049
 PrefabInstance:
   m_ObjectHideFlags: 0

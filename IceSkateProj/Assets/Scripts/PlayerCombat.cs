@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCombat : MonoBehaviour
 {
+    private Animator animator;
     public int health;
     [Header("Damage Attack")]
     public int strength;
@@ -10,13 +11,18 @@ public class PlayerCombat : MonoBehaviour
     [Header("Push Attack")]
     public int power;
     public float pushRange;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            //DamageAttack(); //Change to be animation trigger
-            PushAttack();
+            //animator.SetTrigger("Damage_Attack"); //Decide binds later
+            animator.SetTrigger("Push_Attack");
         }
     }
 

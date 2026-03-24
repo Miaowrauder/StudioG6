@@ -389,7 +389,6 @@ GameObject:
   - component: {fileID: 617347555}
   - component: {fileID: 617347554}
   - component: {fileID: 617347553}
-  - component: {fileID: 617347552}
   - component: {fileID: 617347551}
   m_Layer: 0
   m_Name: Player
@@ -428,33 +427,8 @@ MonoBehaviour:
   health: 10
   strength: 1
   damageRange: 0
-  power: 0
-  pushRange: 0
---- !u!114 &617347552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 617347546}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03ebf6e643569e64fb4e0fe59ca95dcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  maxSpeed: 5
-  fallDelay: 0
-  canMove: 1
-  trailPointDelay: 0
-  tempTrailMarker: {fileID: 0}
-  trailPoint: []
-  passedStartPoint: 0
-  castPos: []
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  cutTrail: {fileID: 0}
+  power: 100
+  pushRange: 10
 --- !u!54 &617347553
 Rigidbody:
   m_ObjectHideFlags: 0
