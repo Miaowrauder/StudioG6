@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -38,25 +39,30 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        // Check that an attack animation is playing, if so, stop moving
+        // Check that an attack animation is playing, if so, stop moving - tweaked this, messed with fall logic
         bool isFree = animator.GetCurrentAnimatorStateInfo(0).IsTag("Free");
-        if (!isFree && !isFalling)
+        if (!isFree || isFalling)
         {
             canMove = false;
         }
-        else
+        else if(isFree)
         {
             canMove = true;
         }
 
-        if (canMove)
+        if((navigation.enabled = true) && !isFalling)
         {
-            navigation.destination = player.transform.position;
+            if(canMove)
+            {
+                navigation.destination = player.transform.position;
+            }
+            else
+            {
+                navigation.destination = transform.position;
+            }
         }
-        else
-        {
-            navigation.destination = transform.position;
-        }
+
+        
 
 
         if (!isRanged)
@@ -93,6 +99,7 @@ public class Enemy : MonoBehaviour
             
         }
     }
+
 
     public void TakeDamage(int damage)
     {

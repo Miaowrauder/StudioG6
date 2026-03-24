@@ -1302,8 +1302,8 @@ MonoBehaviour:
   health: 10
   strength: 1
   damageRange: 0
-  power: 0
-  pushRange: 0
+  power: 100
+  pushRange: 10
 --- !u!1001 &1718382049
 PrefabInstance:
   m_ObjectHideFlags: 0

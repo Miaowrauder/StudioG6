@@ -107,7 +107,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4890632094393364046}
   - component: {fileID: -3958358662173577247}
-  - component: {fileID: 8665084248084909464}
   - component: {fileID: 7437043268884192377}
   - component: {fileID: -5017634289645785183}
   - component: {fileID: 6449408703713621632}
@@ -158,26 +157,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!1818360609 &8665084248084909464
-RotationConstraint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5150029297707364534}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Weight: 1
-  m_RotationAtRest: {x: 0, y: 0, z: 0}
-  m_RotationOffset: {x: 0, y: 0, z: 0}
-  m_AffectRotationX: 1
-  m_AffectRotationY: 1
-  m_AffectRotationZ: 1
-  m_Active: 1
-  m_IsLocked: 1
-  m_Sources:
-  - sourceTransform: {fileID: 0}
-    weight: 1
 --- !u!195 &7437043268884192377
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -233,10 +212,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a965d5ca23207d4cbe8522793de2c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
+  projectile: {fileID: 0}
+  spawnCost: 10
+  waveEnabled: 0
   health: 2
+  isRanged: 0
   strength: 1
   meleeRange: 3
-  spawnCost: 10
+  rangedRange: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -247,6 +231,7 @@ MonoBehaviour:
   - {fileID: 3277155439781433207}
   - {fileID: 7676264891070447744}
   - {fileID: 4777235814289154135}
+  movingBack: 0
 --- !u!1 &8316844955122756407
 GameObject:
   m_ObjectHideFlags: 0
