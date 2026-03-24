@@ -18,6 +18,14 @@ public class Enemy : MonoBehaviour
     public int strength;
     public int meleeRange;
     public int rangedRange;
+    [Header("Falling Settings")]
+    private int castInt;
+    public LayerMask layerMask;
+    public float fallDelay, fallSpeed;
+    private bool[] isHole = new bool[4];
+    public Transform[] castPos;
+    RaycastHit hit;
+    private bool isFalling, canAttack;
     
     void Start()
     {
@@ -32,7 +40,7 @@ public class Enemy : MonoBehaviour
     {
         // Check that an attack animation is playing, if so, stop moving
         bool isFree = animator.GetCurrentAnimatorStateInfo(0).IsTag("Free");
-        if (!isFree)
+        if (!isFree && !isFalling)
         {
             canMove = false;
         }
@@ -74,6 +82,16 @@ public class Enemy : MonoBehaviour
                 canMove = true;
             }
         }
+
+        DownCast();
+
+        if(isFalling)
+        {
+            navigation.enabled = false;
+
+            this.transform.position = new Vector3(transform.position.x, transform.position.y-fallSpeed, transform.position.z);
+            
+        }
     }
 
     public void TakeDamage(int damage)
@@ -98,5 +116,50 @@ public class Enemy : MonoBehaviour
     public void ProjectileThrow()
     {
         Projectile spawnedProjectile = Instantiate(projectile, transform.position, transform.rotation);
+    }
+
+    void DownCast() 
+    {
+        castInt++; //does 1 corner per frame, cycling
+
+        if(castInt >= 4)
+        {
+            castInt = 0;
+        }
+
+        if(Physics.Raycast(castPos[castInt].transform.position, Vector3.down, out hit, 999f, layerMask, QueryTriggerInteraction.Collide));
+        {
+                if(hit.collider.gameObject.tag == ("Hole"))
+                {
+                    isHole[castInt] = true;
+                }
+                else
+                {   
+                    isHole[castInt] = false;
+                }
+        }
+
+        if(isHole[0] && isHole[1] && isHole[2] && isHole[3])
+        {
+            Invoke("Fall", fallDelay);
+        }
+        else
+        {
+            CancelInvoke("Fall");
+            //CancelFall();
+        }
+
+    }
+
+    void Fall()
+    {
+        isFalling = true;
+
+        Invoke("Death", 2f);
+    }
+
+    private void Death()
+    {
+        TakeDamage(999);
     }
 }
