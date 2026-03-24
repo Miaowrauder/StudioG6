@@ -220,7 +220,7 @@ MonoBehaviour:
   isRanged: 0
   strength: 1
   meleeRange: 3
-  rangedRange: 0
+  rangedRange: 8
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -231,7 +231,6 @@ MonoBehaviour:
   - {fileID: 3277155439781433207}
   - {fileID: 7676264891070447744}
   - {fileID: 4777235814289154135}
-  movingBack: 0
 --- !u!1 &8316844955122756407
 GameObject:
   m_ObjectHideFlags: 0

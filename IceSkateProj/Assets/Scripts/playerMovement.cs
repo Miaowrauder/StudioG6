@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    public float moveSpeed, maxSpeed, fallDelay;
-    private float checkSpeed, diagMaxSpeed; //changes between max and diag to adjust speed checks
+    public float moveSpeed, fallDelay;
     private float currentSpeed;
-    private Rigidbody rb;
     public bool canMove;
 
 
-    private bool isTrailing, trailReset; //tracks when trailing for later uses, triggers trail reset
+    public bool isTrailing; 
+    private bool trailReset; //tracks when trailing for later uses, triggers trail reset
     private int currentPoint; //point in trail array
     public float trailPointDelay;
     public GameObject tempTrailMarker; //currently visible for debug, small colliders to detect when player overlaps trail, trigger cut
@@ -26,6 +25,8 @@ public class playerMovement : MonoBehaviour
     private bool[] isHole = new bool[4];
     public GameObject cutTrail;
     private GameObject spawnedCutTrail;
+    public GameObject spriteAndCombo;
+    private playerCombo plCombo;
 
 
     RaycastHit hit;
@@ -34,10 +35,9 @@ public class playerMovement : MonoBehaviour
     void Start()
     {
         myCutter = GetComponent<iceCutter>();
-        diagMaxSpeed = maxSpeed * 0.666f;
+        plCombo = spriteAndCombo.GetComponent<playerCombo>();
         trailPoint = new Vector2[98];
         trailReset = true;
-        rb = GetComponent<Rigidbody>();
     }
     public void PassPoints()
     {
@@ -69,7 +69,7 @@ public class playerMovement : MonoBehaviour
 
     void Update() //fixed update gets funny when we need individual frame inputs from mouse up and down...
     {
-        if(Input.GetKeyDown(KeyCode.Mouse1))
+        if(Input.GetKeyDown(KeyCode.Mouse1) && (plCombo.isTricking == false))
         {
             isTrailing = true;
 
@@ -150,54 +150,20 @@ public class playerMovement : MonoBehaviour
         Vector2 inputs = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Vector3 movement = new Vector3(inputs.x, 0, inputs.y);
 
-        if((inputs == new Vector2(1,1))||(inputs == new Vector2(-1,1))||(inputs == new Vector2(1,1))||(inputs == new Vector2(-1,-1))) //are we detecting double inputs, i.e moving diagonally
+        if((inputs.x != 0f) && (inputs.y != 0f)) //are we detecting double inputs, i.e moving diagonally
         {
-            checkSpeed = diagMaxSpeed;
-        }
-        else
-        {
-            checkSpeed = maxSpeed;
+            movement *= 0.666f; //eliminates diagonal speedup
         }
 
-        rb.AddForce(movement, ForceMode.Impulse);
 
-        VelocityCheck();
-    }
-
-    private void VelocityCheck()
-    {
-
-        if(rb.velocity.x > checkSpeed)
-        {
-            rb.velocity = new Vector3(checkSpeed, rb.velocity.y, rb.velocity.z);
-        }
-        else if(rb.velocity.x < -checkSpeed)
-        {
-            rb.velocity = new Vector3(-checkSpeed, rb.velocity.y, rb.velocity.z);
-        }
-
-        if(rb.velocity.z > checkSpeed)
-        {
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, checkSpeed);
-        }
-        else if(rb.velocity.z < -checkSpeed)
-        {
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -checkSpeed);
-        }
-
+        transform.position += (movement * moveSpeed);
     }
 
     private void Fall()
     {
         canMove = false;
-        rb.velocity = new Vector3(rb.velocity.x/2, -10, rb.velocity.z/2);
+        transform.position = new Vector3(transform.position.x, transform.position.y-0.5f, transform.position.z);
         gameObject.GetComponent<CapsuleCollider>().isTrigger = true;
-    }
-
-    private void CancelFall()
-    {
-        canMove = true;
-        gameObject.GetComponent<CapsuleCollider>().isTrigger = false;
     }
 
     void DownCast() 
@@ -228,7 +194,6 @@ public class playerMovement : MonoBehaviour
         else
         {
             CancelInvoke("Fall");
-            //CancelFall();
         }
 
     }
