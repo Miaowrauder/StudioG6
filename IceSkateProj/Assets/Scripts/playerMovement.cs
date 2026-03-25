@@ -28,6 +28,8 @@ public class playerMovement : MonoBehaviour
     public GameObject spriteAndCombo;
     private playerCombo plCombo;
 
+    private bool movingDirection, lastMovingDirection; //
+
 
     RaycastHit hit;
                             
