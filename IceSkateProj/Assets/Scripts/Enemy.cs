@@ -1,4 +1,4 @@
-
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,12 +9,14 @@ public class Enemy : MonoBehaviour
     private Animator animator;
     private PlayerCombat player;
     private GameManager gameManager;
+    private Rigidbody rigidbody;
     public bool canMove = true;
     public Projectile projectile;
     [Header("Customise Settings")]
     public int spawnCost;
     public int waveEnabled;
     public int health;
+    public bool damageImmune;
     public bool isRanged;
     public int strength;
     public int meleeRange;
@@ -34,6 +36,7 @@ public class Enemy : MonoBehaviour
         navigation = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerCombat>();
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -50,7 +53,7 @@ public class Enemy : MonoBehaviour
             canMove = true;
         }
 
-        if((navigation.enabled = true) && !isFalling)
+        if(navigation.enabled && !isFalling)
         {
             if(canMove)
             {
@@ -61,9 +64,6 @@ public class Enemy : MonoBehaviour
                 navigation.destination = transform.position;
             }
         }
-
-        
-
 
         if (!isRanged)
         {
@@ -100,10 +100,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        if (!damageImmune)
+        {
+            health -= damage;
+        }
 
         if (health <= 0)
         {
@@ -118,6 +120,18 @@ public class Enemy : MonoBehaviour
         {
             player.TakeDamage(strength);
         }
+    }
+
+    public void Pushed(float stopTime)
+    {
+        ChangeMovementMethod();
+        Invoke("ChangeMovementMethod", stopTime);
+    }
+
+    private void ChangeMovementMethod()
+    {
+        rigidbody.velocity = Vector3.zero;
+        navigation.enabled = !navigation.enabled;
     }
 
     public void ProjectileThrow()

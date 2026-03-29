@@ -1662,8 +1662,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTypes:
   - {fileID: 5150029297707364534, guid: 303461a3977643d44a1d6a6ec535acec, type: 3}
-  spawnTime: 3
-  waveStartDelay: 0
+  spawnTime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.006992164
+      value: 2.995542
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 25
+      value: 2
+      inSlope: -0.12869959
+      outSlope: -0.12869959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.06825838
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 50
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  waveStartDelay: 2
 --- !u!4 &1909981684
 Transform:
   m_ObjectHideFlags: 0

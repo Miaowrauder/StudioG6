@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Runtime.Serialization.Formatters;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -7,8 +6,9 @@ public class Spawner : MonoBehaviour
     public GameObject[] enemyTypes;
     private GameObject[] spawnLocations;
     private GameManager gameManager;
-    public float spawnTime, waveStartDelay; //Make curve later, adapt to wave system
-    private int spawnPoints;
+    public AnimationCurve spawnTime;
+    public float waveStartDelay;
+    private int spawnPoints, enemyTotal;
 
 
     void Start()
@@ -26,6 +26,8 @@ public class Spawner : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
+        enemyTotal = 0;
+
         yield return new WaitForSeconds(waveStartDelay);
         while (spawnPoints > 0)
         {
@@ -55,11 +57,10 @@ public class Spawner : MonoBehaviour
                 }
             }
 
-            print("points: "+spawnPoints);
             Instantiate(enemyTypes[enemySelected], spawnLocations[spawnAt].transform.position, spawnLocations[spawnAt].transform.rotation);
             gameManager.currentEnemies++;
 
-            yield return new WaitForSeconds(spawnTime);
+            yield return new WaitForSeconds(spawnTime.Evaluate(enemyTotal));
         }
 
         gameManager.waveFinished = true;
