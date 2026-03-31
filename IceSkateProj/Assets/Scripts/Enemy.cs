@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         navigation = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         player = FindObjectOfType<PlayerCombat>();
         rigidbody = GetComponent<Rigidbody>();
     }

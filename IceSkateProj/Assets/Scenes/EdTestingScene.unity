@@ -1365,6 +1365,7 @@ MonoBehaviour:
   damageRange: 10
   power: 1000
   pushRange: 10
+  pushTime: 0
 --- !u!33 &1687485977
 MeshFilter:
   m_ObjectHideFlags: 0
