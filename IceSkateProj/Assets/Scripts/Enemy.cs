@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     private GameManager gameManager;
     private Rigidbody rigidbody;
     public bool canMove = true;
+    public string movingDirection;
     public Projectile projectile;
     [Header("Customise Settings")]
     public int spawnCost;
@@ -42,7 +43,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        // Check that an attack animation is playing, if so, stop moving - tweaked this, messed with fall logic
         bool isFree = animator.GetCurrentAnimatorStateInfo(0).IsTag("Free");
         if (!isFree || isFalling)
         {
@@ -88,6 +88,30 @@ public class Enemy : MonoBehaviour
                 canMove = true;
             }
         }
+
+        if (Mathf.Abs(navigation.velocity.x) < Mathf.Abs(navigation.velocity.z))
+        {
+            if (navigation.velocity.z > 0)
+            {
+                movingDirection = "North";
+            }
+            else
+            {
+                movingDirection = "South";
+            }
+        }
+        else
+        {
+            if (navigation.velocity.x > 0)
+            {
+                movingDirection = "East";
+            }
+            else
+            {
+                movingDirection = "West";
+            }
+        }
+        print(movingDirection);
 
         DownCast();
 
