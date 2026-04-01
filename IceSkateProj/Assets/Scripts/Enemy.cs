@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
     private GameManager gameManager;
     private Rigidbody rigidbody;
     public bool canMove = true;
-    public string movingDirection;
     public Projectile projectile;
     [Header("Customise Settings")]
     public int spawnCost;
@@ -93,25 +92,28 @@ public class Enemy : MonoBehaviour
         {
             if (navigation.velocity.z > 0)
             {
-                movingDirection = "North";
+                //North-facing 
+                animator.SetInteger("Direction", 0);
             }
             else
             {
-                movingDirection = "South";
+                //South-facing
+                animator.SetInteger("Direction", 2);
             }
         }
         else
         {
             if (navigation.velocity.x > 0)
             {
-                movingDirection = "East";
+                //East-facing
+                animator.SetInteger("Direction", 1);
             }
             else
             {
-                movingDirection = "West";
+                //West-facing
+                animator.SetInteger("Direction", 3);
             }
         }
-        print(movingDirection);
 
         DownCast();
 
