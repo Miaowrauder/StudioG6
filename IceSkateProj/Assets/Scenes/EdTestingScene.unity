@@ -1498,6 +1498,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: largeEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6449408703713621632, guid: 303461a3977643d44a1d6a6ec535acec,
+        type: 3}
+      propertyPath: isRanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449408703713621632, guid: 303461a3977643d44a1d6a6ec535acec,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 5446462394928568651, guid: fb05052046fe255418b11189e73a132b,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

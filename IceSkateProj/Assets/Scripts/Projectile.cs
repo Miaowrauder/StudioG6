@@ -1,5 +1,4 @@
 
-
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -9,8 +8,8 @@ public class Projectile : MonoBehaviour
     private float completion = 0;
     public float speed = 3;
     public float holeScale, bakeDelay, randomDistance;
-    public GameObject holePrefab, visualPrefab;
-    private GameObject visualComponent;
+    public GameObject holePrefab, visualPrefab, shadowPrefab;
+    private GameObject visualComponent, shadow;
     private float elapsedTime, journeyTime;
 
 
@@ -18,6 +17,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         visualComponent = Instantiate(visualPrefab, transform.position, Quaternion.identity);
+        shadow = Instantiate(shadowPrefab, transform.position, Quaternion.identity);
         player = FindObjectOfType<PlayerCombat>();
 
         startPosition = transform.position;
@@ -33,9 +33,10 @@ public class Projectile : MonoBehaviour
 
     void FixedUpdate()
     {
-        visualComponent.transform.position = new Vector3(transform.position.x, visualComponent.transform.position.y, transform.position.z);
+        visualComponent.transform.position = new Vector3(this.transform.position.x, visualComponent.transform.position.y, this.transform.position.z);
         elapsedTime += Time.deltaTime/journeyTime;
         transform.position = Vector3.Slerp(startPosition, endPosition, elapsedTime);
+        shadow.transform.position = new Vector3(this.transform.position.x, -3.699f, this.transform.position.z);
 
         if (transform.position == endPosition)
         {
@@ -44,6 +45,7 @@ public class Projectile : MonoBehaviour
             hole.transform.localScale = new Vector3(holeScale, 1, holeScale);
             FindObjectOfType<GameManager>().GetComponent<GameManager>().RebakeNavmesh(bakeDelay);
             Destroy(visualComponent);
+            Destroy(shadow);
             Destroy(gameObject);
         }
     }

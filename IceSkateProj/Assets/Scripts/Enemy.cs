@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     public int strength;
     public int meleeRange;
     public int rangedRange;
+    public Transform shootPos;
     [Header("Falling Settings")]
     private int castInt;
     public LayerMask layerMask;
@@ -150,7 +151,7 @@ public class Enemy : MonoBehaviour
     public void ProjectileThrow()
     {
         animator.SetBool("Ranged Queued", false);
-        Projectile spawnedProjectile = Instantiate(projectile, transform.position, transform.rotation);
+        Projectile spawnedProjectile = Instantiate(projectile, shootPos.transform.position, transform.rotation);
     }
 
     public void Pushed(float stopTime)
