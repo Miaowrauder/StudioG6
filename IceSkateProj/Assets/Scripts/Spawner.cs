@@ -29,7 +29,7 @@ public class Spawner : MonoBehaviour
         enemyTotal = 0;
 
         yield return new WaitForSeconds(waveStartDelay);
-        while (spawnPoints > 9) // Set to lowest spawn cost -1
+        while (spawnPoints >= 10) // Set to lowest spawn cost
         {
             if (enemyTypes.Length == 0)
             {

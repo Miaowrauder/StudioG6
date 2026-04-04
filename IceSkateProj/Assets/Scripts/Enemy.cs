@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
     private PlayerCombat player;
     private GameManager gameManager;
     private Rigidbody rigidbody;
-    public bool canMove = true;
     public Projectile projectile;
     [Header("Customise Settings")]
     public int spawnCost;
@@ -46,24 +45,12 @@ public class Enemy : MonoBehaviour
         bool isFree = animator.GetCurrentAnimatorStateInfo(0).IsTag("Free");
         if (!isFree || isFalling)
         {
-            canMove = false;
+            navigation.enabled = false;
         }
-        else if(isFree)
+        else
         {
-            canMove = true;
-        }
-
-        // Stops the enemy moving
-        if(navigation.enabled && !isFalling)
-        {
-            if(canMove)
-            {
-                navigation.destination = player.transform.position;
-            }
-            else
-            {
-                navigation.destination = transform.position;
-            }
+            navigation.enabled = true;
+            navigation.destination = player.transform.position;
         }
 
         // Checks whether the enemy is ranged or melee
@@ -72,6 +59,7 @@ public class Enemy : MonoBehaviour
             if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && isFree)
             {
                 animator.SetBool("Melee Queued", true);
+                animator.SetTrigger("Stop Running");
             }
         }
         else
@@ -79,22 +67,25 @@ public class Enemy : MonoBehaviour
             if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && isFree)
             {
                 animator.SetBool("Ranged Queued", true);
+                animator.SetTrigger("Stop Running");
             }
 
             if (Vector3.Distance(transform.position, player.transform.position) <= rangedRange)
             {
-                canMove = false;
+                navigation.enabled = false;
             }
             else
             {
-                canMove = true;
+                navigation.enabled = true;
             }
         }
 
         //Determines direction facing for animations
-        if (Mathf.Abs(navigation.velocity.x) < Mathf.Abs(navigation.velocity.z))
+        Vector2 movementVector = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.z - transform.position.z);
+        print(movementVector);
+        if (Mathf.Abs(movementVector.x) < Mathf.Abs(movementVector.y))
         {
-            if (navigation.velocity.z > 0)
+            if (movementVector.y > 0)
             {
                 // North-facing 
                 animator.SetInteger("Direction", 0);
@@ -107,7 +98,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            if (navigation.velocity.x > 0)
+            if (movementVector.x > 0)
             {
                 // East-facing
                 animator.SetInteger("Direction", 1);
