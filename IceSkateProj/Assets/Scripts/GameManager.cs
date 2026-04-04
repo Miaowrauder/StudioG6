@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
 {
 private Spawner spawner;
 public bool waveFinished = true;
-public int waveNumber, baseSpawnPoints, currentEnemies;
+public int waveNumber, waveSpawnPoints;
+public float waveMultiplier;
+public int currentEnemies;
 private NavMeshSurface navmeshSurface;
 
     void Start()
@@ -27,8 +29,8 @@ private NavMeshSurface navmeshSurface;
     void NewWave()
     {
         waveNumber++;
-        int waveSpawnPoints = baseSpawnPoints*waveNumber;
-        spawner.startWave(waveSpawnPoints); //Make scale better, maybe 
+        waveSpawnPoints = (int)(waveSpawnPoints*waveMultiplier);
+        spawner.startWave(waveSpawnPoints);
         print("Wave "+waveNumber);
     }
 

@@ -131,13 +131,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GoblinRightSheet_1
+      name: GoblinRightSheet_5
       rect:
         serializedVersion: 2
-        x: 760
+        x: 1167
         y: 1
-        width: 162
-        height: 251
+        width: 210
+        height: 252
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,139 +152,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GoblinRightSheet_2
-      rect:
-        serializedVersion: 2
-        x: 943
-        y: 1
-        width: 203
-        height: 254
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 858adf578291d7648ad6b981065a4b4c
-      internalID: -1793709000
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: GoblinRightSheet_3
       rect:
         serializedVersion: 2
-        x: 1167
+        x: 760
         y: 1
-        width: 210
-        height: 252
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2714cc27d33dc3149a29dd619b6232b5
-      internalID: 2026221699
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GoblinRightSheet_4
-      rect:
-        serializedVersion: 2
-        x: 1398
-        y: 2
-        width: 215
+        width: 162
         height: 251
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b18dbbc25dd8e0d439aeb4a72ed0df93
-      internalID: -1673704769
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GoblinRightSheet_5
-      rect:
-        serializedVersion: 2
-        x: 1634
-        y: 1
-        width: 163
-        height: 249
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95dd9eab1526fe14a80ed667841ab54b
-      internalID: 1348297534
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GoblinRightSheet_6
-      rect:
-        serializedVersion: 2
-        x: 1817
-        y: 2
-        width: 152
-        height: 251
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a6d327fd2c5a8894f9ccbe49a77180fd
-      internalID: -477928631
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GoblinRightSheet_7
-      rect:
-        serializedVersion: 2
-        x: 2011
-        y: 249
-        width: 14
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 54be3f1ead810184f9aea92f57f58c6f
-      internalID: -1829780363
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GoblinRightSheet_8
-      rect:
-        serializedVersion: 2
-        x: 363
-        y: 0
-        width: 202
-        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,13 +173,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GoblinRightSheet_9
+      name: GoblinRightSheet_4
       rect:
         serializedVersion: 2
-        x: 585
-        y: 0
-        width: 153
-        height: 249
+        x: 943
+        y: 1
+        width: 203
+        height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,7 +194,112 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GoblinRightSheet_10
+      name: GoblinRightSheet_2
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 0
+        width: 153
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dedce424bae2de4db684b0f28f9f1d5
+      internalID: -1406602665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinRightSheet_6
+      rect:
+        serializedVersion: 2
+        x: 1398
+        y: 2
+        width: 215
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c78869e94a540c4a9865708aa339749
+      internalID: -477928631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinRightSheet_7
+      rect:
+        serializedVersion: 2
+        x: 1634
+        y: 1
+        width: 163
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79bafc00c05feb24faa1e5a71ea486a7
+      internalID: -1829780363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinRightSheet_8
+      rect:
+        serializedVersion: 2
+        x: 1817
+        y: 2
+        width: 152
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcde0c172fa0faf4380fe593f578efbb
+      internalID: 275736185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinRightSheet_1
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 0
+        width: 202
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 028ffe702ce09e845a824b43597a86b9
+      internalID: -1058585914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoblinRightSheet_9
       rect:
         serializedVersion: 2
         x: 1992
@@ -334,8 +313,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0dedce424bae2de4db684b0f28f9f1d5
-      internalID: -1406602665
+      spriteID: fe4d9a041de9d0f4baad20cf02c44356
+      internalID: 773610573
       vertices: []
       indices: 
       edges: []
@@ -352,16 +331,15 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       GoblinRightSheet_0: 1337830426
-      GoblinRightSheet_1: 1206207170
-      GoblinRightSheet_10: -1406602665
-      GoblinRightSheet_2: -1793709000
-      GoblinRightSheet_3: 2026221699
-      GoblinRightSheet_4: -1673704769
-      GoblinRightSheet_5: 1348297534
+      GoblinRightSheet_1: -1058585914
+      GoblinRightSheet_2: -1406602665
+      GoblinRightSheet_3: 383896914
+      GoblinRightSheet_4: -1585552770
+      GoblinRightSheet_5: 1206207170
       GoblinRightSheet_6: -477928631
       GoblinRightSheet_7: -1829780363
-      GoblinRightSheet_8: 383896914
-      GoblinRightSheet_9: -1585552770
+      GoblinRightSheet_8: 275736185
+      GoblinRightSheet_9: 773610573
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

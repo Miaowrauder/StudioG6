@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 8800333523274562920}
   - component: {fileID: 4917068198267266056}
   - component: {fileID: 7437043268884192377}
+  - component: {fileID: 768005819932490060}
   - component: {fileID: 6449408703713621632}
   m_Layer: 0
   m_Name: largeEnemy
@@ -227,6 +228,27 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
+--- !u!95 &768005819932490060
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5150029297707364534}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3b03919444f8e7a448728c575c5651ca, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &6449408703713621632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,8 +269,8 @@ MonoBehaviour:
   damageImmune: 0
   isRanged: 0
   strength: 1
-  meleeRange: 5
-  rangedRange: 15
+  meleeRange: 10
+  rangedRange: 30
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -269,7 +291,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6346434103066911198}
   - component: {fileID: 6320194963843074879}
-  - component: {fileID: 1679089102157614598}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -344,27 +365,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1679089102157614598
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8316844955122756407}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3b03919444f8e7a448728c575c5651ca, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8724422227840491600
 GameObject:
   m_ObjectHideFlags: 0

@@ -321,7 +321,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveFinished: 1
   waveNumber: 0
-  baseSpawnPoints: 10
+  waveSpawnPoints: 40
+  waveMultiplier: 1.5
   currentEnemies: 0
 --- !u!4 &367605509
 Transform:

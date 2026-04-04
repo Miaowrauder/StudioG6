@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         navigation = GetComponent<NavMeshAgent>();
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerCombat>();
         rigidbody = GetComponent<Rigidbody>();
     }
@@ -42,6 +42,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // Determines if the enemy should be able to move
         bool isFree = animator.GetCurrentAnimatorStateInfo(0).IsTag("Free");
         if (!isFree || isFalling)
         {
@@ -52,6 +53,7 @@ public class Enemy : MonoBehaviour
             canMove = true;
         }
 
+        // Stops the enemy moving
         if(navigation.enabled && !isFalling)
         {
             if(canMove)
@@ -64,18 +66,19 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        // Checks whether the enemy is ranged or melee
         if (!isRanged)
         {
             if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && isFree)
             {
-                animator.SetTrigger("Attack_Melee");
+                animator.SetBool("Melee Queued", true);
             }
         }
         else
         {
             if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && isFree)
             {
-                animator.SetTrigger("Attack_Ranged");
+                animator.SetBool("Ranged Queued", true);
             }
 
             if (Vector3.Distance(transform.position, player.transform.position) <= rangedRange)
@@ -88,16 +91,17 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        //Determines direction facing for animations
         if (Mathf.Abs(navigation.velocity.x) < Mathf.Abs(navigation.velocity.z))
         {
             if (navigation.velocity.z > 0)
             {
-                //North-facing 
+                // North-facing 
                 animator.SetInteger("Direction", 0);
             }
             else
             {
-                //South-facing
+                // South-facing
                 animator.SetInteger("Direction", 2);
             }
         }
@@ -105,12 +109,12 @@ public class Enemy : MonoBehaviour
         {
             if (navigation.velocity.x > 0)
             {
-                //East-facing
+                // East-facing
                 animator.SetInteger("Direction", 1);
             }
             else
             {
-                //West-facing
+                // West-facing
                 animator.SetInteger("Direction", 3);
             }
         }
@@ -140,12 +144,22 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Attack()
+    // Attacks the player melee
+    public void Attack()
     {
+        animator.SetBool("Melee Queued", false);
+
         if (Vector3.Distance(player.transform.position, transform.position) < meleeRange)
         {
             player.TakeDamage(strength);
         }
+    }
+    
+    // Attacks the player ranged
+    public void ProjectileThrow()
+    {
+        animator.SetBool("Ranged Queued", false);
+        Projectile spawnedProjectile = Instantiate(projectile, transform.position, transform.rotation);
     }
 
     public void Pushed(float stopTime)
@@ -154,17 +168,14 @@ public class Enemy : MonoBehaviour
         Invoke("ChangeMovementMethod", stopTime);
     }
 
+    // Prevents the ai trying to move while push physics applied
     private void ChangeMovementMethod()
     {
         rigidbody.velocity = Vector3.zero;
         navigation.enabled = !navigation.enabled;
     }
 
-    public void ProjectileThrow()
-    {
-        Projectile spawnedProjectile = Instantiate(projectile, transform.position, transform.rotation);
-    }
-
+    // Detect if the enemy is above a hole
     void DownCast() 
     {
         castInt++; //does 1 corner per frame, cycling
