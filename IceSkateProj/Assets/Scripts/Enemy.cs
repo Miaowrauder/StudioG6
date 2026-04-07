@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour
 
         //Determines direction facing for animations
         Vector2 movementVector = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.z - transform.position.z);
-        print(movementVector);
+        
         if (Mathf.Abs(movementVector.x) < Mathf.Abs(movementVector.y))
         {
             if (movementVector.y > 0)
@@ -131,6 +131,7 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
+            gameManager.GetComponent<GameManager>().points += spawnCost;
             gameManager.GetComponent<GameManager>().currentEnemies--;
             Destroy(gameObject);
         }

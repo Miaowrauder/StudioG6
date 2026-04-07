@@ -11,6 +11,7 @@ public bool waveFinished = true;
 public int waveNumber, waveSpawnPoints;
 public float waveMultiplier;
 public int currentEnemies;
+public int points;
 private NavMeshSurface navmeshSurface;
 
     void Start()
@@ -20,7 +21,7 @@ private NavMeshSurface navmeshSurface;
 
     void FixedUpdate()
     {
-        if (currentEnemies == 0 && waveFinished)
+        if (currentEnemies <= 0 && waveFinished)
         {
             NewWave();
         }
@@ -31,12 +32,29 @@ private NavMeshSurface navmeshSurface;
         waveNumber++;
         waveSpawnPoints = (int)(waveSpawnPoints*waveMultiplier);
         spawner.startWave(waveSpawnPoints);
-        print("Wave "+waveNumber);
+        ResetIce(); //Replace this method later
     }
 
     public void RebakeNavmesh(float delay)
     {
         Invoke("Bake", delay);
+    }
+
+    private void ResetIce()
+    {
+        GameObject[] holes = GameObject.FindGameObjectsWithTag("Hole");
+
+        foreach (GameObject hole in holes)
+        {
+            Destroy(hole);
+        }
+
+        holes = GameObject.FindGameObjectsWithTag("Spawned");
+
+        foreach (GameObject hole in holes)
+        {
+            Destroy(hole);
+        }
     }
 
     private void Bake()
