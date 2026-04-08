@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2ea6327f9cc4ea048a7bb3b33c80cc2d
+guid: a759886fef97eed44912fc94e41148c5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,211 +110,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GoblinLeftSheet_1
+      name: GobWobRightSheet_0
       rect:
         serializedVersion: 2
-        x: 331
-        y: 7
-        width: 202
-        height: 249
+        x: 140
+        y: 2
+        width: 164
+        height: 252
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c4772a37a0fbca48920d6fb545bd6a5
-      internalID: -1689756414
+      spriteID: 4559254055d0d8741b45aabab3b2e8aa
+      internalID: -980780345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GoblinLeftSheet_2
+      name: GobWobRightSheet_1
       rect:
         serializedVersion: 2
-        x: 564
-        y: 3
-        width: 153
-        height: 251
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: deff31985b0cc4a4eb2375f26415b503
-      internalID: 629548108
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GoblinLeftSheet_3
-      rect:
-        serializedVersion: 2
-        x: 739
-        y: 4
-        width: 166
-        height: 249
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 41897e399be96644fafa660dd68718b4
-      internalID: -1598000301
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GoblinLeftSheet_6
-      rect:
-        serializedVersion: 2
-        x: 1388
-        y: 3
-        width: 217
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 053c266b5404572448d1cb74841b0bca
-      internalID: 1530519449
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GoblinLeftSheet_7
-      rect:
-        serializedVersion: 2
-        x: 1632
-        y: 4
-        width: 166
-        height: 249
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b3039cb60a01cc04bb9b81eb20c88493
-      internalID: 1274339914
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GoblinLeftSheet_8
-      rect:
-        serializedVersion: 2
-        x: 1817
-        y: 4
-        width: 153
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 17fad89131750de4a8b170157928b4d0
-      internalID: 1003916987
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GoblinLeftSheet_0
-      rect:
-        serializedVersion: 2
-        x: 77
+        x: 337
         y: 0
-        width: 227
-        height: 249
+        width: 164
+        height: 252
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6e8a6ca6c74d494d9fc578b99f6a3d1
-      internalID: -258220779
+      spriteID: 67e6ba21fa6b75740bc28a31d9cc6e98
+      internalID: -861724588
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GoblinLeftSheet_4
+      name: GobWobRightSheet_2
       rect:
         serializedVersion: 2
-        x: 929
+        x: 543
         y: 0
-        width: 204
-        height: 250
+        width: 169
+        height: 252
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ddeafc4a71e4114cbf21954a83da753
-      internalID: 1460387153
+      spriteID: a31c2ad3904245d46b25e3ad30c74a2c
+      internalID: 1095909750
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GoblinLeftSheet_5
+      name: GobWobRightSheet_3
       rect:
         serializedVersion: 2
-        x: 1157
+        x: 754
         y: 0
-        width: 211
-        height: 250
+        width: 205
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e34952af449d8e4cbfa8387a6d6bbf9
-      internalID: -344859118
+      spriteID: 196def8a52067a14991e9fa98ac5c074
+      internalID: -1958797275
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GoblinLeftSheet_9
+      name: GobWobRightSheet_4
       rect:
         serializedVersion: 2
-        x: 1995
-        y: 6
-        width: 202
-        height: 248
+        x: 1001
+        y: 0
+        width: 206
+        height: 252
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91a75644979632845996ff8006a6b11f
-      internalID: -1561513563
+      spriteID: 475d2d7ebdb88484dbf0761139b18961
+      internalID: -1207247067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobWobRightSheet_5
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 0
+        width: 205
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8573a3ebca640004eb14826caa0a462c
+      internalID: -709864040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GobWobRightSheet_6
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 0
+        width: 165
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28165714fc896f54cb1dda3243ef3e17
+      internalID: -130322627
       vertices: []
       indices: 
       edges: []
@@ -322,7 +259,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 48347f9ae4f377c41b15b3ff48198f20
+    spriteID: e0ea876868d071146b197ff070a3a016
     internalID: 0
     vertices: []
     indices: 
@@ -330,16 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GoblinLeftSheet_0: -258220779
-      GoblinLeftSheet_1: -1689756414
-      GoblinLeftSheet_2: 629548108
-      GoblinLeftSheet_3: -1598000301
-      GoblinLeftSheet_4: 1460387153
-      GoblinLeftSheet_5: -344859118
-      GoblinLeftSheet_6: 1530519449
-      GoblinLeftSheet_7: 1274339914
-      GoblinLeftSheet_8: 1003916987
-      GoblinLeftSheet_9: -1561513563
+      GobWobRightSheet_0: -980780345
+      GobWobRightSheet_1: -861724588
+      GobWobRightSheet_2: 1095909750
+      GobWobRightSheet_3: -1958797275
+      GobWobRightSheet_4: -1207247067
+      GobWobRightSheet_5: -709864040
+      GobWobRightSheet_6: -130322627
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

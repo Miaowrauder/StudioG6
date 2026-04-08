@@ -11,7 +11,6 @@ public class PlayerCombat : MonoBehaviour
     [Header("Push Attack")]
     public int power;
     public float pushRange;
-    public float pushTime;
 
     void Start()
     {
@@ -59,8 +58,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 if (hitCollider.GetComponent<Collider>().TryGetComponent<Rigidbody>(out Rigidbody rb))
                 {
-                    print("push "+rb);
-                    hitCollider.GetComponent<Enemy>().Pushed(pushTime);
+                    hitCollider.GetComponent<Enemy>().StartWobble();
                     rb.AddExplosionForce(power, transform.position, pushRange);
                 }
             }

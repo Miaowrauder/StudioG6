@@ -155,10 +155,18 @@ public class Enemy : MonoBehaviour
         Projectile spawnedProjectile = Instantiate(projectile, shootPos.transform.position, transform.rotation);
     }
 
-    public void Pushed(float stopTime)
+    public void StartWobble()
     {
-        ChangeMovementMethod();
-        Invoke("ChangeMovementMethod", stopTime);
+        animator.SetBool("Wobble Queued", true);
+        animator.SetBool("Melee Queued", false);
+        animator.SetBool("Ranged Queued", false);
+
+        animator.SetTrigger("Stop Running");
+    }
+
+    public void EndWobble()
+    {
+        animator.SetBool("Wobble Queued", false);
     }
 
     // Prevents the ai trying to move while push physics applied
