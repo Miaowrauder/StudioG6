@@ -51,14 +51,18 @@ public class playerCombo : MonoBehaviour
         lastSprite = mySprite.sprite;
         Instantiate(comboVisuals[comboCount], transform.position, Quaternion.identity);
         mySprite.sprite = trickSprite;
-        plM.moveSpeed += 0.2f;
+        plM.maxSpeed += 5f;
+        plM.diagMaxSpeed += 3.4f;
+        plM.moveSpeed += 2f;
 
         Invoke("RevertVisual", trickDur);
     }
 
     private void RevertVisual()
     {
-        plM.moveSpeed -= 0.2f;
+        plM.maxSpeed -= 5f;
+        plM.diagMaxSpeed -= 3.4f;
+        plM.moveSpeed -= 2f;
         mySprite.sprite = lastSprite;
     }
 }
