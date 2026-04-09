@@ -29,13 +29,7 @@ public class playerCombo : MonoBehaviour
     {
         if(!isTricking && Input.GetKeyDown(KeyCode.Q) && (plM.isTrailing == false))
         {
-
-            if(comboCount < 5)
-            {
-                comboCount++;
-            }
-            
-
+            ComboSpend(1);
             isTricking = true;
             ComboVisual();
             Invoke("TrickCD", trickDur + trickCooldown);
@@ -46,10 +40,25 @@ public class playerCombo : MonoBehaviour
         isTricking = false;
     }
 
+    public void ComboSpend(int amountChanged)
+    {
+        comboCount += amountChanged;
+
+        if(comboCount < 0)
+        {
+            comboCount = 0;
+        }
+        else if(comboCount > 5)
+        {
+            comboCount = 5;
+        }
+
+        Instantiate(comboVisuals[comboCount], transform.position, Quaternion.identity);
+    }
+
     private void ComboVisual()
     {
         lastSprite = mySprite.sprite;
-        Instantiate(comboVisuals[comboCount], transform.position, Quaternion.identity);
         mySprite.sprite = trickSprite;
         plM.maxSpeed += 5f;
         plM.diagMaxSpeed += 3.4f;

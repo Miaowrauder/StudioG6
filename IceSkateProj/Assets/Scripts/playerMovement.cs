@@ -5,36 +5,33 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
+     [Header("Movement Base")]
     public float moveSpeed, fallDelay, maxSpeed;
     public float checkSpeed, diagMaxSpeed;
     public bool canMove;
-
-
+    public Vector3 movement; //so combat can access it
+    private Rigidbody rb;
+    [Header("Trail Bits")]
     public bool isTrailing; 
-    private bool isFalling;
     private bool trailReset; //tracks when trailing for later uses, triggers trail reset
     private int currentPoint; //point in trail array
     public float trailPointDelay;
     public GameObject tempTrailMarker; //currently visible for debug, small colliders to detect when player overlaps trail, trigger cut
     private GameObject[] createdMarkers = new GameObject[99];
-    private Rigidbody rb;
     public Vector2[] trailPoint; //saved trail points
+    public GameObject cutTrail;
+    private GameObject spawnedCutTrail;
     private iceCutter myCutter;
     public int passedStartPoint;
+    [Header("Falling Bits")]
+    private bool isFalling;
     private int castInt;
     public Transform[] castPos;
     public LayerMask layerMask;
     private bool[] isHole = new bool[4];
-    public GameObject cutTrail;
-    private GameObject spawnedCutTrail;
+    [Header("Misc")]
     public GameObject spriteAndCombo;
     private playerCombo plCombo;
-
-    private int movingDirection, lastMovingDirection; // 0 up, 1 right, 2 down, 3 left
-    public int movementState; //-1 = decelerating, 0 = steady pace , 1 = accelerating;
-    private int flipflop; //for alternating velocity checks
-
-    private float[] vel = new float[2]; //holds last frames velocity, and this frames
 
 
     RaycastHit hit;
@@ -158,7 +155,7 @@ public class playerMovement : MonoBehaviour
     private void Move()
     {
         Vector2 inputs = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        Vector3 movement = new Vector3(inputs.x, 0, inputs.y);
+        movement = new Vector3(inputs.x, 0, inputs.y);
 
         if((inputs.x != 0f) && (inputs.y != 0f)) //are we detecting double inputs, i.e moving diagonally
         {

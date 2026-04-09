@@ -872,6 +872,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1223743539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1223743540}
+  m_Layer: 0
+  m_Name: teapyPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1223743540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223743539}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1687485973}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1440914867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,6 +1054,7 @@ Transform:
   m_Children:
   - {fileID: 769127245}
   - {fileID: 1126804390}
+  - {fileID: 1223743540}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1687485974
@@ -1043,11 +1075,14 @@ MonoBehaviour:
   checkSpeed: 0
   diagMaxSpeed: 0
   canMove: 1
+  movement: {x: 0, y: 0, z: 0}
   isTrailing: 0
   trailPointDelay: 0.125
   tempTrailMarker: {fileID: 4420088739466435352, guid: 312e772139e61fb48b2d28285f02b8c7,
     type: 3}
   trailPoint: []
+  cutTrail: {fileID: 3699487260394648643, guid: 72b7a5cd8884bea4e987f4d996d2c898,
+    type: 3}
   passedStartPoint: 0
   castPos:
   - {fileID: 2118648620}
@@ -1057,10 +1092,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  cutTrail: {fileID: 3699487260394648643, guid: 72b7a5cd8884bea4e987f4d996d2c898,
-    type: 3}
   spriteAndCombo: {fileID: 1126804389}
-  movementState: 0
 --- !u!114 &1687485975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,11 +1126,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7e11bc68a536e44185c374f5b491cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plCombo: {fileID: 1126804391}
   health: 10
   strength: 1
   damageRange: 10
   power: 1000
   pushRange: 15
+  damageRadius: 0
+  comboSpendDelay: 1
+  teapyActive: 0
+  teapyPos: {fileID: 1223743539}
+  teapyPrefab: {fileID: 5691435668306136705, guid: f626c3eb31d86bb4c85900ae030bb8c6,
+    type: 3}
 --- !u!33 &1687485977
 MeshFilter:
   m_ObjectHideFlags: 0
