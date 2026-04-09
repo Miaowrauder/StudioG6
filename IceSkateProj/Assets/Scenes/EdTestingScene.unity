@@ -698,7 +698,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062124878}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 80135d7d771edb141a0827f8d4c67ca9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -966,9 +966,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687485968}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0.1
-  m_AngularDrag: 0.05
+  m_Mass: 10
+  m_Drag: 0.2
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1037,8 +1037,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ebf6e643569e64fb4e0fe59ca95dcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
+  moveSpeed: 2.5
   fallDelay: 0.05
+  maxSpeed: 20
+  checkSpeed: 0
+  diagMaxSpeed: 0
   canMove: 1
   isTrailing: 0
   trailPointDelay: 0.125
@@ -1057,6 +1060,7 @@ MonoBehaviour:
   cutTrail: {fileID: 3699487260394648643, guid: 72b7a5cd8884bea4e987f4d996d2c898,
     type: 3}
   spriteAndCombo: {fileID: 1126804389}
+  movementState: 0
 --- !u!114 &1687485975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,7 +1099,6 @@ MonoBehaviour:
   damageRange: 10
   power: 1000
   pushRange: 15
-  pushTime: 0
 --- !u!33 &1687485977
 MeshFilter:
   m_ObjectHideFlags: 0
