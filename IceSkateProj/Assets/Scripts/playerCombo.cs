@@ -27,7 +27,7 @@ public class playerCombo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!isTricking && Input.GetKeyDown(KeyCode.Q) && (plM.isTrailing == false))
+        if(!isTricking && Input.GetKeyDown(KeyCode.Mouse2) && (plM.isTrailing == false))
         {
             ComboSpend(1);
             isTricking = true;

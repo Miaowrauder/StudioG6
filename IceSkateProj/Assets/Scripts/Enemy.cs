@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
     public Transform[] castPos;
     RaycastHit hit;
     private bool isFalling, canAttack;
+    public GameObject splashPrefab;
     
     void Start()
     {
@@ -213,6 +214,8 @@ public class Enemy : MonoBehaviour
     void Fall()
     {
         isFalling = true;
+        GameObject temp = Instantiate(splashPrefab, this.transform.position, Quaternion.identity);
+        temp.transform.Rotate(-90f, 0f, 0f);
 
         Invoke("Death", 2f);
     }
