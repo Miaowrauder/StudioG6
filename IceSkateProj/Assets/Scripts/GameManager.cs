@@ -13,6 +13,9 @@ public float waveMultiplier;
 public int currentEnemies;
 public int points;
 private NavMeshSurface navmeshSurface;
+public GameObject falseIcePrefab;
+private GameObject spawnedIce;
+private bool risingIce;
 
     void Start()
     {
@@ -25,6 +28,22 @@ private NavMeshSurface navmeshSurface;
         {
             NewWave();
         }
+
+        if((risingIce = true) && (spawnedIce != null))
+        {
+            if(spawnedIce.transform.position.y <= -3.71f) //not above current ice
+            {
+               spawnedIce.transform.position = new Vector3(spawnedIce.transform.position.x, spawnedIce.transform.position.y + 0.01f , spawnedIce.transform.position.z); 
+            }
+            else
+            {
+                risingIce = false;
+                ResetIce();
+                Destroy(spawnedIce);
+            }
+            
+            
+        }
     }
 
     void NewWave()
@@ -32,7 +51,14 @@ private NavMeshSurface navmeshSurface;
         waveNumber++;
         waveSpawnPoints = (int)(waveSpawnPoints*waveMultiplier);
         spawner.startWave(waveSpawnPoints);
-        ResetIce(); //Replace this method later
+        FalseIce(); //Replace this method later
+    }
+
+    private void FalseIce()
+    {
+        Vector3 icePos = new Vector3(0,-4.2f,0);
+        spawnedIce = Instantiate(falseIcePrefab, icePos, Quaternion.identity);
+        risingIce = true;
     }
 
     public void RebakeNavmesh(float delay)
@@ -55,6 +81,8 @@ private NavMeshSurface navmeshSurface;
         {
             Destroy(hole);
         }
+
+        RebakeNavmesh(0.01f);
     }
 
     private void Bake()

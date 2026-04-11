@@ -168,7 +168,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5150029297707364534}
   serializedVersion: 4
-  m_Mass: 5
+  m_Mass: 500
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -283,6 +283,8 @@ MonoBehaviour:
   - {fileID: 3277155439781433207}
   - {fileID: 7676264891070447744}
   - {fileID: 4777235814289154135}
+  splashPrefab: {fileID: 4003458564733742167, guid: 68d896607ed47904f910f4a866596a1e,
+    type: 3}
 --- !u!1 &6521892984455201543
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Dynamic;
 using UnityEngine;
 
@@ -29,9 +30,11 @@ public class playerMovement : MonoBehaviour
     public Transform[] castPos;
     public LayerMask layerMask;
     private bool[] isHole = new bool[4];
+    public GameObject splashPrefab;
     [Header("Misc")]
     public GameObject spriteAndCombo;
     private playerCombo plCombo;
+    public int direction; 
 
 
     RaycastHit hit;
@@ -156,6 +159,7 @@ public class playerMovement : MonoBehaviour
     {
         Vector2 inputs = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         movement = new Vector3(inputs.x, 0, inputs.y);
+        
 
         if((inputs.x != 0f) && (inputs.y != 0f)) //are we detecting double inputs, i.e moving diagonally
         {
@@ -176,8 +180,9 @@ public class playerMovement : MonoBehaviour
         VelCheck();
     }
 
-    private void VelCheck() //checks velocity again slightly later to ascertain whether speed up or speed down
+    private void VelCheck() //checks velocity again slightly later to ascertain whether speed up or speed down, and sets direction var based on movement vector
     {
+        
         if(rb.velocity.x > checkSpeed)
         {
             rb.velocity = new Vector3(checkSpeed, rb.velocity.y, rb.velocity.z);
@@ -195,10 +200,43 @@ public class playerMovement : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -checkSpeed);
         }
+
+
+        Vector3 absoluteVelocity = new Vector3(Mathf.Abs(rb.velocity.x), 0, Mathf.Abs(rb.velocity.z)); //produce vector where the numbers are absolute, to compare which is higher
+
+        if(absoluteVelocity.x > absoluteVelocity.z) //stronger left/right movement
+        {
+            if (rb.velocity.x > 0) 
+            {
+                //animator.SetInteger("Direction", 1);
+                print("right!");
+            }
+            else //down
+            {
+                print("left!");
+                //animator.SetInteger("Direction", 3);
+            }
+        }
+        else if(absoluteVelocity.x < absoluteVelocity.z) //stronger up/down movement
+        {
+            if (rb.velocity.z > 0) 
+            {
+                //animator.SetInteger("Direction", 0);
+                print("up!");
+            }
+            else //down
+            {
+                //animator.SetInteger("Direction", 2);
+                print("down!");
+            }
+        }
+        
     }
 
     private void Fall()
     {
+        GameObject temp = Instantiate(splashPrefab, this.transform.position, Quaternion.identity);
+        temp.transform.Rotate(-90f, 0f, 0f);
         isFalling = true;
         rb.drag = 2;
         canMove = false;
