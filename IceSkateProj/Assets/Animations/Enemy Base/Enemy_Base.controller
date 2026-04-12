@@ -1268,7 +1268,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy Run
+  m_Name: Run
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 8638863971104634346}
@@ -1789,9 +1789,9 @@ AnimatorStateMachine:
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: 4405298742896582991}
-    second: []
   - first: {fileID: 5516916531720453332}
+    second: []
+  - first: {fileID: 4405298742896582991}
     second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 10, y: 60, z: 0}
