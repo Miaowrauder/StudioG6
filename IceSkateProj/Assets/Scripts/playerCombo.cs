@@ -15,6 +15,7 @@ public class playerCombo : MonoBehaviour
     private Sprite lastSprite;
     public float trickDur, trickCooldown;
     public bool isTricking;
+    private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,13 +23,16 @@ public class playerCombo : MonoBehaviour
 
         plC = player.GetComponent<PlayerCombat>();
         plM = player.GetComponent<playerMovement>();
+        mySprite = gameObject.GetComponent<SpriteRenderer>();
+
+        rb = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
         animator = player.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!isTricking && Input.GetKeyDown(KeyCode.Mouse2) && (plM.isTrailing == false))
+        if(!isTricking && Input.GetKeyDown(KeyCode.Mouse2) && (plM.isTrailing == false) && (rb.velocity.magnitude > 5))
         {
             ComboSpend(1);
             isTricking = true;

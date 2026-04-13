@@ -76,11 +76,13 @@ public class PlayerCombat : MonoBehaviour
 
     private void TriggerPush()
     {
+        PushAttack(); //temp till anim stuff sorted?
         animator.SetBool("Push", true); 
     }
 
     private void TriggerSlice()
     {
+        DamageAttack(); //temp till anim stuff sorted?
         animator.SetBool("Slice", true);
     }
 
