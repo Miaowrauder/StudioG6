@@ -77,6 +77,7 @@ public class PlayerCombat : MonoBehaviour
     private void TriggerPush()
     {
         animator.SetTrigger("Push_Attack");
+        PushAttack(); //temp till anim stuff sorted?
         
     }
 
@@ -84,6 +85,7 @@ public class PlayerCombat : MonoBehaviour
     {
         
         animator.SetTrigger("Damage_Attack");
+        DamageAttack(); //temp till anim stuff sorted?
     }
 
     IEnumerator TeapyTick()
