@@ -5,6 +5,7 @@ using UnityEngine;
 public class playerCombo : MonoBehaviour
 {
     private GameObject player;
+    private Animator animator;
     private PlayerCombat plC;
     private playerMovement plM;
     private SpriteRenderer mySprite;
@@ -25,6 +26,7 @@ public class playerCombo : MonoBehaviour
         mySprite = gameObject.GetComponent<SpriteRenderer>();
 
         rb = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
+        animator = player.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -61,20 +63,20 @@ public class playerCombo : MonoBehaviour
 
     private void ComboVisual()
     {
-        lastSprite = mySprite.sprite;
+        animator.SetBool("Flourish", true);
         mySprite.sprite = trickSprite;
         plM.maxSpeed += 5f;
         plM.diagMaxSpeed += 3.4f;
         plM.moveSpeed += 2f;
 
-        Invoke("RevertVisual", trickDur);
+        Invoke("RevertVisual", trickDur); //Remove when animation added
     }
 
-    private void RevertVisual()
+    private void RevertVisual() //Add to the animation
     {
         plM.maxSpeed -= 5f;
         plM.diagMaxSpeed -= 3.4f;
         plM.moveSpeed -= 2f;
-        mySprite.sprite = lastSprite;
+        animator.SetBool("Flourish", false);
     }
 }

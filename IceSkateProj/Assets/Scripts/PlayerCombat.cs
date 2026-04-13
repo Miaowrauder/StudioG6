@@ -5,6 +5,7 @@ using System.Collections;
 public class PlayerCombat : MonoBehaviour
 {
     private Animator animator;
+    private bool animationFree;
     public playerCombo plCombo;
     private playerMovement plMove;
     public int health;
@@ -30,41 +31,40 @@ public class PlayerCombat : MonoBehaviour
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        animationFree = animator.GetCurrentAnimatorStateInfo(0).IsTag("Free");
+
+        if(Input.GetKeyDown(KeyCode.Mouse0) && animationFree)
         {
-             TriggerPush();
-             
+            TriggerPush();
         }
 
-        if(Input.GetKeyDown(KeyCode.E)) //set animator logic and proper binds later
+        if(Input.GetKeyDown(KeyCode.E) && animationFree) //set proper binds later
         {
             if((plCombo.comboCount >= 3) && !teapyActive)
             {
                 plCombo.ComboSpend(-3);
                 TriggerSlice();
             }
-
         }
 
         if(Input.GetKeyDown(KeyCode.Q)) //set animator logic and proper binds later
         {
-            if((plCombo.comboCount >= 1) && !teapyActive && (plMove.movement.magnitude != 0f))//and animator is free
+            if((plCombo.comboCount >= 1) && !teapyActive && (plMove.movement.magnitude != 0f) && animationFree)
             {
                 teapotSpawned = Instantiate(teapyPrefab, teapyPos.transform.position, Quaternion.identity);
                 teapotSpawned.transform.SetParent(this.gameObject.transform);
 
+                animator.SetBool("Teapot", true);
                 teapyActive = true;
                 canLoop = true;
             }
-            
-            //set anim state
         }
 
         if((Input.GetKeyUp(KeyCode.Q)) || (plCombo.comboCount == 0) || (plMove.movement.magnitude == 0f)) //end teapy time
         {
+            animator.SetBool("Teapot", false);
             teapyActive = false;
             Destroy(teapotSpawned);
-            //set anim state!
         }
 
         if(teapyActive && canLoop)
@@ -76,16 +76,14 @@ public class PlayerCombat : MonoBehaviour
 
     private void TriggerPush()
     {
-        animator.SetTrigger("Push_Attack");
         PushAttack(); //temp till anim stuff sorted?
-        
+        animator.SetBool("Push", true); 
     }
 
     private void TriggerSlice()
     {
-        
-        animator.SetTrigger("Damage_Attack");
         DamageAttack(); //temp till anim stuff sorted?
+        animator.SetBool("Slice", true);
     }
 
     IEnumerator TeapyTick()
@@ -120,15 +118,17 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    public void DamageAttack()
+    public void Slice() //Add to the animation
     {
         GameObject temp = Instantiate(sliceBurstPrefab, transform.position, Quaternion.identity);
         temp.transform.SetParent(this.gameObject.transform);
-
+        animator.SetBool("Slice", false);
     }
 
     public void PushAttack()
     {
+        animator.SetBool("Push", false);
+
         Instantiate(pushBurstPrefab, transform.position, Quaternion.identity);
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, pushRange);
         foreach (var hitCollider in hitColliders)

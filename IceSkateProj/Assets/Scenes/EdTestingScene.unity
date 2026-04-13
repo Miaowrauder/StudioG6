@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8386890706c2a724985d3cd8c95b63ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFinished: 1
+  waveFinished: 0
   waveNumber: 0
   waveSpawnPoints: 40
   waveMultiplier: 1.5
@@ -11619,7 +11619,7 @@ Animator:
   m_GameObject: {fileID: 1687485968}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 140abe18733e2b4479abe26155b6c0ce, type: 2}
+  m_Controller: {fileID: 9100000, guid: a43a5645c34ebce488e29c4295ba8346, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

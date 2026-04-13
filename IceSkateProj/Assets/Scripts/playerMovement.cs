@@ -32,6 +32,7 @@ public class playerMovement : MonoBehaviour
     private bool[] isHole = new bool[4];
     public GameObject splashPrefab;
     [Header("Misc")]
+    private Animator animator;
     public GameObject spriteAndCombo;
     private playerCombo plCombo;
     public int direction; 
@@ -42,6 +43,8 @@ public class playerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         diagMaxSpeed = maxSpeed * 0.68f;
         rb = GetComponent<Rigidbody>();
         myCutter = GetComponent<iceCutter>();
@@ -73,6 +76,7 @@ public class playerMovement : MonoBehaviour
         
         ClearMarkers();
         CancelInvoke("TrailGen");
+        animator.SetBool("Cutting", false);
         trailReset = true;
         isTrailing = false;
     }
@@ -82,6 +86,7 @@ public class playerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Mouse1) && (plCombo.isTricking == false))
         {
             isTrailing = true;
+            animator.SetBool("Cutting", true);
 
             if(trailReset)
             {
@@ -204,30 +209,39 @@ public class playerMovement : MonoBehaviour
 
         Vector3 absoluteVelocity = new Vector3(Mathf.Abs(rb.velocity.x), 0, Mathf.Abs(rb.velocity.z)); //produce vector where the numbers are absolute, to compare which is higher
 
-        if(absoluteVelocity.x > absoluteVelocity.z) //stronger left/right movement
+        if (absoluteVelocity == Vector3.zero)
         {
-            if (rb.velocity.x > 0) 
-            {
-                //animator.SetInteger("Direction", 1);
-                print("right!");
-            }
-            else //down
-            {
-                print("left!");
-                //animator.SetInteger("Direction", 3);
-            }
+            animator.SetBool("Idle", true);
         }
-        else if(absoluteVelocity.x < absoluteVelocity.z) //stronger up/down movement
+        else
         {
-            if (rb.velocity.z > 0) 
+            animator.SetBool("Idle", false);
+
+            if(absoluteVelocity.x > absoluteVelocity.z) //stronger left/right movement
             {
-                //animator.SetInteger("Direction", 0);
-                print("up!");
+                if (rb.velocity.x > 0) 
+                {
+                    animator.SetInteger("Direction", 1);
+                    print("right!");
+                }
+                else //left
+                {
+                    print("left!");
+                    animator.SetInteger("Direction", 3);
+                }
             }
-            else //down
+            else if(absoluteVelocity.x < absoluteVelocity.z) //stronger up/down movement
             {
-                //animator.SetInteger("Direction", 2);
-                print("down!");
+                if (rb.velocity.z > 0) 
+                {
+                    animator.SetInteger("Direction", 0);
+                    print("up!");
+                }
+                else //down
+                {
+                    animator.SetInteger("Direction", 2);
+                    print("down!");
+                }
             }
         }
         
