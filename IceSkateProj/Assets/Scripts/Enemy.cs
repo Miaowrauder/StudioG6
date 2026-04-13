@@ -38,10 +38,12 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerCombat>();
         rigidbody = GetComponent<Rigidbody>();
+
+        InvokeRepeating("UpdateFunctions", 0, 0.2f);
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void UpdateFunctions()
     {
         // Determines if the enemy should be able to move
         bool isFree = animator.GetCurrentAnimatorStateInfo(0).IsTag("Free");

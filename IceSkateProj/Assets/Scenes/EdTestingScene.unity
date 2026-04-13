@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8386890706c2a724985d3cd8c95b63ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFinished: 0
+  waveFinished: 1
   waveNumber: 0
   waveSpawnPoints: 40
   waveMultiplier: 1.5
@@ -10996,74 +10996,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1186597713
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4890632094393364046, guid: 303461a3977643d44a1d6a6ec535acec,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 13.951577
-      objectReference: {fileID: 0}
-    - target: {fileID: 4890632094393364046, guid: 303461a3977643d44a1d6a6ec535acec,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.7000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 4890632094393364046, guid: 303461a3977643d44a1d6a6ec535acec,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 8.206613
-      objectReference: {fileID: 0}
-    - target: {fileID: 4890632094393364046, guid: 303461a3977643d44a1d6a6ec535acec,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4890632094393364046, guid: 303461a3977643d44a1d6a6ec535acec,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4890632094393364046, guid: 303461a3977643d44a1d6a6ec535acec,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4890632094393364046, guid: 303461a3977643d44a1d6a6ec535acec,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4890632094393364046, guid: 303461a3977643d44a1d6a6ec535acec,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4890632094393364046, guid: 303461a3977643d44a1d6a6ec535acec,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4890632094393364046, guid: 303461a3977643d44a1d6a6ec535acec,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5150029297707364534, guid: 303461a3977643d44a1d6a6ec535acec,
-        type: 3}
-      propertyPath: m_Name
-      value: largeEnemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 303461a3977643d44a1d6a6ec535acec, type: 3}
 --- !u!1 &1223743539
 GameObject:
   m_ObjectHideFlags: 0
@@ -11592,7 +11524,7 @@ MonoBehaviour:
   sliceBurstPrefab: {fileID: 6028394905452839924, guid: 481d56fbe9ca6c94493f385fe8a34dce,
     type: 3}
   power: 60000
-  pushRange: 7.5
+  pushRange: 20
   pushBurstPrefab: {fileID: 4474590958828637864, guid: e08261b853e78de4c85811809f789d06,
     type: 3}
   damageRadius: 0
@@ -12065,4 +11997,3 @@ SceneRoots:
   - {fileID: 1567192188}
   - {fileID: 1015333139}
   - {fileID: 1704511093}
-  - {fileID: 1186597713}

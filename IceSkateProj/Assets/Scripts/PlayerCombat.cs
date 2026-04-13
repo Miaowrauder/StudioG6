@@ -1,7 +1,7 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+
 public class PlayerCombat : MonoBehaviour
 {
     private Animator animator;
@@ -33,17 +33,21 @@ public class PlayerCombat : MonoBehaviour
     {
         animationFree = animator.GetCurrentAnimatorStateInfo(0).IsTag("Free");
 
+        // Triggers push
         if(Input.GetKeyDown(KeyCode.Mouse0) && animationFree)
         {
-            TriggerPush();
+            animator.SetBool("Push", true);
+            Push();
         }
 
+        // Triggers slice
         if(Input.GetKeyDown(KeyCode.E) && animationFree) //set proper binds later
         {
             if((plCombo.comboCount >= 3) && !teapyActive)
             {
                 plCombo.ComboSpend(-3);
-                TriggerSlice();
+                animator.SetBool("Slice", true);
+                Slice();
             }
         }
 
@@ -72,18 +76,11 @@ public class PlayerCombat : MonoBehaviour
             canLoop = false;
             StartCoroutine(TeapyTick());
         }
-    }
 
-    private void TriggerPush()
-    {
-        PushAttack(); //temp till anim stuff sorted?
-        animator.SetBool("Push", true); 
-    }
-
-    private void TriggerSlice()
-    {
-        DamageAttack(); //temp till anim stuff sorted?
-        animator.SetBool("Slice", true);
+        if(teapyActive)
+        {
+            TeapyPosUpdate();
+        }
     }
 
     IEnumerator TeapyTick()
@@ -91,14 +88,6 @@ public class PlayerCombat : MonoBehaviour
         plCombo.ComboSpend(-1);
         yield return new WaitForSeconds(comboSpendDelay);
         canLoop = true;
-    }
-
-    void FixedUpdate()
-    {
-        if(teapyActive)
-        {
-            TeapyPosUpdate();
-        }
     }
 
     private void TeapyPosUpdate()
@@ -118,17 +107,14 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    public void Slice() //Add to the animation
+    private void Slice() //Add to the animation
     {
         GameObject temp = Instantiate(sliceBurstPrefab, transform.position, Quaternion.identity);
         temp.transform.SetParent(this.gameObject.transform);
-        animator.SetBool("Slice", false);
     }
 
-    public void PushAttack()
+    private void Push()
     {
-        animator.SetBool("Push", false);
-
         Instantiate(pushBurstPrefab, transform.position, Quaternion.identity);
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, pushRange);
         foreach (var hitCollider in hitColliders)
@@ -142,5 +128,15 @@ public class PlayerCombat : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void EndPush()
+    {
+        animator.SetBool("Push", false);
+    }
+
+    public void EndSlice()
+    {
+        animator.SetBool("Slice", false);
     }
 }
