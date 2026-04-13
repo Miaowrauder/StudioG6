@@ -61,7 +61,6 @@ public class Enemy : MonoBehaviour
             if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && isFree)
             {
                 animator.SetBool("Melee Queued", true);
-                animator.SetTrigger("Stop Running");
             }
         }
         else
@@ -69,7 +68,6 @@ public class Enemy : MonoBehaviour
             if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && isFree)
             {
                 animator.SetBool("Ranged Queued", true);
-                animator.SetTrigger("Stop Running");
             }
 
             if (Vector3.Distance(transform.position, player.transform.position) <= rangedRange)
@@ -161,8 +159,6 @@ public class Enemy : MonoBehaviour
         animator.SetBool("Wobble Queued", true);
         animator.SetBool("Melee Queued", false);
         animator.SetBool("Ranged Queued", false);
-
-        animator.SetTrigger("Stop Running");
     }
 
     public void EndWobble()
