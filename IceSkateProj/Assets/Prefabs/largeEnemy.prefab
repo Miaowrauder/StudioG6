@@ -273,6 +273,8 @@ MonoBehaviour:
   meleeRange: 10
   rangedRange: 30
   shootPos: {fileID: 8582756513058353432}
+  attackPrefab: {fileID: 5753247295404299405, guid: 8c14ed7ff0424ec46810f0797cc51360,
+    type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -310,7 +312,7 @@ Transform:
   m_GameObject: {fileID: 6521892984455201543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.407, z: -0.225}
+  m_LocalPosition: {x: 0, y: 1.168, z: -0.014}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

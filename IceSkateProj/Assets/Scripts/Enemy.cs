@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     public int meleeRange;
     public int rangedRange;
     public Transform shootPos;
+    public GameObject attackPrefab;
     [Header("Falling Settings")]
     private int castInt;
     public LayerMask layerMask;
@@ -30,6 +31,8 @@ public class Enemy : MonoBehaviour
     RaycastHit hit;
     private bool isFalling, canAttack;
     public GameObject splashPrefab;
+
+    private Vector2 movementVector;
     
     void Start()
     {
@@ -83,7 +86,7 @@ public class Enemy : MonoBehaviour
         }
 
         //Determines direction facing for animations
-        Vector2 movementVector = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.z - transform.position.z);
+        movementVector = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.z - transform.position.z);
         
         if (Mathf.Abs(movementVector.x) < Mathf.Abs(movementVector.y))
         {
@@ -143,10 +146,19 @@ public class Enemy : MonoBehaviour
     {
         animator.SetBool("Melee Queued", false);
 
-        if (Vector3.Distance(player.transform.position, transform.position) < meleeRange)
+        Invoke("Attack2", 0.01f);
+
+        /*if (Vector3.Distance(player.transform.position, transform.position) < meleeRange)
         {
             player.TakeDamage(strength);
-        }
+        }*/
+    }
+
+    private void Attack2()
+    {
+        GameObject temp = Instantiate(attackPrefab, shootPos.position, Quaternion.identity);
+
+        temp.transform.LookAt(player.transform, Vector3.forward);
     }
     
     // Attacks the player ranged

@@ -55,7 +55,7 @@ public class PlayerCombat : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Q)) //set animator logic and proper binds later
         {
-            if((plCombo.comboCount >= 1) && !teapyActive && (plMove.movement.magnitude != 0f) && animationFree)
+            if((plCombo.comboCount >= 1) && !teapyActive && (plMove.movement.magnitude != 0f) /*&& animationFree*/)
             {
                 teapotSpawned = Instantiate(teapyPrefab, teapyPos.transform.position, Quaternion.identity);
                 teapotSpawned.transform.SetParent(this.gameObject.transform);
@@ -99,6 +99,12 @@ public class PlayerCombat : MonoBehaviour
         teapotSpawned.transform.position = transform.position + teapyVector;
     }
 
+    private void Death()
+    {
+        MenuManager mm = GameObject.Find("MenuManager").GetComponent<MenuManager>();
+        mm.OnFail();
+    }
+
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -106,7 +112,7 @@ public class PlayerCombat : MonoBehaviour
 
         if (health <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Call game end interface
+            Invoke("Death",1f);
         }
     }
 

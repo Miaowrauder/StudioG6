@@ -5,6 +5,7 @@ using UnityEngine;
 public class persistentColl : MonoBehaviour
 {
     public float lifetime;
+    public bool isEnemy;
     // Start is called before the first frame update
 
     void Start()
@@ -22,9 +23,13 @@ public class persistentColl : MonoBehaviour
 
     private void OnTriggerEnter(Collider coll)
     {
-        if(coll.tag == "Enemy")
+        if((coll.tag == "Enemy") && !isEnemy)
         {
             coll.GetComponent<Enemy>().TakeDamage(999);
+        }
+        else if(isEnemy && (coll.tag == "Player"))
+        {
+            coll.GetComponent<PlayerCombat>().TakeDamage(1);
         }
     }
 }

@@ -222,11 +222,9 @@ public class playerMovement : MonoBehaviour
                 if (rb.velocity.x > 0) 
                 {
                     animator.SetInteger("Direction", 1);
-                    print("right!");
                 }
                 else //left
                 {
-                    print("left!");
                     animator.SetInteger("Direction", 3);
                 }
             }
@@ -235,12 +233,10 @@ public class playerMovement : MonoBehaviour
                 if (rb.velocity.z > 0) 
                 {
                     animator.SetInteger("Direction", 0);
-                    print("up!");
                 }
                 else //down
                 {
                     animator.SetInteger("Direction", 2);
-                    print("down!");
                 }
             }
         }
@@ -256,6 +252,14 @@ public class playerMovement : MonoBehaviour
         canMove = false;
         rb.velocity = new Vector3(rb.velocity.x, -25f, rb.velocity.z);
         gameObject.GetComponent<CapsuleCollider>().isTrigger = true;
+
+        Invoke("Death", 1f);
+    }
+
+    private void Death()
+    {
+        MenuManager mm = GameObject.Find("MenuManager").GetComponent<MenuManager>();
+        mm.OnFail();
     }
 
     void DownCast() 
