@@ -1425,11 +1425,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7e11bc68a536e44185c374f5b491cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plCombo: {fileID: 0}
   health: 10
-  strength: 1
-  damageRange: 10
+  sliceBurstPrefab: {fileID: 0}
   power: 1000
   pushRange: 10
+  pushBurstPrefab: {fileID: 0}
+  damageRadius: 0
+  comboSpendDelay: 0
+  teapyActive: 0
+  teapyPos: {fileID: 0}
+  teapyPrefab: {fileID: 0}
 --- !u!114 &45444915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1465,12 +1471,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.5
   fallDelay: 0.05
+  maxSpeed: 0
+  checkSpeed: 0
+  diagMaxSpeed: 0
   canMove: 1
+  movement: {x: 0, y: 0, z: 0}
   isTrailing: 0
   trailPointDelay: 0.125
   tempTrailMarker: {fileID: 4420088739466435352, guid: 312e772139e61fb48b2d28285f02b8c7,
     type: 3}
   trailPoint: []
+  cutTrail: {fileID: 3699487260394648643, guid: 72b7a5cd8884bea4e987f4d996d2c898,
+    type: 3}
   passedStartPoint: 0
   castPos:
   - {fileID: 1555290072}
@@ -1480,9 +1492,9 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  cutTrail: {fileID: 3699487260394648643, guid: 72b7a5cd8884bea4e987f4d996d2c898,
-    type: 3}
+  splashPrefab: {fileID: 0}
   spriteAndCombo: {fileID: 0}
+  direction: 0
 --- !u!95 &45444917
 Animator:
   serializedVersion: 5
@@ -34541,7 +34553,7 @@ Transform:
   m_GameObject: {fileID: 1124799303}
   serializedVersion: 2
   m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: -1, y: 9.81, z: 5.99}
+  m_LocalPosition: {x: -2.66, y: 9.81, z: 5.99}
   m_LocalScale: {x: 1.6788, y: 1.6788, z: 1.6788}
   m_ConstrainProportionsScale: 0
   m_Children: []
