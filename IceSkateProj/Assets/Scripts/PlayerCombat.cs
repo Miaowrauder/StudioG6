@@ -37,6 +37,7 @@ public class PlayerCombat : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Mouse0) && animationFree)
         {
             animator.SetBool("Push", true);
+            animator.SetTrigger("Stop Current");
             Push();
         }
 
@@ -47,6 +48,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 plCombo.ComboSpend(-3);
                 animator.SetBool("Slice", true);
+                animator.SetTrigger("Stop Current");
                 Slice();
             }
         }
@@ -59,6 +61,7 @@ public class PlayerCombat : MonoBehaviour
                 teapotSpawned.transform.SetParent(this.gameObject.transform);
 
                 animator.SetBool("Teapot", true);
+                animator.SetTrigger("Stop Current");
                 teapyActive = true;
                 canLoop = true;
             }

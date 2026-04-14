@@ -64,6 +64,7 @@ public class playerCombo : MonoBehaviour
     private void ComboVisual()
     {
         animator.SetBool("Flourish", true);
+        animator.SetTrigger("Stop Current");
         mySprite.sprite = trickSprite;
         plM.maxSpeed += 5f;
         plM.diagMaxSpeed += 3.4f;
