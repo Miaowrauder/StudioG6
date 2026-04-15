@@ -42,7 +42,22 @@ public class Enemy : MonoBehaviour
         player = FindObjectOfType<PlayerCombat>();
         rigidbody = GetComponent<Rigidbody>();
 
-        InvokeRepeating("UpdateFunctions", 0, 0.2f);
+        InvokeRepeating("UpdateFunctions", 0, 0.1f);
+        //InvokeRepeating("DownCast", 0, 0.1f);
+    }
+
+    void FixedUpdate()
+    {
+        DownCast();
+
+        if(isFalling)
+        {
+            navigation.enabled = false;
+            animator.SetTrigger("Stop Current");
+
+            transform.position = new Vector3(transform.position.x, transform.position.y-fallSpeed, transform.position.z);
+            
+        }
     }
 
     // Update is called once per frame
@@ -113,16 +128,6 @@ public class Enemy : MonoBehaviour
                 // West-facing
                 animator.SetInteger("Direction", 3);
             }
-        }
-
-        DownCast();
-
-        if(isFalling)
-        {
-            navigation.enabled = false;
-
-            this.transform.position = new Vector3(transform.position.x, transform.position.y-fallSpeed, transform.position.z);
-            
         }
     }
 

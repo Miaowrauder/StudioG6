@@ -41,8 +41,6 @@ public class PlayerCombat : MonoBehaviour
             {
                 animator.SetTrigger("Stop Current");
             }
-            
-            Push();
         }
 
         // Triggers slice
@@ -57,8 +55,6 @@ public class PlayerCombat : MonoBehaviour
                 {
                     animator.SetTrigger("Stop Current");
                 }
-
-                Slice();
             }
         }
 

@@ -258,6 +258,7 @@ public class playerMovement : MonoBehaviour
 
     private void Death()
     {
+        animator.SetBool("Dead", true);
         MenuManager mm = GameObject.Find("MenuManager").GetComponent<MenuManager>();
         mm.OnFail();
     }

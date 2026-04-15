@@ -452,6 +452,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: largeEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6449408703713621632, guid: 303461a3977643d44a1d6a6ec535acec,
+        type: 3}
+      propertyPath: fallDelay
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449408703713621632, guid: 303461a3977643d44a1d6a6ec535acec,
+        type: 3}
+      propertyPath: fallSpeed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -966,7 +976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8386890706c2a724985d3cd8c95b63ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveFinished: 1
+  waveFinished: 0
   waveNumber: 0
   waveSpawnPoints: 40
   waveMultiplier: 1.5
