@@ -37,7 +37,11 @@ public class PlayerCombat : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Mouse0) && animationFree)
         {
             animator.SetBool("Push", true);
-            animator.SetTrigger("Stop Current");
+            if (animationFree)
+            {
+                animator.SetTrigger("Stop Current");
+            }
+            
             Push();
         }
 
@@ -48,7 +52,12 @@ public class PlayerCombat : MonoBehaviour
             {
                 plCombo.ComboSpend(-3);
                 animator.SetBool("Slice", true);
-                animator.SetTrigger("Stop Current");
+
+                if (animationFree)
+                {
+                    animator.SetTrigger("Stop Current");
+                }
+
                 Slice();
             }
         }
@@ -60,8 +69,12 @@ public class PlayerCombat : MonoBehaviour
                 teapotSpawned = Instantiate(teapyPrefab, teapyPos.transform.position, Quaternion.identity);
                 teapotSpawned.transform.SetParent(this.gameObject.transform);
 
+                if (animationFree)
+                {
+                    animator.SetTrigger("Stop Current");
+                }
+
                 animator.SetBool("Teapot", true);
-                animator.SetTrigger("Stop Current");
                 teapyActive = true;
                 canLoop = true;
             }
