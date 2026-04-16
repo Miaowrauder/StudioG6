@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EdTestingScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  m_configObjects: {}
+  - enabled: 1
+    path: Assets/Scenes/SpikeBlockOuts/Scenes/SpikeBlockOutPause.unity
+    guid: f19b902b7ba98014ba94696fafc97c7a
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 8e31dae4d087829468d70e4cd81636c1,
+      type: 3}
+  m_UseUCBPForAssetBundles: 0

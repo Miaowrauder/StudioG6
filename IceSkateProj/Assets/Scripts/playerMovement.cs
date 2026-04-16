@@ -145,22 +145,22 @@ public class playerMovement : MonoBehaviour
     private void VelocityCheck()
     {
 
-        if(rb.velocity.x > checkSpeed)
+        if(rb.linearVelocity.x > checkSpeed)
         {
-            rb.velocity = new Vector3(checkSpeed, rb.velocity.y, rb.velocity.z);
+            rb.linearVelocity = new Vector3(checkSpeed, rb.linearVelocity.y, rb.linearVelocity.z);
         }
-        else if(rb.velocity.x < -checkSpeed)
+        else if(rb.linearVelocity.x < -checkSpeed)
         {
-            rb.velocity = new Vector3(-checkSpeed, rb.velocity.y, rb.velocity.z);
+            rb.linearVelocity = new Vector3(-checkSpeed, rb.linearVelocity.y, rb.linearVelocity.z);
         }
 
-        if(rb.velocity.z > checkSpeed)
+        if(rb.linearVelocity.z > checkSpeed)
         {
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, checkSpeed);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, checkSpeed);
         }
-        else if(rb.velocity.z < -checkSpeed)
+        else if(rb.linearVelocity.z < -checkSpeed)
         {
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -checkSpeed);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, -checkSpeed);
         }
 
     }
