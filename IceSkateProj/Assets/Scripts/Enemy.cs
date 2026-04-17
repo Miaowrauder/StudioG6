@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public Projectile projectile;
     [Header("Customise Settings")]
     public int spawnCost;
+    public float multiplier;
     public int waveEnabled;
     public int health;
     public bool damageImmune;
@@ -42,10 +43,24 @@ public class Enemy : MonoBehaviour
         player = FindObjectOfType<PlayerCombat>();
         rigidbody = GetComponent<Rigidbody>();
 
-        InvokeRepeating("UpdateFunctions", 0, 0.2f);
+        InvokeRepeating("UpdateFunctions", 0, 0.1f);
+        //InvokeRepeating("DownCast", 0, 0.1f);
     }
 
-    // Update is called once per frame
+    void FixedUpdate()
+    {
+        DownCast();
+
+        if(isFalling)
+        {
+            navigation.enabled = false;
+            animator.SetTrigger("Stop Current");
+
+            transform.position = new Vector3(transform.position.x, transform.position.y-fallSpeed, transform.position.z);
+        }
+    }
+
+    // Update is called every 0.1 seconds for performance
     void UpdateFunctions()
     {
         // Determines if the enemy should be able to move
@@ -114,16 +129,6 @@ public class Enemy : MonoBehaviour
                 animator.SetInteger("Direction", 3);
             }
         }
-
-        DownCast();
-
-        if(isFalling)
-        {
-            navigation.enabled = false;
-
-            this.transform.position = new Vector3(transform.position.x, transform.position.y-fallSpeed, transform.position.z);
-            
-        }
     }
 
     public void TakeDamage(int damage)
@@ -135,8 +140,8 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            gameManager.GetComponent<GameManager>().points += spawnCost;
-            gameManager.GetComponent<GameManager>().currentEnemies--;
+            gameManager.GetComponent<ScoreMultiplier>().StartMultiplier(spawnCost, multiplier);
+
             Destroy(gameObject);
         }
     }
@@ -227,7 +232,7 @@ public class Enemy : MonoBehaviour
         GameObject temp = Instantiate(splashPrefab, this.transform.position, Quaternion.identity);
         temp.transform.Rotate(-90f, 0f, 0f);
 
-        Invoke("Death", 2f);
+        Invoke("Death", 1f);
     }
 
     private void Death()
