@@ -215,6 +215,7 @@ public class playerMovement : MonoBehaviour
         }
         else
         {
+            int previousAnimationDirection = animator.GetInteger("Direction");
             animator.SetBool("Idle", false);
 
             if(absoluteVelocity.x > absoluteVelocity.z) //stronger left/right movement
@@ -222,10 +223,20 @@ public class playerMovement : MonoBehaviour
                 if (rb.velocity.x > 0) 
                 {
                     animator.SetInteger("Direction", 1);
+
+                    if (animator.GetInteger("Direction") != previousAnimationDirection)
+                    {
+                        animator.SetTrigger("Stop Current");
+                    }
                 }
                 else //left
                 {
                     animator.SetInteger("Direction", 3);
+
+                    if (animator.GetInteger("Direction") != previousAnimationDirection)
+                    {
+                        animator.SetTrigger("Stop Current");
+                    }
                 }
             }
             else if(absoluteVelocity.x < absoluteVelocity.z) //stronger up/down movement
@@ -233,10 +244,20 @@ public class playerMovement : MonoBehaviour
                 if (rb.velocity.z > 0) 
                 {
                     animator.SetInteger("Direction", 0);
+
+                    if (animator.GetInteger("Direction") != previousAnimationDirection)
+                    {
+                        animator.SetTrigger("Stop Current");
+                    }
                 }
                 else //down
                 {
                     animator.SetInteger("Direction", 2);
+
+                    if (animator.GetInteger("Direction") != previousAnimationDirection)
+                    {
+                        animator.SetTrigger("Stop Current");
+                    }
                 }
             }
         }
