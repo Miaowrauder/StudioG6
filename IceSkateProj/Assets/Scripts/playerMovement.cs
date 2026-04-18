@@ -33,7 +33,6 @@ public class playerMovement : MonoBehaviour
     public GameObject splashPrefab;
     [Header("Misc")]
     private Animator animator;
-    public GameObject spriteAndCombo;
     private playerCombo plCombo;
     public int direction; 
 
@@ -48,7 +47,7 @@ public class playerMovement : MonoBehaviour
         diagMaxSpeed = maxSpeed * 0.68f;
         rb = GetComponent<Rigidbody>();
         myCutter = GetComponent<iceCutter>();
-        plCombo = spriteAndCombo.GetComponent<playerCombo>();
+        plCombo = this.gameObject.GetComponent<playerCombo>();
         trailPoint = new Vector2[98];
         trailReset = true;
     }
@@ -83,7 +82,7 @@ public class playerMovement : MonoBehaviour
 
     void Update() //fixed update gets funny when we need individual frame inputs from mouse up and down...
     {
-        if(Input.GetKeyDown(KeyCode.Mouse1) && (plCombo.isTricking == false))
+        if(Input.GetKeyDown(KeyCode.Mouse0) && (plCombo.isTricking == false))
         {
             isTrailing = true;
             animator.SetBool("Cutting", true);
@@ -103,7 +102,7 @@ public class playerMovement : MonoBehaviour
             
             
         }
-        else if(Input.GetKeyUp(KeyCode.Mouse1))
+        else if(Input.GetKeyUp(KeyCode.Mouse0))
         {
             EndTrail();
         }

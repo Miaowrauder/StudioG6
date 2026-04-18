@@ -14,6 +14,8 @@ public class iceCutter : MonoBehaviour
     public bool triggerCut;
     public Material holeEdgeMat, shaderMat, sheetMat, invisMat;
     public float sheetDropSpeed, bakeDelay;
+    [SerializeField]
+    private GameObject tinySplash;
 
     ProBuilderMesh[] summonedMesh = new ProBuilderMesh[4];
     GameObject[] generatedObject = new GameObject[4];
@@ -126,6 +128,12 @@ public class iceCutter : MonoBehaviour
         }
 
         Debug.Log(actualPoints);
+
+        for(int i = 0; i < actualPoints.Length; i++)
+        {
+            GameObject temp = Instantiate(tinySplash, actualPoints[i], Quaternion.identity);
+            temp.transform.Rotate(-90f, 0f, 0f);
+        }
 
         //actually makes the meshes tangible
         summonedMesh[0].CreateShapeFromPolygon(actualPoints, 0.6f, true); //creates the hole mesh

@@ -34,7 +34,7 @@ public class PlayerCombat : MonoBehaviour
         animationFree = animator.GetCurrentAnimatorStateInfo(0).IsTag("Free");
 
         // Triggers push
-        if(Input.GetKeyDown(KeyCode.Mouse0) && animationFree)
+        if(Input.GetKeyDown(KeyCode.Mouse1) && animationFree)
         {
             animator.SetBool("Push", true);
             if (animationFree)
@@ -58,7 +58,7 @@ public class PlayerCombat : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Q)) //set animator logic and proper binds later
+        if(Input.GetKeyDown(KeyCode.Mouse2)) //set animator logic and proper binds later
         {
             if((plCombo.comboCount >= 1) && !teapyActive && (plMove.movement.magnitude != 0f) /*&& animationFree*/)
             {
@@ -76,7 +76,7 @@ public class PlayerCombat : MonoBehaviour
             }
         }
 
-        if((Input.GetKeyUp(KeyCode.Q)) || (plCombo.comboCount == 0) || (plMove.movement.magnitude == 0f)) //end teapy time
+        if((Input.GetKeyUp(KeyCode.Mouse2)) || (plCombo.comboCount == 0) || (plMove.movement.magnitude == 0f)) //end teapy time
         {
             animator.SetBool("Teapot", false);
             teapyActive = false;
@@ -104,7 +104,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void TeapyPosUpdate()
     {
-        Vector3 teapyVector = (plMove.movement * 2);
+        Vector3 teapyVector = (plMove.movement * 3);
         teapotSpawned.transform.position = transform.position + teapyVector;
     }
 
