@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int health;
     [SerializeField] private bool damageImmune, isRanged;
     [SerializeField] private int strength;
-    [SerializeField] private int meleeRange, rangedRange;
+    [SerializeField] private int meleeRange, rangedRange, retreatRange;
     [SerializeField] private Transform shootPos;
     [SerializeField] private GameObject attackPrefab;
     [Header("Falling Settings")]
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
     private bool[] isHole = new bool[4];
     [SerializeField] private Transform[] castPos;
     RaycastHit hit;
-    private bool isFalling, canAttack;
+    private bool isFalling, retreating;
     [SerializeField] private GameObject splashPrefab;
     private Vector2 movementVector;
 
@@ -39,7 +39,6 @@ public class Enemy : MonoBehaviour
     
     void Start()
     {
-        canAttack = true;
         gameManager = FindObjectOfType<GameManager>();
         navigation = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -47,7 +46,6 @@ public class Enemy : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
 
         InvokeRepeating("UpdateFunctions", 0, 0.1f);
-        //InvokeRepeating("DownCast", 0, 0.1f);
     }
 
     void FixedUpdate()
@@ -66,11 +64,26 @@ public class Enemy : MonoBehaviour
     // Update is called every 0.1 seconds for performance
     void UpdateFunctions()
     {
-        // Determines if the enemy should be able to move
+        // Determines if the enemy should be able to move and how
         bool isFree = animator.GetCurrentAnimatorStateInfo(0).IsTag("Free");
         if (!isFree || isFalling)
         {
             navigation.enabled = false;
+        }
+        else if (isRanged)
+        {
+            navigation.enabled = true;
+
+            if (retreatRange > Vector3.Distance(player.transform.position, transform.position))
+            {
+                navigation.destination = transform.position - (player.transform.position - transform.position);
+                retreating = true;
+            }
+            else
+            {
+                navigation.destination = player.transform.position;
+                retreating = false;
+            }
         }
         else
         {
@@ -81,19 +94,19 @@ public class Enemy : MonoBehaviour
         // Checks whether the enemy is ranged or melee
         if (!isRanged)
         {
-            if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && isFree && canAttack)
+            if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && isFree)
             {
                 animator.SetBool("Melee Queued", true);
             }
         }
         else
         {
-            if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && isFree && canAttack)
+            if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && isFree  && !retreating)
             {
                 animator.SetBool("Ranged Queued", true);
             }
 
-            if (Vector3.Distance(transform.position, player.transform.position) <= rangedRange)
+            if (Vector3.Distance(transform.position, player.transform.position) <= rangedRange && !retreating)
             {
                 navigation.enabled = false;
             }

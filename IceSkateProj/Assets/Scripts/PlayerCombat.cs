@@ -125,7 +125,7 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    private void Slice() //Add to the animation
+    private void Slice()
     {
         GameObject temp = Instantiate(sliceBurstPrefab, transform.position, Quaternion.identity);
         temp.transform.SetParent(this.gameObject.transform);

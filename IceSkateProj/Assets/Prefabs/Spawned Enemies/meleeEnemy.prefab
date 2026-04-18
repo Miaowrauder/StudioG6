@@ -266,13 +266,14 @@ MonoBehaviour:
     type: 3}
   spawnCost: 10
   multiplier: 1
-  waveEnabled: 0
+  waveEnabled: 1
   health: 2
   damageImmune: 0
   isRanged: 0
   strength: 1
   meleeRange: 10
   rangedRange: 30
+  retreatRange: 0
   shootPos: {fileID: 8582756513058353432}
   attackPrefab: {fileID: 5753247295404299405, guid: 8c14ed7ff0424ec46810f0797cc51360,
     type: 3}
