@@ -26240,8 +26240,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4555860274755551905, guid: f4483226dd6980f418fbf87dd385f7de,
+        type: 3}
+      insertIndex: 7
+      addedObject: {fileID: 469299326}
   m_SourcePrefab: {fileID: 100100000, guid: f4483226dd6980f418fbf87dd385f7de, type: 3}
+--- !u!1 &469299325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4555860274755551905, guid: f4483226dd6980f418fbf87dd385f7de,
+    type: 3}
+  m_PrefabInstance: {fileID: 469299324}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &469299326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469299325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b4ed027fbd90d4680e797697fadc7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comboCount: 0
+  comboVisuals: []
+  trickSprite: {fileID: 0}
+  trickDur: 0
+  trickCooldown: 0
+  isTricking: 0
 --- !u!1 &471846770
 GameObject:
   m_ObjectHideFlags: 0

@@ -313,6 +313,5 @@ public class playerMovement : MonoBehaviour
         {
             CancelInvoke("Fall");
         }
-
     }
 }

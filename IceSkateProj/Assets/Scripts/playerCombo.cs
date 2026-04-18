@@ -70,7 +70,7 @@ public class playerCombo : MonoBehaviour
         plM.diagMaxSpeed += 3.4f;
         plM.moveSpeed += 2f;
 
-        Invoke("RevertVisual", trickDur); //Remove when animation added
+        //Invoke("RevertVisual", trickDur); //Remove when animation added
     }
 
     private void RevertVisual() //Add to the animation
