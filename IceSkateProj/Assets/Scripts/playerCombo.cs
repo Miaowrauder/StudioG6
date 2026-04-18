@@ -8,11 +8,8 @@ public class playerCombo : MonoBehaviour
     private Animator animator;
     private PlayerCombat plC;
     private playerMovement plM;
-    private SpriteRenderer mySprite;
     public int comboCount;
     public GameObject[] comboVisuals;
-    public Sprite trickSprite;
-    private Sprite lastSprite;
     public float trickDur, trickCooldown;
     public bool isTricking;
     private Rigidbody rb;
@@ -23,7 +20,6 @@ public class playerCombo : MonoBehaviour
 
         plC = player.GetComponent<PlayerCombat>();
         plM = player.GetComponent<playerMovement>();
-        mySprite = gameObject.GetComponent<SpriteRenderer>();
 
         rb = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
         animator = player.GetComponent<Animator>();
@@ -32,7 +28,7 @@ public class playerCombo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!isTricking && Input.GetKeyDown(KeyCode.Mouse2) && (plM.isTrailing == false) && (rb.velocity.magnitude > 5))
+        if(!isTricking && Input.GetKeyDown(KeyCode.Space) && (plM.isTrailing == false) && (rb.velocity.magnitude > 5))
         {
             ComboSpend(1);
             isTricking = true;
@@ -65,7 +61,6 @@ public class playerCombo : MonoBehaviour
     {
         animator.SetBool("Flourish", true);
         animator.SetTrigger("Stop Current");
-        mySprite.sprite = trickSprite;
         plM.maxSpeed += 5f;
         plM.diagMaxSpeed += 3.4f;
         plM.moveSpeed += 2f;

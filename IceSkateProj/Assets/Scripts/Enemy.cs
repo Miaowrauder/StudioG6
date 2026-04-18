@@ -13,30 +13,33 @@ public class Enemy : MonoBehaviour
     public Projectile projectile;
     [Header("Customise Settings")]
     public int spawnCost;
-    public float multiplier;
+    [SerializeField] private float multiplier;
     public int waveEnabled;
-    public int health;
-    public bool damageImmune;
-    public bool isRanged;
-    public int strength;
-    public int meleeRange;
-    public int rangedRange;
-    public Transform shootPos;
-    public GameObject attackPrefab;
+    [SerializeField] private int health;
+    [SerializeField] private bool damageImmune, isRanged;
+    [SerializeField] private int strength;
+    [SerializeField] private int meleeRange, rangedRange;
+    [SerializeField] private Transform shootPos;
+    [SerializeField] private GameObject attackPrefab;
     [Header("Falling Settings")]
     private int castInt;
-    public LayerMask layerMask;
-    public float fallDelay, fallSpeed;
+    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private float fallDelay, fallSpeed;
     private bool[] isHole = new bool[4];
-    public Transform[] castPos;
+    [SerializeField] private Transform[] castPos;
     RaycastHit hit;
     private bool isFalling, canAttack;
-    public GameObject splashPrefab;
-
+    [SerializeField] private GameObject splashPrefab;
     private Vector2 movementVector;
+
+    [Header("Death Settings")]
+    [SerializeField] private float deathDelay;
+    [SerializeField] private SpriteRenderer mySprite;
+    [SerializeField] private GameObject deathBurstPrefab;
     
     void Start()
     {
+        canAttack = true;
         gameManager = FindObjectOfType<GameManager>();
         navigation = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -78,14 +81,14 @@ public class Enemy : MonoBehaviour
         // Checks whether the enemy is ranged or melee
         if (!isRanged)
         {
-            if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && isFree)
+            if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && isFree && canAttack)
             {
                 animator.SetBool("Melee Queued", true);
             }
         }
         else
         {
-            if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && isFree)
+            if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && isFree && canAttack)
             {
                 animator.SetBool("Ranged Queued", true);
             }
@@ -140,10 +143,20 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            gameManager.GetComponent<ScoreMultiplier>().StartMultiplier(spawnCost, multiplier);
-
-            Destroy(gameObject);
+            animator.SetBool("Ranged Queued", false);
+            animator.SetBool("Melee Queued", false);
+            navigation.enabled = false;
+            mySprite.color = new Color(1,0.6f,0.6f,1);
+            Invoke("Destroy", deathDelay);
         }
+    }
+
+    public void Destroy()
+    {
+        gameManager.GetComponent<ScoreMultiplier>().StartMultiplier(spawnCost, multiplier);
+        Instantiate(deathBurstPrefab, transform.position, Quaternion.identity);
+
+        Destroy(gameObject);
     }
 
     // Attacks the player melee

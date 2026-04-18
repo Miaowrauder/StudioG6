@@ -56,7 +56,7 @@ private bool risingIce;
 
     private void FalseIce()
     {
-        Vector3 icePos = new Vector3(0,-4.2f,0);
+        Vector3 icePos = new Vector3(-3.06f,-4.2f,-12.46f);
         spawnedIce = Instantiate(falseIcePrefab, icePos, Quaternion.identity);
         risingIce = true;
     }
