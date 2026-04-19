@@ -9,7 +9,6 @@ public class Spawner : MonoBehaviour
     public AnimationCurve spawnTime;
     public float waveStartDelay;
     private int spawnPoints, enemyTotal;
-    private int emergencyBreak;
 
 
     void Start()
@@ -28,12 +27,11 @@ public class Spawner : MonoBehaviour
     IEnumerator SpawnEnemy()
     {
         enemyTotal = 0;
-        emergencyBreak = 0;
 
         yield return new WaitForSeconds(waveStartDelay);
-        while ((spawnPoints >= 10) && (emergencyBreak < 10)) // Set to lowest spawn cost
+        while (spawnPoints >= 10) // Set to lowest spawn cost
         {
-            if ((enemyTypes.Length == 0) || (emergencyBreak > 10))
+            if (enemyTypes.Length == 0)
             {
                 print("No valid enemies");
                 break;
@@ -42,39 +40,25 @@ public class Spawner : MonoBehaviour
             int spawnAt = Random.Range(0, spawnLocations.Length);
             int enemySelected = -1;
 
-            while ((enemySelected == -1) && (emergencyBreak < 10))
+            while (enemySelected == -1)
             {
                 enemySelected = Random.Range(0, enemyTypes.Length);
                 int spawnCost = enemyTypes[enemySelected].GetComponent<Enemy>().spawnCost;
-                int waveEnabled = enemyTypes[enemySelected].GetComponent<Enemy>().waveEnabled; //i know theres like 10 break clauses here but it would NOT stop crashing
+                int waveEnabled = enemyTypes[enemySelected].GetComponent<Enemy>().waveEnabled;
                 int currentWave = gameManager.waveNumber;
 
                 if (spawnPoints - spawnCost < 0 || waveEnabled > currentWave)
                 {
                     enemySelected = -1;
-                    emergencyBreak++;
                 }
                 else
                 {
                     spawnPoints -= spawnCost;
                 }
-
-                if(emergencyBreak > 10)
-                {
-                    print("No valid enemies");
-                    break;
-                }
             }
 
-            if(emergencyBreak < 10)
-            {
-                Instantiate(enemyTypes[enemySelected], spawnLocations[spawnAt].transform.position, spawnLocations[spawnAt].transform.rotation);
-                gameManager.currentEnemies++;
-            }
-            else
-            {
-                print("Spawn Failed");
-            }
+            Instantiate(enemyTypes[enemySelected], spawnLocations[spawnAt].transform.position, spawnLocations[spawnAt].transform.rotation);
+            gameManager.currentEnemies++;
 
             yield return new WaitForSeconds(spawnTime.Evaluate(enemyTotal));
         }

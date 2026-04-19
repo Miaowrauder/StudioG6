@@ -35,7 +35,7 @@ public class Projectile : MonoBehaviour
     {
         visualComponent.transform.position = new Vector3(this.transform.position.x, visualComponent.transform.position.y, this.transform.position.z);
         elapsedTime += Time.deltaTime/journeyTime;
-        transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime);
+        transform.position = Vector3.Slerp(startPosition, endPosition, elapsedTime);
         shadow.transform.position = new Vector3(this.transform.position.x, -3.699f, this.transform.position.z);
 
         if (transform.position == endPosition)
