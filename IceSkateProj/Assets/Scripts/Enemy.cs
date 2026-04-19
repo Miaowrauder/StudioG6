@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float multiplier;
     public int waveEnabled;
     [SerializeField] private int health;
-    [SerializeField] private bool damageImmune, isRanged;
+    [SerializeField] private bool damageImmune, isRanged, canAttack;
     [SerializeField] private int strength;
     [SerializeField] private int meleeRange, rangedRange, retreatRange;
     [SerializeField] private Transform shootPos;
@@ -39,11 +39,18 @@ public class Enemy : MonoBehaviour
     
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
-        navigation = GetComponent<NavMeshAgent>();
+        canAttack = true;
+
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerCombat>();
         rigidbody = GetComponent<Rigidbody>();
+        gameManager = FindObjectOfType<GameManager>();
+
+        navigation = GetComponent<NavMeshAgent>();
+        navigation.speed = Random.Range(navigation.speed-3, navigation.speed+3);
+
+        Instantiate(deathBurstPrefab, transform.position, Quaternion.identity); //dont take this out, its meant to be here!!!
+        
 
         InvokeRepeating("UpdateFunctions", 0, 0.1f);
     }
@@ -92,29 +99,33 @@ public class Enemy : MonoBehaviour
         }
 
         // Checks whether the enemy is ranged or melee
-        if (!isRanged)
+        if(canAttack)
         {
-            if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && isFree)
+            if (!isRanged)
             {
-                animator.SetBool("Melee Queued", true);
-            }
-        }
-        else
-        {
-            if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && isFree  && !retreating)
-            {
-                animator.SetBool("Ranged Queued", true);
-            }
-
-            if (Vector3.Distance(transform.position, player.transform.position) <= rangedRange && !retreating)
-            {
-                navigation.enabled = false;
+                if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && isFree)
+                {
+                    animator.SetBool("Melee Queued", true);
+                }
             }
             else
             {
-                navigation.enabled = true;
+                if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && isFree  && !retreating)
+                {
+                    animator.SetBool("Ranged Queued", true);
+                }
+
+                if (Vector3.Distance(transform.position, player.transform.position) <= rangedRange && !retreating)
+                {
+                    navigation.enabled = false;
+                }
+                else
+                {
+                    navigation.enabled = true;
+                }
             }
         }
+        
 
         //Determines direction facing for animations
         movementVector = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.z - transform.position.z);
@@ -149,13 +160,14 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (!damageImmune)
+        if(!damageImmune)
         {
             health -= damage;
         }
 
         if (health <= 0)
         {
+            canAttack = false;
             animator.SetBool("Ranged Queued", false);
             animator.SetBool("Melee Queued", false);
             navigation.enabled = false;
@@ -185,7 +197,7 @@ public class Enemy : MonoBehaviour
         }*/
     }
 
-    private void Attack2()
+    private void Attack2() //adds a tiny little delay before attacking to feel in time w/ animation & vfx
     {
         GameObject temp = Instantiate(attackPrefab, shootPos.position, Quaternion.identity);
 
@@ -263,6 +275,6 @@ public class Enemy : MonoBehaviour
 
     private void Death()
     {
-        TakeDamage(999);
+        Destroy();
     }
 }
