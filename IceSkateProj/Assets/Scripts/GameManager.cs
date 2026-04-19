@@ -51,7 +51,11 @@ private bool risingIce;
         waveNumber++;
         waveSpawnPoints = (int)(waveSpawnPoints*waveMultiplier);
         spawner.startWave(waveSpawnPoints);
-        FalseIce(); //Replace this method later
+
+        if((waveNumber == 3) || (waveNumber == 6) || (waveNumber == 9) || (waveNumber == 12) || (waveNumber == 15) || (waveNumber == 18) || (waveNumber == 21))
+        {
+            FalseIce(); //Replace this method later
+        }
     }
 
     private void FalseIce()

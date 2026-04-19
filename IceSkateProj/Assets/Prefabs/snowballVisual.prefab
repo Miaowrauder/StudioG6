@@ -9818,7 +9818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fbd5f05f8d7df94089758c5eea4aeb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchMult: 5
+  launchMult: 4
   receivedDistance: 0
   initiate: 0
 --- !u!54 &996611634286829043

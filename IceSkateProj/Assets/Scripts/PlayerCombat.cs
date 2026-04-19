@@ -6,21 +6,22 @@ public class PlayerCombat : MonoBehaviour
 {
     private Animator animator;
     private bool animationFree;
-    public playerCombo plCombo;
+    [SerializeField] private playerCombo plCombo;
     private playerMovement plMove;
     public int health;
+    [SerializeField] private SpriteRenderer mySprite;
     [Header("Damage Attack")]
-    public GameObject sliceBurstPrefab;
+    [SerializeField] private GameObject sliceBurstPrefab;
     [Header("Push Attack")]
-    public int power;
-    public float pushRange;
-    public GameObject pushBurstPrefab;
+    [SerializeField] private int power;
+    [SerializeField] private float pushRange;
+    [SerializeField] private GameObject pushBurstPrefab;
     [Header("Teapy Attack")]
     public float damageRadius, comboSpendDelay;
     public bool teapyActive;
     private bool canLoop;
-    public GameObject teapyPos;
-    public GameObject teapyPrefab;
+    [SerializeField] private  GameObject teapyPos;
+    [SerializeField] private  GameObject teapyPrefab;
     private GameObject teapotSpawned;
 
     void Start()
@@ -121,6 +122,7 @@ public class PlayerCombat : MonoBehaviour
 
         if (health <= 0)
         {
+            mySprite.color = new Color(1,0.6f,0.6f,1);
             Invoke("Death",1f);
         }
     }
