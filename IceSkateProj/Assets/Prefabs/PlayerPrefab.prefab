@@ -304,6 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plCombo: {fileID: 2163664385695033159}
   health: 1
+  mySprite: {fileID: 955172410439261927}
   sliceBurstPrefab: {fileID: 6028394905452839924, guid: 481d56fbe9ca6c94493f385fe8a34dce,
     type: 3}
   power: 100000
@@ -311,7 +312,7 @@ MonoBehaviour:
   pushBurstPrefab: {fileID: 4474590958828637864, guid: e08261b853e78de4c85811809f789d06,
     type: 3}
   damageRadius: 0
-  comboSpendDelay: 0.7
+  comboSpendDelay: 0.85
   teapyActive: 0
   teapyPos: {fileID: 5050013715032942068}
   teapyPrefab: {fileID: 5691435668306136705, guid: f626c3eb31d86bb4c85900ae030bb8c6,
