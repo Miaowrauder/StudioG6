@@ -105,14 +105,14 @@ public class Enemy : MonoBehaviour
             {
                 if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && isFree)
                 {
-                    animator.SetBool("Melee Queued", true);
+                    animator.SetBool("Attack Queued", true);
                 }
             }
             else
             {
                 if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && isFree  && !retreating)
                 {
-                    animator.SetBool("Ranged Queued", true);
+                    animator.SetBool("Attack Queued", true);
                 }
 
                 if (Vector3.Distance(transform.position, player.transform.position) <= rangedRange && !retreating)
@@ -168,8 +168,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             canAttack = false;
-            animator.SetBool("Ranged Queued", false);
-            animator.SetBool("Melee Queued", false);
+            animator.SetBool("Attack Queued", false);
             navigation.enabled = false;
             mySprite.color = new Color(1,0.6f,0.6f,1);
             Invoke("Destroy", deathDelay);
@@ -187,7 +186,7 @@ public class Enemy : MonoBehaviour
     // Attacks the player melee
     public void Attack()
     {
-        animator.SetBool("Melee Queued", false);
+        animator.SetBool("Attack Queued", false);
 
         Invoke("Attack2", 0.01f);
 
@@ -207,15 +206,14 @@ public class Enemy : MonoBehaviour
     // Attacks the player ranged
     public void ProjectileThrow()
     {
-        animator.SetBool("Ranged Queued", false);
+        animator.SetBool("Attack Queued", false);
         Projectile spawnedProjectile = Instantiate(projectile, shootPos.transform.position, transform.rotation);
     }
 
     public void StartWobble()
     {
         animator.SetBool("Wobble Queued", true);
-        animator.SetBool("Melee Queued", false);
-        animator.SetBool("Ranged Queued", false);
+        animator.SetBool("Attack Queued", false);
     }
 
     public void EndWobble()
