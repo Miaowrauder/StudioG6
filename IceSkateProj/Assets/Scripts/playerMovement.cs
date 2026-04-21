@@ -94,7 +94,7 @@ public class playerMovement : MonoBehaviour
                 trailReset = false;
                 InvokeRepeating("TrailGen",Time.deltaTime, trailPointDelay);
 
-                Vector3 trailPos = new Vector3(this.transform.position.x, this.transform.position.y-3f, this.transform.position.z);
+                Vector3 trailPos = new Vector3(this.transform.position.x, this.transform.position.y-2f, this.transform.position.z);
                 spawnedCutTrail = Instantiate(cutTrail, trailPos, Quaternion.identity);
 
                 spawnedCutTrail.transform.SetParent(this.transform);
