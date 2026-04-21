@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent navigation;
     private Animator animator;
     private PlayerCombat player;
-    private GameManager gameManager;
+    private ComboUI comboUI;
     private Rigidbody rigidbody;
     public Projectile projectile;
     [Header("Customise Settings")]
@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerCombat>();
         rigidbody = GetComponent<Rigidbody>();
-        gameManager = FindObjectOfType<GameManager>();
+        comboUI = FindObjectOfType<ComboUI>();
 
         navigation = GetComponent<NavMeshAgent>();
         navigation.speed = Random.Range(navigation.speed-3, navigation.speed+3);
@@ -165,6 +165,11 @@ public class Enemy : MonoBehaviour
         {
             health -= damage;
         }
+        else
+        {
+            animator.SetBool("Attack Queued", false);
+            animator.SetTrigger("Stop Current");
+        }
 
         if (health <= 0)
         {
@@ -179,7 +184,10 @@ public class Enemy : MonoBehaviour
 
     public void Destroy()
     {
-        gameManager.GetComponent<ScoreMultiplier>().StartMultiplier(spawnCost, multiplier);
+        //gameManager.GetComponent<ScoreMultiplier>().StartMultiplier(spawnCost, multiplier);
+
+        comboUI.Score += (100*spawnCost) * (1 + (comboUI.ScoreMult * 2));
+
         Instantiate(deathBurstPrefab, transform.position, Quaternion.identity);
 
         if (!isFree)

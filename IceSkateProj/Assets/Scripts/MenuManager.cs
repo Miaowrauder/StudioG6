@@ -6,7 +6,7 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     private bool isPaused;
-    [SerializeField] private Canvas pauseMenu, mainMenu, instructionsMenu, endMenu;
+    [SerializeField] private Canvas pauseMenu, mainMenu, instructionsMenu, endMenu, gameHUD;
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private Texture2D cursorImg;
 
@@ -56,12 +56,14 @@ public class MenuManager : MonoBehaviour
         canPause = false;
         Time.timeScale = 0f;
         endMenu.enabled = true;
+        gameHUD.enabled = false;
     }
 
     private void Pause()
     {
         Time.timeScale = 0f;
         Cursor.visible = true;
+        gameHUD.enabled = false;
         pauseMenu.enabled = true;
         isPaused = true;
     }
@@ -70,6 +72,7 @@ public class MenuManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         Cursor.visible = false;
+        gameHUD.enabled = true;
         pauseMenu.enabled = false;
         isPaused = false;
     }

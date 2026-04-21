@@ -177,10 +177,10 @@ public class ComboUI : MonoBehaviour
     {
         while (PreviousTotalScore < TotalScore)
         {
-            PreviousTotalScore += Time.deltaTime * 50;
+            PreviousTotalScore += Time.deltaTime * 1000;
             PreviousTotalScore = Mathf.Clamp(PreviousTotalScore, 0f, TotalScore);
             Mathf.Round(PreviousTotalScore);
-            TotalScoreText.text = string.Format("TOTAL: {0:#,#}",PreviousTotalScore);
+            TotalScoreText.text = string.Format("{0:#,#}",PreviousTotalScore);
             yield return null;
         }
     }
