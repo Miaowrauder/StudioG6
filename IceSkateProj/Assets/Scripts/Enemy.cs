@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float multiplier;
     public int waveEnabled;
     [SerializeField] private int health;
-    [SerializeField] private bool damageImmune, isRanged, canAttack;
+    [SerializeField] private bool damageImmune, isRanged, canAttack, isFree;
     [SerializeField] private int strength;
     [SerializeField] private int meleeRange, rangedRange, retreatRange;
     [SerializeField] private Transform shootPos;
@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour
     void UpdateFunctions()
     {
         // Determines if the enemy should be able to move and how
-        bool isFree = animator.GetCurrentAnimatorStateInfo(0).IsTag("Free");
+        isFree = animator.GetCurrentAnimatorStateInfo(0).IsTag("Free");
         if (!isFree || isFalling)
         {
             navigation.enabled = false;
@@ -182,6 +182,11 @@ public class Enemy : MonoBehaviour
         gameManager.GetComponent<ScoreMultiplier>().StartMultiplier(spawnCost, multiplier);
         Instantiate(deathBurstPrefab, transform.position, Quaternion.identity);
 
+        if (!isFree)
+        {
+            animator.SetTrigger("Cancel Current");
+        }
+
         Destroy(gameObject);
     }
 
@@ -209,6 +214,11 @@ public class Enemy : MonoBehaviour
     {
         animator.SetBool("Wobble Queued", true);
         animator.SetBool("Attack Queued", false);
+
+        if (!isFree)
+        {
+            animator.SetTrigger("Cancel Current");
+        }
     }
 
     public void EndWobble()
@@ -263,11 +273,6 @@ public class Enemy : MonoBehaviour
         GameObject temp = Instantiate(splashPrefab, this.transform.position, Quaternion.identity);
         temp.transform.Rotate(-90f, 0f, 0f);
 
-        Invoke("Death", 1f);
-    }
-
-    private void Death()
-    {
-        Destroy();
+        Invoke("Destroy", 1f);
     }
 }
