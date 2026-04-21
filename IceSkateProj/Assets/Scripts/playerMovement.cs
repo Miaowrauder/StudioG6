@@ -31,6 +31,9 @@ public class playerMovement : MonoBehaviour
     public LayerMask layerMask;
     private bool[] isHole = new bool[4];
     public GameObject splashPrefab;
+    [Header("SoundFX")]
+    [SerializeField] private AudioSource iceCutting;
+    [SerializeField] private AudioSource iceClink;
     [Header("Misc")]
     private Animator animator;
     private playerCombo plCombo;
@@ -43,7 +46,6 @@ public class playerMovement : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-
         diagMaxSpeed = maxSpeed * 0.68f;
         rb = GetComponent<Rigidbody>();
         myCutter = GetComponent<iceCutter>();
@@ -63,7 +65,7 @@ public class playerMovement : MonoBehaviour
 
         EndTrail();
         myCutter.triggerCut = true;
-        
+        iceClink.Play();
     }
 
     private void EndTrail()
@@ -78,6 +80,7 @@ public class playerMovement : MonoBehaviour
         animator.SetBool("Cutting", false);
         trailReset = true;
         isTrailing = false;
+        iceCutting.Stop();
     }
 
     void Update() //fixed update gets funny when we need individual frame inputs from mouse up and down...
@@ -86,7 +89,7 @@ public class playerMovement : MonoBehaviour
         {
             isTrailing = true;
             animator.SetBool("Cutting", true);
-
+            iceCutting.Play();
             if(trailReset)
             {
                 currentPoint = 0;
@@ -129,7 +132,6 @@ public class playerMovement : MonoBehaviour
 
         createdMarkers[currentPoint] = Instantiate(tempTrailMarker, transform.position, Quaternion.identity);
         createdMarkers[currentPoint].GetComponent<TrailColliders>().pointNumber = currentPoint+1;
-
         currentPoint ++;
 
         if(currentPoint == trailPoint.Length)

@@ -5,6 +5,7 @@ using System.Collections;
 public class PlayerCombat : MonoBehaviour
 {
     private Animator animator;
+    [SerializeField] private AudioSource whoosh;
     private bool animationFree;
     [SerializeField] private playerCombo plCombo;
     private playerMovement plMove;
@@ -137,6 +138,7 @@ public class PlayerCombat : MonoBehaviour
     {
         Instantiate(pushBurstPrefab, transform.position, Quaternion.identity);
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, pushRange);
+        whoosh.Play();
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.GetComponent<Enemy>() != null)
