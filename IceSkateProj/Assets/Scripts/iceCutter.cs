@@ -12,10 +12,9 @@ public class iceCutter : MonoBehaviour
     private Vector3[] actualPoints;
     public int startPoint;
     public bool triggerCut;
-    public Material holeEdgeMat, shaderMat, sheetMat, invisMat;
-    public float sheetDropSpeed, bakeDelay;
-    [SerializeField]
-    private GameObject tinySplash;
+    [SerializeField] private Material holeEdgeMat, shaderMat, sheetMat, invisMat;
+    [SerializeField] private float sheetDropSpeed, bakeDelay, holeYoffset;
+    [SerializeField] private GameObject tinySplash;
 
     ProBuilderMesh[] summonedMesh = new ProBuilderMesh[4];
     GameObject[] generatedObject = new GameObject[4];
@@ -63,7 +62,7 @@ public class iceCutter : MonoBehaviour
     private void GenerateHole()
     {
         generatedObject[0] = new GameObject(); //generates hole w/ flipped normals
-        generatedObject[0].transform.position = new Vector3(generatedObject[0].transform.position.x, generatedObject[0].transform.position.y+1.4f, generatedObject[0].transform.position.z); // move it down so it fully interesects ice
+        generatedObject[0].transform.position = new Vector3(generatedObject[0].transform.position.x, generatedObject[0].transform.position.y+1.4f+holeYoffset, generatedObject[0].transform.position.z); // move it down so it fully interesects ice
         summonedMesh[0] = generatedObject[0].gameObject.AddComponent<ProBuilderMesh>();
         generatedObject[0].GetComponent<MeshRenderer>().material = holeEdgeMat;
         generatedObject[0].tag = ("Spawned");  
@@ -72,7 +71,7 @@ public class iceCutter : MonoBehaviour
     private void GenerateStencil()
     {
         generatedObject[1] = new GameObject(); //generates stencil mask w/ unflipped normals
-        generatedObject[1].transform.position = new Vector3(generatedObject[1].transform.position.x, generatedObject[1].transform.position.y+1.93f, generatedObject[1].transform.position.z); // move it down so it fully interesects ice
+        generatedObject[1].transform.position = new Vector3(generatedObject[1].transform.position.x, generatedObject[1].transform.position.y+1.93f+holeYoffset, generatedObject[1].transform.position.z); // move it down so it fully interesects ice
 
         summonedMesh[1] = generatedObject[1].gameObject.AddComponent<ProBuilderMesh>();
         generatedObject[1].GetComponent<MeshRenderer>().material = shaderMat; 
@@ -83,7 +82,7 @@ public class iceCutter : MonoBehaviour
     private void GenerateDropSheet()
     {
         generatedObject[2] = new GameObject(); //generates ice sheet w/ unflipped normals
-        generatedObject[2].transform.position = new Vector3(generatedObject[2].transform.position.x, generatedObject[2].transform.position.y+2f, generatedObject[2].transform.position.z); // move it down so it fully interesects ice
+        generatedObject[2].transform.position = new Vector3(generatedObject[2].transform.position.x, generatedObject[2].transform.position.y+2f+holeYoffset, generatedObject[2].transform.position.z); // move it down so it fully interesects ice
 
         summonedMesh[2] = generatedObject[2].gameObject.AddComponent<ProBuilderMesh>();
         generatedObject[2].GetComponent<MeshRenderer>().material = sheetMat;

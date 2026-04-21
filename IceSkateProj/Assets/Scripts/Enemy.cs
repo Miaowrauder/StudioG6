@@ -106,6 +106,7 @@ public class Enemy : MonoBehaviour
                 if (Vector3.Distance(player.transform.position, transform.position) < meleeRange && isFree)
                 {
                     animator.SetBool("Attack Queued", true);
+                    shootPos.transform.LookAt(player.transform, Vector3.forward); //aims the attack at the player on animation start as opposed to attack moement, better matches with sprite and easier to dodge
                 }
             }
             else
@@ -169,6 +170,7 @@ public class Enemy : MonoBehaviour
         {
             canAttack = false;
             animator.SetBool("Attack Queued", false);
+            animator.SetTrigger("Stop Current");
             navigation.enabled = false;
             mySprite.color = new Color(1,0.6f,0.6f,1);
             Invoke("Destroy", deathDelay);
@@ -187,20 +189,13 @@ public class Enemy : MonoBehaviour
     public void Attack()
     {
         animator.SetBool("Attack Queued", false);
-
         Invoke("Attack2", 0.01f);
-
-        /*if (Vector3.Distance(player.transform.position, transform.position) < meleeRange)
-        {
-            player.TakeDamage(strength);
-        }*/
     }
 
     private void Attack2() //adds a tiny little delay before attacking to feel in time w/ animation & vfx
     {
-        GameObject temp = Instantiate(attackPrefab, shootPos.position, Quaternion.identity);
+        GameObject temp = Instantiate(attackPrefab, shootPos.position, shootPos.rotation);
 
-        temp.transform.LookAt(player.transform, Vector3.forward);
     }
     
     // Attacks the player ranged

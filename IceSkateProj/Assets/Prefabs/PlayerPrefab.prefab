@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 1355592096950297716}
   serializedVersion: 2
   m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
+  m_LocalPosition: {x: 0, y: 0.77, z: 0.06}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5943505262944261139}
@@ -149,7 +149,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.6, y: 1.49, z: 21.85}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6756329073515104045}
@@ -288,6 +288,7 @@ MonoBehaviour:
   invisMat: {fileID: 2100000, guid: 4f668594ee20e744db2537b5e8b9bccb, type: 2}
   sheetDropSpeed: 0.1
   bakeDelay: 0.5
+  holeYoffset: 1
   tinySplash: {fileID: 4003458564733742167, guid: 8a534de5eb23fd940bc1477b6829dcc6,
     type: 3}
 --- !u!114 &8675349932732639772
@@ -528,7 +529,7 @@ PrefabInstance:
     - target: {fileID: 7254194590991305608, guid: bdc4a415f775d2245b0dd9126e5d9a3c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9
+      value: -0.88
       objectReference: {fileID: 0}
     - target: {fileID: 7254194590991305608, guid: bdc4a415f775d2245b0dd9126e5d9a3c,
         type: 3}
