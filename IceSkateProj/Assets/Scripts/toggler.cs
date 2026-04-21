@@ -10,6 +10,9 @@ public class toggler : MonoBehaviour
     private bool flip;
     private bool canLoop = true;
     private Rigidbody rb;
+    [SerializeField] private float SFXInterval = 0.60f;
+    [SerializeField] private AudioSource skateSFX;
+    [SerializeField] private AudioClip[] variations = new AudioClip[5];
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,16 @@ public class toggler : MonoBehaviour
         {
             canLoop = false;
             StartCoroutine(ToggleState());
+        }
+
+        if (SFXInterval > 0f)
+        {
+            SFXInterval -= Time.deltaTime;
+        }
+        else
+        {
+            PlaySkateFX();
+            SFXInterval = 0.60f;
         }
     }
 
@@ -47,5 +60,14 @@ public class toggler : MonoBehaviour
         
         canLoop = true;
         
+    }
+    private void PlaySkateFX()
+    {
+        float pitch = Random.Range(1f, 1.5f);
+        AudioClip FX = variations[Random.Range(0, variations.Length - 1)];
+
+        skateSFX.clip = FX;
+        skateSFX.pitch = pitch;
+        skateSFX.Play();
     }
 }

@@ -20,6 +20,8 @@ public class iceCutter : MonoBehaviour
     ProBuilderMesh[] summonedMesh = new ProBuilderMesh[4];
     GameObject[] generatedObject = new GameObject[4];
     private GameManager gameManager;
+
+
     // Start is called before the first frame update
     void Start()
     {   
