@@ -108,7 +108,6 @@ public class playerMovement : MonoBehaviour
         else if(Input.GetKeyUp(KeyCode.Mouse0))
         {
             EndTrail();
-            
         }
 
         if(trailPoint[97] != new Vector2(0,0))
@@ -133,7 +132,6 @@ public class playerMovement : MonoBehaviour
 
         createdMarkers[currentPoint] = Instantiate(tempTrailMarker, transform.position, Quaternion.identity);
         createdMarkers[currentPoint].GetComponent<TrailColliders>().pointNumber = currentPoint+1;
-        UnityEngine.Debug.Log("Trail!");
         currentPoint ++;
 
         if(currentPoint == trailPoint.Length)
