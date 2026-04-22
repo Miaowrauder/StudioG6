@@ -5098,11 +5098,11 @@ MonoBehaviour:
     type: 3}
   spawnCost: 10
   multiplier: 1
-  waveEnabled: 1
+  waveEnabled: 0
   health: 2
   damageImmune: 0
   isRanged: 0
-  canAttack: 0
+  isFree: 0
   strength: 1
   meleeRange: 10
   rangedRange: 30

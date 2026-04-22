@@ -110,7 +110,7 @@ public class playerMovement : MonoBehaviour
             EndTrail();
         }
 
-        if(trailPoint[97] != new Vector2(0,0))
+        if(trailPoint[90] != new Vector2(0,0))
         {
             EndTrail();
         }

@@ -265,13 +265,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5446462394928568651, guid: fb05052046fe255418b11189e73a132b,
     type: 3}
-  spawnCost: 10
+  spawnCost: 15
   multiplier: 1
-  waveEnabled: 3
+  waveEnabled: 6
   health: 2
   damageImmune: 1
   isRanged: 0
-  canAttack: 0
+  isFree: 0
   strength: 1
   meleeRange: 10
   rangedRange: 30

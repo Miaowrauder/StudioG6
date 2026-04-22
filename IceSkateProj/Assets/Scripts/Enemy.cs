@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float deathDelay;
     [SerializeField] private SpriteRenderer mySprite;
     [SerializeField] private GameObject deathBurstPrefab;
+    private GameManager gameManager;
     
     void Start()
     {
@@ -43,6 +44,7 @@ public class Enemy : MonoBehaviour
         player = FindObjectOfType<PlayerCombat>();
         rigidbody = GetComponent<Rigidbody>();
         comboUI = FindObjectOfType<ComboUI>();
+        gameManager = FindObjectOfType<GameManager>();
 
         navigation = GetComponent<NavMeshAgent>();
         navigation.speed = Random.Range(navigation.speed-3, navigation.speed+3);
@@ -178,7 +180,7 @@ public class Enemy : MonoBehaviour
 
     public void Destroy()
     {
-        //gameManager.GetComponent<ScoreMultiplier>().StartMultiplier(spawnCost, multiplier);
+        gameManager.currentEnemies --;
 
         comboUI.Score += (100*spawnCost) * (1 + (comboUI.ScoreMult * 2));
 

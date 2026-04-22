@@ -17809,7 +17809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveFinished: 1
-  waveNumber: 5
+  waveNumber: 1
   waveSpawnPoints: 60
   waveMultiplier: 1.5
   currentEnemies: 0
@@ -19226,7 +19226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTypes:
-  - {fileID: 5150029297707364534, guid: 762051e7caee21b43a4bcd223d0d147d, type: 3}
+  - {fileID: 5150029297707364534, guid: 303461a3977643d44a1d6a6ec535acec, type: 3}
+  - {fileID: 5150029297707364534, guid: 0392701a2effbaf4f86fc1120a2a43ad, type: 3}
   - {fileID: 5150029297707364534, guid: 762051e7caee21b43a4bcd223d0d147d, type: 3}
   spawnTime:
     serializedVersion: 2
@@ -106692,7 +106693,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 869144231}
   m_HandleRect: {fileID: 869144229}
   m_Direction: 2
-  m_Value: 0.564663
+  m_Value: 0.5646627
   m_Size: 0.78683907
   m_NumberOfSteps: 0
   m_OnValueChanged:

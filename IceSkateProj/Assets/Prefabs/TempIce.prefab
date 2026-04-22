@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1026154760394598974}
   - component: {fileID: 7602015963353347660}
   - component: {fileID: 3731910860693328378}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: TempIce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
