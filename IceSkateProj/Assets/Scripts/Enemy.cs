@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float multiplier;
     public int waveEnabled;
     [SerializeField] private int health;
-    [SerializeField] private bool damageImmune, isRanged, canAttack, isFree;
+    [SerializeField] private bool damageImmune, isRanged, isFree;
     [SerializeField] private int strength;
     [SerializeField] private int meleeRange, rangedRange, retreatRange;
     [SerializeField] private Transform shootPos;
@@ -39,8 +39,6 @@ public class Enemy : MonoBehaviour
     
     void Start()
     {
-        canAttack = true;
-
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerCombat>();
         rigidbody = GetComponent<Rigidbody>();
@@ -80,7 +78,6 @@ public class Enemy : MonoBehaviour
         }
         else if (isRanged)
         {
-            print("Moving");
             navigation.enabled = true;
 
             if (retreatRange > Vector3.Distance(player.transform.position, transform.position))
@@ -101,7 +98,7 @@ public class Enemy : MonoBehaviour
         }
 
         // Checks whether the enemy is ranged or melee
-        if(canAttack)
+        if(isFree)
         {
             if (!isRanged)
             {
@@ -116,15 +113,6 @@ public class Enemy : MonoBehaviour
                 if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && isFree && !retreating)
                 {
                     animator.SetBool("Attack Queued", true);
-                }
-
-                if (Vector3.Distance(transform.position, player.transform.position) <= rangedRange && !retreating)
-                {
-                    navigation.enabled = false;
-                }
-                else if (!retreating)
-                {
-                    navigation.enabled = true;
                 }
             }
         }
@@ -180,7 +168,6 @@ public class Enemy : MonoBehaviour
                 InvertLock();
             }
 
-            canAttack = false;
             animator.SetBool("Attack Queued", false);
             animator.SetTrigger("Cancel Current");
             navigation.enabled = false;
@@ -215,7 +202,6 @@ public class Enemy : MonoBehaviour
     private void Attack2() //adds a tiny little delay before attacking to feel in time w/ animation & vfx
     {
         GameObject temp = Instantiate(attackPrefab, shootPos.position, shootPos.rotation);
-
     }
     
     // Attacks the player ranged
@@ -225,6 +211,7 @@ public class Enemy : MonoBehaviour
         Projectile spawnedProjectile = Instantiate(projectile, shootPos.transform.position, transform.rotation);
     }
 
+    // Triggered by player push to start goblin wobble
     public void StartWobble()
     {
         animator.SetBool("Wobble Queued", true);
@@ -236,6 +223,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // Triggered by goblin animation to stop
     public void EndWobble()
     {
         animator.SetBool("Wobble Queued", false);
@@ -284,17 +272,14 @@ public class Enemy : MonoBehaviour
         else
         {
             CancelInvoke("Fall");
-            //CancelFall();
         }
-
     }
 
     void Fall()
     {
         isFalling = true;
-        GameObject temp = Instantiate(splashPrefab, this.transform.position, Quaternion.identity);
+        GameObject temp = Instantiate(splashPrefab, transform.position, Quaternion.identity);
         temp.transform.Rotate(-90f, 0f, 0f);
-
         Invoke("Destroy", 1f);
     }
 }
