@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
         if(isFalling)
         {
             navigation.enabled = false;
-            animator.SetTrigger("Stop Current");
+            animator.SetTrigger("Cancel Current");
 
             transform.position = new Vector3(transform.position.x, transform.position.y-fallSpeed, transform.position.z);
         }
@@ -73,12 +73,14 @@ public class Enemy : MonoBehaviour
     {
         // Determines if the enemy should be able to move and how
         isFree = animator.GetCurrentAnimatorStateInfo(0).IsTag("Free");
+
         if (!isFree || isFalling)
         {
             navigation.enabled = false;
         }
         else if (isRanged)
         {
+            print("Moving");
             navigation.enabled = true;
 
             if (retreatRange > Vector3.Distance(player.transform.position, transform.position))
@@ -111,7 +113,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && isFree  && !retreating)
+                if (Vector3.Distance(player.transform.position, transform.position) < rangedRange && isFree && !retreating)
                 {
                     animator.SetBool("Attack Queued", true);
                 }
@@ -120,13 +122,12 @@ public class Enemy : MonoBehaviour
                 {
                     navigation.enabled = false;
                 }
-                else
+                else if (!retreating)
                 {
                     navigation.enabled = true;
                 }
             }
         }
-        
 
         //Determines direction facing for animations
         movementVector = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.z - transform.position.z);
@@ -167,15 +168,21 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            animator.SetBool("Attack Queued", false);
-            animator.SetTrigger("Stop Current");
+            animator.SetTrigger("Cancel Current");
+            InvertLock();
+            Invoke("InvertLock", 0.5f);
         }
 
         if (health <= 0)
         {
+            if (!animator.GetBool("Action Lock"))
+            {
+                InvertLock();
+            }
+
             canAttack = false;
             animator.SetBool("Attack Queued", false);
-            animator.SetTrigger("Stop Current");
+            animator.SetTrigger("Cancel Current");
             navigation.enabled = false;
             mySprite.color = new Color(1,0.6f,0.6f,1);
             Invoke("Destroy", deathDelay);
@@ -239,6 +246,13 @@ public class Enemy : MonoBehaviour
     {
         rigidbody.velocity = Vector3.zero;
         navigation.enabled = !navigation.enabled;
+    }
+
+    // inverts the ability to perform an action in the animator
+    private void InvertLock()
+    {
+        animator.SetBool("Action Lock", !animator.GetBool("ActionLock"));
+        animator.SetBool("Attack Queued", false);
     }
 
     // Detect if the enemy is above a hole

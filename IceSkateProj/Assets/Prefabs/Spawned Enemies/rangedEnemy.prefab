@@ -5103,6 +5103,7 @@ MonoBehaviour:
   damageImmune: 0
   isRanged: 1
   canAttack: 0
+  isFree: 0
   strength: 1
   meleeRange: 10
   rangedRange: 30

@@ -138,7 +138,7 @@ public class PlayerCombat : MonoBehaviour
     {
         Instantiate(pushBurstPrefab, transform.position, Quaternion.identity);
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, pushRange);
-        whoosh.Play();
+        //whoosh.Play();
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.GetComponent<Enemy>() != null)

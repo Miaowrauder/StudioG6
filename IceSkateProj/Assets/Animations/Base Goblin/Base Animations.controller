@@ -254,6 +254,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Attack Queued
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Action Lock
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8638863971104634346}
   m_Solo: 0
@@ -602,6 +605,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: Action Lock
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   - m_Name: Cancel Current
     m_Type: 9
     m_DefaultFloat: 0
@@ -914,6 +923,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: Attack Queued
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Action Lock
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4248376204086502336}
@@ -1256,6 +1268,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Attack Queued
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Action Lock
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8638863971104634346}
   m_Solo: 0
@@ -1303,6 +1318,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Attack Queued
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Action Lock
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8638863971104634346}
   m_Solo: 0
@@ -1327,6 +1345,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: Attack Queued
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Action Lock
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8638863971104634346}
@@ -1564,9 +1585,9 @@ AnimatorStateMachine:
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: 5516916531720453332}
-    second: []
   - first: {fileID: 4405298742896582991}
+    second: []
+  - first: {fileID: 5516916531720453332}
     second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 10, y: 60, z: 0}
