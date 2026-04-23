@@ -152,6 +152,11 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    public void NextSection() // Trigger next part of segmented animation
+    {
+        animator.SetTrigger("Next Section");
+    }
+
     public void EndPush()
     {
         animator.SetBool("Push", false);
