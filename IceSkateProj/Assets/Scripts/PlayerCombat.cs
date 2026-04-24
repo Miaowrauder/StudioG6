@@ -123,8 +123,8 @@ public class PlayerCombat : MonoBehaviour
 
         if (health <= 0)
         {
-            mySprite.color = new Color(1,0.6f,0.6f,1);
-            Invoke("Death",1f);
+            //mySprite.color = new Color(1,0.6f,0.6f,1);
+            animator.SetTrigger("Dead");
         }
     }
 
