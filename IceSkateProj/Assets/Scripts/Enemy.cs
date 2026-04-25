@@ -35,11 +35,13 @@ public class Enemy : MonoBehaviour
     [Header("Death Settings")]
     [SerializeField] private float deathDelay;
     [SerializeField] private SpriteRenderer mySprite;
-    [SerializeField] private GameObject deathBurstPrefab;
+    [SerializeField] private GameObject deathBurstPrefab, bucketHitPrefab;
     private GameManager gameManager;
+    private AxisFollow cam;
     
     void Start()
     {
+        cam = FindObjectOfType<AxisFollow>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerCombat>();
         rigidbody = GetComponent<Rigidbody>();
@@ -62,10 +64,17 @@ public class Enemy : MonoBehaviour
         if(isFalling)
         {
             navigation.enabled = false;
-            animator.SetTrigger("Cancel Current");
+            InvertLock();
 
             transform.position = new Vector3(transform.position.x, transform.position.y-fallSpeed, transform.position.z);
         }
+    }
+
+    private void CallShake(float length)
+    {
+        cam.shakeLength = length;
+        cam.shakeStrength = 0.5f;
+        cam.TriggerShake();
     }
 
     // Update is called every 0.1 seconds for performance
@@ -161,6 +170,8 @@ public class Enemy : MonoBehaviour
             animator.SetTrigger("Cancel Current");
             InvertLock();
             Invoke("InvertLock", 0.5f);
+            Instantiate(bucketHitPrefab, transform.position, Quaternion.identity);
+            CallShake(0.2f);
         }
 
         if (health <= 0)
@@ -174,6 +185,7 @@ public class Enemy : MonoBehaviour
             animator.SetTrigger("Cancel Current");
             navigation.enabled = false;
             mySprite.color = new Color(1,0.6f,0.6f,1);
+            CallShake(0.1f);
             Invoke("Destroy", deathDelay);
         }
     }

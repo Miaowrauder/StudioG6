@@ -26,15 +26,14 @@ public class toggler : MonoBehaviour
             StartCoroutine(ToggleState());
         }
 
-        if (SFXInterval > 0f)
+        /*if (SFXInterval > 0f)
         {
             SFXInterval -= Time.deltaTime;
         }
         else
         {
-            PlaySkateFX();
-            SFXInterval = 0.60f;
-        }
+            
+        }*/
     }
 
     // Update is called once per frame
@@ -46,15 +45,16 @@ public class toggler : MonoBehaviour
             trail.emitting = false;
 
             flip = false;
-            yield return new WaitForSeconds(toggleSpeed);
+            yield return new WaitForSeconds(toggleSpeed + rb.velocity.magnitude/100f);
         }
         else if(!flip)
         {
             particle.Play();
+            PlaySkateFX();
             trail.emitting = true;
 
             flip = true;
-            yield return new WaitForSeconds(toggleSpeed/2f);
+            yield return new WaitForSeconds((toggleSpeed + rb.velocity.magnitude/100f)/2f);
         }
 
         

@@ -12,7 +12,7 @@ public class comboNote : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         this.transform.position += Vector3.up * speed * Time.deltaTime;
     }
