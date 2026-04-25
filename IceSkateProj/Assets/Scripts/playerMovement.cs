@@ -37,7 +37,7 @@ public class playerMovement : MonoBehaviour
     [Header("Misc")]
     private Animator animator;
     private playerCombo plCombo;
-    public int direction; 
+    public int direction;
 
 
     RaycastHit hit;
