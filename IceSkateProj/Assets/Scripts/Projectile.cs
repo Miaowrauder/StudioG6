@@ -43,7 +43,7 @@ public class Projectile : MonoBehaviour
         if (transform.position == endPosition)
         {
             cam.shakeLength = 0.1f;
-            cam.shakeStrength = 0.5f;
+            cam.shakeStrength = 0.3f;
             cam.TriggerShake();
 
             Vector3 holePos = new Vector3(transform.position.x, -4.22f, transform.position.z);

@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
     private void CallShake(float length)
     {
         cam.shakeLength = length;
-        cam.shakeStrength = 0.5f;
+        cam.shakeStrength = 0.2f;
         cam.TriggerShake();
     }
 

@@ -174,7 +174,7 @@ public class iceCutter : MonoBehaviour
             gameManager.RebakeNavmesh(bakeDelay);
 
             cam.shakeLength = 0.2f;
-            cam.shakeStrength = 0.5f;
+            cam.shakeStrength = 0.3f;
             cam.TriggerShake();
 
         }
