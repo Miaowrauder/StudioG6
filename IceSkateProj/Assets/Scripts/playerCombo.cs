@@ -33,7 +33,7 @@ public class playerCombo : MonoBehaviour
     {
         if(!isTricking && Input.GetKeyDown(KeyCode.Space) && (plM.isTrailing == false) && (rb.velocity.magnitude > 5))
         {
-            ComboSpend(1);
+            Invoke("DelaySpend",1f);
             isTricking = true;
             ComboVisual();
             Invoke("TrickCD", trickDur + trickCooldown);
@@ -42,6 +42,11 @@ public class playerCombo : MonoBehaviour
     private void TrickCD()
     {
         isTricking = false;
+    }
+
+    private void DelaySpend()
+    {
+        ComboSpend(1);
     }
 
     public void ComboSpend(int amountChanged)
@@ -73,7 +78,7 @@ public class playerCombo : MonoBehaviour
 
     private void ComboNoteSpawn()
     {
-        Vector3 notePos = new Vector3((transform.position.x + Random.Range(-1.5f, 1.5f)), transform.position.y +3f, (transform.position.z + Random.Range(-1.5f, 1.5f)));
+        Vector3 notePos = new Vector3((transform.position.x + Random.Range(-1.5f, 1.5f)), transform.position.y +3.5f, (transform.position.z + Random.Range(-1.5f, 1.5f)));
         Instantiate(comboVisuals[comboCount], notePos, Quaternion.identity);
 
         //Invoke("MiniNoteSpawn", miniNoteDelay/2);
