@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
@@ -10,12 +9,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Canvas pauseMenu, mainMenu, instructionsMenu, endMenu, gameHUD;
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private Texture2D cursorImg;
-    [SerializeField] private Transform[] instructPanels = new Transform[4];
-    [SerializeField] private GameObject backBTN;
-    [SerializeField] private GameObject menuBTN;
-    [SerializeField] private GameObject nextBTN;
-    [SerializeField] private TextMeshProUGUI counter;
-    private int currentInst = 0;
 
     [SerializeField] private bool isMain, canPause;
     private bool failTimeScale;
@@ -149,47 +142,5 @@ public class MenuManager : MonoBehaviour
     public void OnExitOptions()
     {
         optionsPanel.SetActive(false);
-    }
-    public void OnBack()
-    {
-        if (currentInst > 0)
-        {
-            instructPanels[currentInst].gameObject.SetActive(false);
-            currentInst--;
-            instructPanels[currentInst].gameObject.SetActive(true);
-        }
-
-
-        if (currentInst == 0)
-        {
-            backBTN.SetActive(false);
-            menuBTN.SetActive(true);
-        }
-        else
-        {
-            backBTN.SetActive(true);
-            menuBTN.SetActive(false);
-        }
-        counter.text = (currentInst + 1).ToString() + "/4";
-    }
-    public void OnNext()
-    {
-        if (currentInst < instructPanels.Length - 1)
-        {
-            instructPanels[currentInst].gameObject.SetActive(false);
-            currentInst++;
-            instructPanels[currentInst].gameObject.SetActive(true);
-        }
-        
-        if (currentInst == instructPanels.Length - 1)
-        {
-            nextBTN.SetActive(false);
-        }
-        else
-        {
-            nextBTN.SetActive(true);
-        }
-        menuBTN.SetActive(false);
-        counter.text = (currentInst + 1).ToString() + "/4";
     }
 }

@@ -13,7 +13,6 @@ public class playerCombo : MonoBehaviour
     [SerializeField] private float trickDur, trickCooldown;
     [SerializeField] private float miniNoteDelay, miniNoteScale;
     [SerializeField] private ParticleSystem comboParticles;
-    public AudioSource[] comboAudibles;
     public bool isTricking;
     private Rigidbody rb;
     // Start is called before the first frame update
@@ -75,8 +74,6 @@ public class playerCombo : MonoBehaviour
         
         ComboNoteSpawn();
         
-        Instantiate(comboVisuals[comboCount], transform.position, Quaternion.identity);
-        comboAudibles[comboCount - 1].Play();
     }
 
     private void ComboNoteSpawn()

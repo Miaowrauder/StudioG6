@@ -38,11 +38,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject deathBurstPrefab, bucketHitPrefab;
     private GameManager gameManager;
     private AxisFollow cam;
-
-    [Header("SFX")]
-    [SerializeField] private AudioSource[] dmgSFX;
-    [SerializeField] private AudioSource hittingSFX;
-    [SerializeField] private AudioSource laughSFX;
     
     void Start()
     {
@@ -193,10 +188,6 @@ public class Enemy : MonoBehaviour
             CallShake(0.1f);
             Invoke("Destroy", deathDelay);
         }
-        foreach (AudioSource sfx in dmgSFX)
-        {
-            sfx.Play();
-        }
     }
 
     public void Destroy()
@@ -225,9 +216,7 @@ public class Enemy : MonoBehaviour
     private void Attack2() //adds a tiny little delay before attacking to feel in time w/ animation & vfx
     {
         GameObject temp = Instantiate(attackPrefab, shootPos.position, shootPos.rotation);
-        hittingSFX.Play();
     }
-
     
     // Attacks the player ranged
     public void ProjectileThrow()
