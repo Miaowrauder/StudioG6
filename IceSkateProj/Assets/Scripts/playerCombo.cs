@@ -75,28 +75,18 @@ public class playerCombo : MonoBehaviour
         
         ComboNoteSpawn();
         
-        Instantiate(comboVisuals[comboCount], transform.position, Quaternion.identity);
-        comboAudibles[comboCount - 1].Play();
+        if(comboCount > 0)
+        {
+            comboAudibles[comboCount - 1].Play();
+        }
+        
     }
 
     private void ComboNoteSpawn()
     {
         Vector3 notePos = new Vector3((transform.position.x + Random.Range(-1.5f, 1.5f)), transform.position.y +3.5f, (transform.position.z + Random.Range(-1.5f, 1.5f)));
         Instantiate(comboVisuals[comboCount], notePos, Quaternion.identity);
-
-        //Invoke("MiniNoteSpawn", miniNoteDelay/2);
-        //Invoke("MiniNoteSpawn", miniNoteDelay);
     }
-
-    /*private void MiniNoteSpawn() //separate function so it can be invoked repeating
-    {
-        Vector3 notePos = new Vector3((transform.position.x + Random.Range(-3f, 3f)), transform.position.y +3.5f, (transform.position.z + Random.Range(-3f, 3f)));
-        GameObject spawnedNote = Instantiate(comboVisuals[comboCount], notePos, Quaternion.identity);
-
-        float alteredNoteScale = (miniNoteScale + Random.Range(miniNoteScale*0.8f, miniNoteScale*1.2f));
-        spawnedNote.transform.localScale = new Vector3(alteredNoteScale,alteredNoteScale,alteredNoteScale);
-        spawnedNote.GetComponent<comboNote>().speed = Random.Range(4f, 6f);
-    }*/
 
     private void ComboVisual()
     {

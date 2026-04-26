@@ -5255,7 +5255,7 @@ MonoBehaviour:
   - {fileID: 4777235814289154135}
   splashPrefab: {fileID: 4003458564733742167, guid: 68d896607ed47904f910f4a866596a1e,
     type: 3}
-  deathDelay: 0.2
+  deathDelay: 0.3
   mySprite: {fileID: 6320194963843074879}
   deathBurstPrefab: {fileID: 5394777094044544650, guid: b7e099b9c75f83b4195ca0881530b30d,
     type: 3}
@@ -5439,7 +5439,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 049aa98137715b94496a097c752023ff, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
