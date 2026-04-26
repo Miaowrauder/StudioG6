@@ -42,7 +42,9 @@ public class Enemy : MonoBehaviour
     [Header("SFX")]
     [SerializeField] private AudioSource[] dmgSFX;
     [SerializeField] private AudioSource hittingSFX;
+    [SerializeField] private AudioSource whooshSFX;
     [SerializeField] private AudioSource laughSFX;
+    [SerializeField] private AudioSource moveSFX;
     
     void Start()
     {
@@ -95,7 +97,6 @@ public class Enemy : MonoBehaviour
         else if (isRanged)
         {
             navigation.enabled = true;
-
             if (retreatRange > Vector3.Distance(player.transform.position, transform.position))
             {
                 navigation.destination = transform.position - (player.transform.position - transform.position);
@@ -111,7 +112,9 @@ public class Enemy : MonoBehaviour
         {
             navigation.enabled = true;
             navigation.destination = player.transform.position;
+
         }
+
 
         // Checks whether the enemy is ranged or melee
         if(isFree)
@@ -138,6 +141,7 @@ public class Enemy : MonoBehaviour
         
         if (Mathf.Abs(movementVector.x) < Mathf.Abs(movementVector.y))
         {
+            
             if (movementVector.y > 0)
             {
                 // North-facing 
@@ -151,6 +155,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            
             if (movementVector.x > 0)
             {
                 // East-facing
@@ -234,6 +239,7 @@ public class Enemy : MonoBehaviour
     {
         animator.SetBool("Attack Queued", false);
         Projectile spawnedProjectile = Instantiate(projectile, shootPos.transform.position, transform.rotation);
+        whooshSFX.Play();
     }
 
     // Triggered by player push to start goblin wobble
@@ -306,5 +312,9 @@ public class Enemy : MonoBehaviour
         GameObject temp = Instantiate(splashPrefab, transform.position, Quaternion.identity);
         temp.transform.Rotate(-90f, 0f, 0f);
         Invoke("Destroy", 1f);
+    }
+    public void MoveSFX()
+    {
+        moveSFX.Play();
     }
 }

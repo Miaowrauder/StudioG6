@@ -35,6 +35,7 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private AudioSource iceCutting;
     [SerializeField] private AudioSource iceClink;
     [SerializeField] private AudioSource iceSplash;
+    [SerializeField] private AudioSource splash;
     [Header("Misc")]
     private Animator animator;
     private playerCombo plCombo;
@@ -276,7 +277,7 @@ public class playerMovement : MonoBehaviour
         canMove = false;
         rb.velocity = new Vector3(rb.velocity.x, -25f, rb.velocity.z);
         gameObject.GetComponent<CapsuleCollider>().isTrigger = true;
-
+        splash.Play();
         Invoke("Death", 1f);
     }
 
