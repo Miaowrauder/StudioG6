@@ -17,7 +17,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI counter;
     private int currentInst = 0;
 
-    public bool isMain, canPause;
+    [SerializeField] private bool isMain, canPause;
+    private bool failTimeScale;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,11 +58,27 @@ public class MenuManager : MonoBehaviour
         
     }
 
+    void FixedUpdate()
+    {
+        if(failTimeScale)
+        {
+            if(Time.timeScale > 0.05f)
+            {
+                Time.timeScale -= 0.05f;
+            }
+            else
+            {
+                failTimeScale = false;
+                Time.timeScale = 0f;
+            }
+        }
+    }
+
     public void OnFail()
     {
         Cursor.visible = true;
         canPause = false;
-        Time.timeScale = 0f;
+        failTimeScale = true;
         endMenu.enabled = true;
         gameHUD.enabled = false;
     }
