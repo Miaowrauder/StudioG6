@@ -5475,7 +5475,8 @@ MonoBehaviour:
     type: 3}
   bucketHitPrefab: {fileID: 5394777094044544650, guid: 256c132e7f25df049b0c39d8e05915b6,
     type: 3}
-  dmgSFX: []
+  dmgSFX:
+  - {fileID: 8590627175685417804}
   hittingSFX: {fileID: 7135790619455808762}
   laughSFX: {fileID: 824410005402613818}
 --- !u!1 &6521892984455201543
