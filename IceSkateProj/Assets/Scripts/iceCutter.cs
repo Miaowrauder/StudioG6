@@ -15,6 +15,7 @@ public class iceCutter : MonoBehaviour
     [SerializeField] private Material holeEdgeMat, shaderMat, sheetMat, invisMat;
     [SerializeField] private float sheetDropSpeed, bakeDelay, holeYoffset;
     [SerializeField] private GameObject tinySplash;
+    private AxisFollow cam;
 
     ProBuilderMesh[] summonedMesh = new ProBuilderMesh[4];
     GameObject[] generatedObject = new GameObject[4];
@@ -24,6 +25,7 @@ public class iceCutter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
+        cam = FindObjectOfType<AxisFollow>();
         gameManager = FindObjectOfType<GameManager>();
         passedPoints = new Vector2[99];
     }
@@ -170,6 +172,11 @@ public class iceCutter : MonoBehaviour
             Debug.Log("Produced a shape with " + actualPoints.Length + " points");
 
             gameManager.RebakeNavmesh(bakeDelay);
+
+            cam.shakeLength = 0.2f;
+            cam.shakeStrength = 0.3f;
+            cam.TriggerShake();
+
         }
         else
         {

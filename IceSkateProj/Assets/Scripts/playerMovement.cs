@@ -37,7 +37,7 @@ public class playerMovement : MonoBehaviour
     [Header("Misc")]
     private Animator animator;
     private playerCombo plCombo;
-    public int direction; 
+    public int direction;
 
 
     RaycastHit hit;
@@ -210,7 +210,7 @@ public class playerMovement : MonoBehaviour
 
         Vector3 absoluteVelocity = new Vector3(Mathf.Abs(rb.velocity.x), 0, Mathf.Abs(rb.velocity.z)); //produce vector where the numbers are absolute, to compare which is higher
 
-        if (absoluteVelocity == Vector3.zero)
+        if (absoluteVelocity.magnitude <= 3f)
         {
             animator.SetBool("Idle", true);
         }
