@@ -11,13 +11,11 @@ public class Projectile : MonoBehaviour
     public GameObject holePrefab, visualPrefab, shadowPrefab;
     private GameObject visualComponent, shadow;
     private float elapsedTime, journeyTime;
-    private AxisFollow cam;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        cam = GameObject.FindObjectOfType<AxisFollow>();
         visualComponent = Instantiate(visualPrefab, transform.position, Quaternion.identity);
         shadow = Instantiate(shadowPrefab, transform.position, Quaternion.identity);
         player = FindObjectOfType<PlayerCombat>();
@@ -42,10 +40,6 @@ public class Projectile : MonoBehaviour
 
         if (transform.position == endPosition)
         {
-            cam.shakeLength = 0.1f;
-            cam.shakeStrength = 0.3f;
-            cam.TriggerShake();
-
             Vector3 holePos = new Vector3(transform.position.x, -4.22f, transform.position.z);
             GameObject hole = Instantiate(holePrefab, holePos, Quaternion.identity);
             hole.transform.localScale = new Vector3(holeScale, 1, holeScale);

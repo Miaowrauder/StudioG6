@@ -28,12 +28,10 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private  GameObject teapyPos;
     [SerializeField] private  GameObject teapyPrefab;
     private GameObject teapotSpawned;
-    private AxisFollow cam;
 
 
     void Start()
     {
-        cam = FindObjectOfType<AxisFollow>();
         animator = GetComponent<Animator>();
         plMove = GetComponent<playerMovement>();
     }
@@ -133,19 +131,8 @@ public class PlayerCombat : MonoBehaviour
         if (health <= 0)
         {
             mySprite.color = new Color(1,0.6f,0.6f,1);
-            animator.SetTrigger("Dead");
-            plMove.canMove = false;
-            cam.shakeLength = 0.2f;
-            cam.shakeStrength = 0.5f;
-            cam.TriggerShake();
-
-            Invoke("RevertColour", 0.4f);
+            Invoke("Death",1f);
         }
-    }
-
-    private void RevertColour()
-    {
-        mySprite.color = new Color(1,1f,1f,1);
     }
 
     private void Slice()
@@ -171,11 +158,6 @@ public class PlayerCombat : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void NextSection() // Trigger next part of segmented animation
-    {
-        animator.SetTrigger("Next Section");
     }
 
     public void EndPush()

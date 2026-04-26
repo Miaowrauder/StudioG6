@@ -16,6 +16,7 @@ private NavMeshSurface navmeshSurface;
 public GameObject falseIcePrefab;
 private GameObject spawnedIce;
 private bool risingIce;
+
     void Start()
     {
         spawner = FindAnyObjectByType<Spawner>();
@@ -53,7 +54,7 @@ private bool risingIce;
 
         if((waveNumber == 3) || (waveNumber == 6) || (waveNumber == 9) || (waveNumber == 12) || (waveNumber == 15) || (waveNumber == 18) || (waveNumber == 21))
         {
-            FalseIce(); 
+            FalseIce(); //Replace this method later
         }
     }
 

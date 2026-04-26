@@ -6,12 +6,8 @@ public class AxisFollow : MonoBehaviour
 {
     private GameObject pl;
     private Vector3 movePos;
-    [SerializeField] private float moveSpeed, zOffset;
-    [SerializeField] private bool followZ;
-    public float shakeLength, shakeStrength;
-    [SerializeField] private bool isShaking;
-
-
+    public float moveSpeed, zOffset;
+    public bool followZ;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,27 +34,6 @@ public class AxisFollow : MonoBehaviour
 
     private void Move()
     {
-        if(!isShaking)
-        {
-            this.transform.position = Vector3.Lerp(this.transform.position, movePos, moveSpeed * Time.deltaTime);
-        }
-        else
-        {
-            this.transform.position = this.transform.position + (Random.insideUnitSphere * shakeStrength);
-        }
-        
-    }
-
-    public void TriggerShake()
-    {
-        isShaking = true;
-
-        Invoke("StopShake", shakeLength);
-
-    }
-
-    private void StopShake()
-    {
-        isShaking = false;
+        this.transform.position = Vector3.Lerp(this.transform.position, movePos, moveSpeed * Time.deltaTime);
     }
 }
