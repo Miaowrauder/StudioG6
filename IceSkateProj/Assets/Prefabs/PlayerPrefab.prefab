@@ -351,9 +351,9 @@ MonoBehaviour:
   comboCount: 0
   comboVisuals:
   - {fileID: 8740468399300877317, guid: de8472adc2975a4469eea4daa6a050e1, type: 3}
+  - {fileID: 4625945665705753018, guid: 17a669739f4bc2440b979f31e258c30b, type: 3}
   - {fileID: 4625945665705753018, guid: 55a515a704b0e2247b79c39f43027372, type: 3}
-  - {fileID: 6260715835351333320, guid: 7a3d0ca3ffdc0564cbb5404dd8e6ef77, type: 3}
-  - {fileID: 4333641023811999528, guid: 17a669739f4bc2440b979f31e258c30b, type: 3}
+  - {fileID: 4333641023811999528, guid: 7a3d0ca3ffdc0564cbb5404dd8e6ef77, type: 3}
   - {fileID: 777751596383070617, guid: 97a69fc03d21cab4ea83f3e70e3ade77, type: 3}
   - {fileID: 6286010401288046388, guid: 32e1d970feb1ef541ae90581eae9bcfd, type: 3}
   trickDur: 2
@@ -361,7 +361,12 @@ MonoBehaviour:
   miniNoteDelay: 1
   miniNoteScale: 0.1
   comboParticles: {fileID: 1065446822016990682}
-  comboAudibles: []
+  comboAudibles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   isTricking: 0
 --- !u!1 &3563600411900637028
 GameObject:
@@ -5514,6 +5519,31 @@ PrefabInstance:
       propertyPath: toggleSpeed
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2225050860102281079, guid: bdc4a415f775d2245b0dd9126e5d9a3c,
+        type: 3}
+      propertyPath: variations.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 66108fe97d7e877499956411e4663605, type: 3}
+    - target: {fileID: 2225050860102281079, guid: bdc4a415f775d2245b0dd9126e5d9a3c,
+        type: 3}
+      propertyPath: variations.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 401531230d09a5f47bdc3d52e3b341d7, type: 3}
+    - target: {fileID: 2225050860102281079, guid: bdc4a415f775d2245b0dd9126e5d9a3c,
+        type: 3}
+      propertyPath: variations.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: faf2f51fc1654b84db6043d8fbef9e65, type: 3}
+    - target: {fileID: 2225050860102281079, guid: bdc4a415f775d2245b0dd9126e5d9a3c,
+        type: 3}
+      propertyPath: variations.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: d876f398198eb2148a5d7f96f2a18b36, type: 3}
+    - target: {fileID: 2225050860102281079, guid: bdc4a415f775d2245b0dd9126e5d9a3c,
+        type: 3}
+      propertyPath: variations.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d17b562c90ef1b4db19c4c9ccd8c2a9, type: 3}
     - target: {fileID: 3699487260394648643, guid: bdc4a415f775d2245b0dd9126e5d9a3c,
         type: 3}
       propertyPath: m_Name

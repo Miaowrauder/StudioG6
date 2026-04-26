@@ -70053,7 +70053,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 869144231}
   m_HandleRect: {fileID: 869144229}
   m_Direction: 2
-  m_Value: 0.5646629
+  m_Value: 0.5646627
   m_Size: 0.7868391
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -71668,78 +71668,26 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
         type: 3}
-      propertyPath: isTricking
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
-        type: 3}
-      propertyPath: comboVisuals.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
-        type: 3}
       propertyPath: comboAudibles.Array.size
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
         type: 3}
-      propertyPath: comboVisuals.Array.data[0]
-      value: 
-      objectReference: {fileID: 8740468399300877317, guid: de8472adc2975a4469eea4daa6a050e1,
-        type: 3}
-    - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
-        type: 3}
       propertyPath: comboVisuals.Array.data[1]
       value: 
-      objectReference: {fileID: 4625945665705753018, guid: 55a515a704b0e2247b79c39f43027372,
+      objectReference: {fileID: 4625945665705753018, guid: 17a669739f4bc2440b979f31e258c30b,
         type: 3}
     - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
         type: 3}
       propertyPath: comboVisuals.Array.data[2]
       value: 
-      objectReference: {fileID: 6260715835351333320, guid: 7a3d0ca3ffdc0564cbb5404dd8e6ef77,
+      objectReference: {fileID: 4625945665705753018, guid: 55a515a704b0e2247b79c39f43027372,
         type: 3}
     - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
         type: 3}
       propertyPath: comboVisuals.Array.data[3]
       value: 
-      objectReference: {fileID: 4333641023811999528, guid: 17a669739f4bc2440b979f31e258c30b,
-        type: 3}
-    - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
-        type: 3}
-      propertyPath: comboVisuals.Array.data[4]
-      value: 
-      objectReference: {fileID: 777751596383070617, guid: 97a69fc03d21cab4ea83f3e70e3ade77,
-        type: 3}
-    - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
-        type: 3}
-      propertyPath: comboVisuals.Array.data[5]
-      value: 
-      objectReference: {fileID: 6286010401288046388, guid: 32e1d970feb1ef541ae90581eae9bcfd,
-        type: 3}
-    - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
-        type: 3}
-      propertyPath: comboVisuals.Array.data[6]
-      value: 
-      objectReference: {fileID: 8740468399300877317, guid: de8472adc2975a4469eea4daa6a050e1,
-        type: 3}
-    - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
-        type: 3}
-      propertyPath: comboVisuals.Array.data[7]
-      value: 
-      objectReference: {fileID: 4625945665705753018, guid: 55a515a704b0e2247b79c39f43027372,
-        type: 3}
-    - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
-        type: 3}
-      propertyPath: comboVisuals.Array.data[8]
-      value: 
-      objectReference: {fileID: 6260715835351333320, guid: 7a3d0ca3ffdc0564cbb5404dd8e6ef77,
-        type: 3}
-    - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
-        type: 3}
-      propertyPath: comboVisuals.Array.data[9]
-      value: 
-      objectReference: {fileID: 4333641023811999528, guid: 17a669739f4bc2440b979f31e258c30b,
+      objectReference: {fileID: 4333641023811999528, guid: 7a3d0ca3ffdc0564cbb5404dd8e6ef77,
         type: 3}
     - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
         type: 3}
@@ -71766,18 +71714,6 @@ PrefabInstance:
       propertyPath: comboAudibles.Array.data[4]
       value: 
       objectReference: {fileID: 1759407262}
-    - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
-        type: 3}
-      propertyPath: comboVisuals.Array.data[10]
-      value: 
-      objectReference: {fileID: 777751596383070617, guid: 97a69fc03d21cab4ea83f3e70e3ade77,
-        type: 3}
-    - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
-        type: 3}
-      propertyPath: comboVisuals.Array.data[11]
-      value: 
-      objectReference: {fileID: 6286010401288046388, guid: 32e1d970feb1ef541ae90581eae9bcfd,
-        type: 3}
     - target: {fileID: 3150352613944581452, guid: d4c81303de303ee4ea2fbd18c626ce4a,
         type: 3}
       propertyPath: m_Name
