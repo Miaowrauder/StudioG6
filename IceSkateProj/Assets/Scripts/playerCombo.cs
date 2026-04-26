@@ -10,6 +10,7 @@ public class playerCombo : MonoBehaviour
     private playerMovement plM;
     public int comboCount;
     public GameObject[] comboVisuals;
+    public AudioSource[] comboAudibles;
     public float trickDur, trickCooldown;
     public bool isTricking;
     private Rigidbody rb;
@@ -53,8 +54,8 @@ public class playerCombo : MonoBehaviour
         {
             comboCount = 5;
         }
-
         Instantiate(comboVisuals[comboCount], transform.position, Quaternion.identity);
+        comboAudibles[comboCount - 1].Play();
     }
 
     private void ComboVisual()

@@ -6,6 +6,10 @@ public class PlayerCombat : MonoBehaviour
 {
     private Animator animator;
     [SerializeField] private AudioSource whoosh;
+    [SerializeField] private AudioSource plyrDamage;
+    [SerializeField] private AudioSource endLaugh;
+    [SerializeField] private AudioSource comboJump;
+    [SerializeField] private AudioSource sliceFX;
     private bool animationFree;
     [SerializeField] private playerCombo plCombo;
     private playerMovement plMove;
@@ -24,6 +28,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private  GameObject teapyPos;
     [SerializeField] private  GameObject teapyPrefab;
     private GameObject teapotSpawned;
+
 
     void Start()
     {
@@ -74,6 +79,7 @@ public class PlayerCombat : MonoBehaviour
 
                 animator.SetBool("Teapot", true);
                 teapyActive = true;
+                sliceFX.Play();
                 canLoop = true;
             }
         }
@@ -114,13 +120,14 @@ public class PlayerCombat : MonoBehaviour
     {
         MenuManager mm = GameObject.Find("MenuManager").GetComponent<MenuManager>();
         mm.OnFail();
+        endLaugh.Play();
     }
 
     public void TakeDamage(int damage)
     {
         health -= damage;
         print(health);
-
+        plyrDamage.Play();
         if (health <= 0)
         {
             mySprite.color = new Color(1,0.6f,0.6f,1);
@@ -132,6 +139,7 @@ public class PlayerCombat : MonoBehaviour
     {
         GameObject temp = Instantiate(sliceBurstPrefab, transform.position, Quaternion.identity);
         temp.transform.SetParent(this.gameObject.transform);
+        sliceFX.Play();
     }
 
     private void Push()
@@ -160,5 +168,9 @@ public class PlayerCombat : MonoBehaviour
     public void EndSlice()
     {
         animator.SetBool("Slice", false);
+    }
+    public void Jump()
+    {
+        comboJump.Play();
     }
 }

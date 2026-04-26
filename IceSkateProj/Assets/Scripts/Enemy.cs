@@ -37,6 +37,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private SpriteRenderer mySprite;
     [SerializeField] private GameObject deathBurstPrefab;
     private GameManager gameManager;
+
+    [Header("SFX")]
+    [SerializeField] private AudioSource[] dmgSFX;
+    [SerializeField] private AudioSource hittingSFX;
+    [SerializeField] private AudioSource laughSFX;
     
     void Start()
     {
@@ -176,6 +181,10 @@ public class Enemy : MonoBehaviour
             mySprite.color = new Color(1,0.6f,0.6f,1);
             Invoke("Destroy", deathDelay);
         }
+        foreach (AudioSource sfx in dmgSFX)
+        {
+            sfx.Play();
+        }
     }
 
     public void Destroy()
@@ -204,7 +213,9 @@ public class Enemy : MonoBehaviour
     private void Attack2() //adds a tiny little delay before attacking to feel in time w/ animation & vfx
     {
         GameObject temp = Instantiate(attackPrefab, shootPos.position, shootPos.rotation);
+        hittingSFX.Play();
     }
+
     
     // Attacks the player ranged
     public void ProjectileThrow()

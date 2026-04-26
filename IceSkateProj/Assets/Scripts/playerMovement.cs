@@ -34,6 +34,7 @@ public class playerMovement : MonoBehaviour
     [Header("SoundFX")]
     [SerializeField] private AudioSource iceCutting;
     [SerializeField] private AudioSource iceClink;
+    [SerializeField] private AudioSource iceSplash;
     [Header("Misc")]
     private Animator animator;
     private playerCombo plCombo;
@@ -66,6 +67,7 @@ public class playerMovement : MonoBehaviour
         EndTrail();
         myCutter.triggerCut = true;
         iceClink.Play();
+        iceSplash.Play();
     }
 
     private void EndTrail()
