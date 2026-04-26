@@ -23487,8 +23487,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 277, y: -343}
-  m_SizeDelta: {x: 224.9677, y: 42.1815}
+  m_AnchoredPosition: {x: 122, y: -162}
+  m_SizeDelta: {x: 108.6985, y: 20.381}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &542893847
 MonoBehaviour:
@@ -25788,8 +25788,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -246, y: -352}
-  m_SizeDelta: {x: 224.9677, y: 42.1815}
+  m_AnchoredPosition: {x: -130.69997, y: -166.34851}
+  m_SizeDelta: {x: 108.6985, y: 20.381}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &636396762
 MonoBehaviour:
@@ -31195,7 +31195,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1580756709}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &771824606 stripped
 Transform:
@@ -32927,7 +32927,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1580756709}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &860854011
 AudioSource:
@@ -36172,8 +36172,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.090637, y: 80.365295}
-  m_SizeDelta: {x: 872.9898, y: 697.4178}
+  m_AnchoredPosition: {x: -2.1319046, y: 42.559135}
+  m_SizeDelta: {x: 421.8059, y: 336.9741}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &949053893
 MonoBehaviour:
@@ -36603,7 +36603,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2023663614}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &978511066
 AudioSource:
@@ -46986,7 +46986,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1572825318}
-  - {fileID: 294402546}
   - {fileID: 542893846}
   - {fileID: 636396761}
   - {fileID: 949053892}
@@ -51651,7 +51650,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1580756709}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1346780647
 PrefabInstance:
@@ -61778,7 +61777,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1580756709}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1569149706
 AudioSource:
@@ -64473,7 +64472,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1580756709}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1702866827
 AudioSource:
@@ -69074,8 +69073,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 869144231}
   m_HandleRect: {fileID: 869144229}
   m_Direction: 2
-  m_Value: 0.5646628
-  m_Size: 0.78683907
+  m_Value: 0.5646629
+  m_Size: 0.7868391
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -70696,17 +70695,17 @@ PrefabInstance:
         type: 3}
       propertyPath: comboAudibles.Array.data[0]
       value: 
-      objectReference: {fileID: 1439169979}
+      objectReference: {fileID: 0}
     - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
         type: 3}
       propertyPath: comboAudibles.Array.data[1]
       value: 
-      objectReference: {fileID: 1217787139}
+      objectReference: {fileID: 0}
     - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
         type: 3}
       propertyPath: comboAudibles.Array.data[2]
       value: 
-      objectReference: {fileID: 945358965}
+      objectReference: {fileID: 0}
     - target: {fileID: 2163664385695033159, guid: d4c81303de303ee4ea2fbd18c626ce4a,
         type: 3}
       propertyPath: comboAudibles.Array.data[3]
@@ -70716,7 +70715,7 @@ PrefabInstance:
         type: 3}
       propertyPath: comboAudibles.Array.data[4]
       value: 
-      objectReference: {fileID: 1028239024}
+      objectReference: {fileID: 0}
     - target: {fileID: 3150352613944581452, guid: d4c81303de303ee4ea2fbd18c626ce4a,
         type: 3}
       propertyPath: m_Name
@@ -70826,7 +70825,7 @@ PrefabInstance:
         type: 3}
       propertyPath: sliceFX
       value: 
-      objectReference: {fileID: 1122729977}
+      objectReference: {fileID: 0}
     - target: {fileID: 8675349932732639772, guid: d4c81303de303ee4ea2fbd18c626ce4a,
         type: 3}
       propertyPath: endLaugh
@@ -70836,19 +70835,15 @@ PrefabInstance:
         type: 3}
       propertyPath: comboJump
       value: 
-      objectReference: {fileID: 1129222859}
+      objectReference: {fileID: 0}
     - target: {fileID: 8675349932732639772, guid: d4c81303de303ee4ea2fbd18c626ce4a,
         type: 3}
       propertyPath: plyrDamage
       value: 
-      objectReference: {fileID: 1324639728}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5943505262944261139, guid: d4c81303de303ee4ea2fbd18c626ce4a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1580756709}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4c81303de303ee4ea2fbd18c626ce4a, type: 3}
 --- !u!4 &2010905862 stripped
@@ -71775,7 +71770,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1580756709}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2059383471
 PrefabInstance:
@@ -71870,12 +71865,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2566370935241232838, guid: 98cf6dbfcf6c12740a1a652d363d9fc2,
     type: 3}
   m_PrefabInstance: {fileID: 1883215721}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2073089967 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5943505262944261139, guid: d4c81303de303ee4ea2fbd18c626ce4a,
-    type: 3}
-  m_PrefabInstance: {fileID: 2008722166}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2074932219
 PrefabInstance:
@@ -94979,3 +94968,10 @@ SceneRoots:
   - {fileID: 2128902575}
   - {fileID: 2035660430}
   - {fileID: 772050956}
+  - {fileID: 764506571}
+  - {fileID: 860854010}
+  - {fileID: 978511065}
+  - {fileID: 1346481724}
+  - {fileID: 1569149705}
+  - {fileID: 1702866826}
+  - {fileID: 2058902650}
