@@ -351,9 +351,9 @@ MonoBehaviour:
   comboCount: 0
   comboVisuals:
   - {fileID: 8740468399300877317, guid: de8472adc2975a4469eea4daa6a050e1, type: 3}
-  - {fileID: 4625945665705753018, guid: 17a669739f4bc2440b979f31e258c30b, type: 3}
   - {fileID: 4625945665705753018, guid: 55a515a704b0e2247b79c39f43027372, type: 3}
-  - {fileID: 4333641023811999528, guid: 7a3d0ca3ffdc0564cbb5404dd8e6ef77, type: 3}
+  - {fileID: 6260715835351333320, guid: 7a3d0ca3ffdc0564cbb5404dd8e6ef77, type: 3}
+  - {fileID: 4333641023811999528, guid: 17a669739f4bc2440b979f31e258c30b, type: 3}
   - {fileID: 777751596383070617, guid: 97a69fc03d21cab4ea83f3e70e3ade77, type: 3}
   - {fileID: 6286010401288046388, guid: 32e1d970feb1ef541ae90581eae9bcfd, type: 3}
   trickDur: 2
