@@ -15,6 +15,8 @@ public class comboNote : MonoBehaviour
     void FixedUpdate()
     {
         this.transform.position += Vector3.up * speed * Time.deltaTime;
+
+        this.transform.Rotate(0, 1, 0);
     }
 
     private void Death()
