@@ -15,7 +15,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject menuBTN;
     [SerializeField] private GameObject nextBTN;
     [SerializeField] private TextMeshProUGUI counter;
-    private int currentInst = 0;
+    [SerializeField] private int currentInst = 0;
 
     [SerializeField] private bool isMain, canPause;
     private bool failTimeScale;
@@ -152,51 +152,63 @@ public class MenuManager : MonoBehaviour
     }
     public void OnBack()
     {
-        if (currentInst > 0)
+        if (currentInst == 1)
         {
             instructPanels[currentInst].gameObject.SetActive(false);
-            currentInst--;
+            currentInst = 0;
             instructPanels[currentInst].gameObject.SetActive(true);
-        }
-
-        if (currentInst == instructPanels.Length - 1)
-        {
-            nextBTN.SetActive(false);
-        }
-        else
-        {
-            nextBTN.SetActive(true);
-        }
-        if (currentInst == 0)
-        {
             backBTN.SetActive(false);
             menuBTN.SetActive(true);
         }
+        else if (currentInst == 5)
+        {
+            instructPanels[currentInst].gameObject.SetActive(false);
+            currentInst -= 1;
+            instructPanels[currentInst].gameObject.SetActive(true);
+            backBTN.SetActive(true);
+            nextBTN.SetActive(true);
+            menuBTN.SetActive(false);
+        }
         else
         {
+            instructPanels[currentInst].gameObject.SetActive(false);
+            currentInst -= 1;
+            instructPanels[currentInst].gameObject.SetActive(true);
             backBTN.SetActive(true);
             menuBTN.SetActive(false);
         }
+
         counter.text = (currentInst + 1).ToString() + "/6";
+
     }
     public void OnNext()
     {
-        if (currentInst < instructPanels.Length - 1)
+        if (currentInst == 4)
         {
             instructPanels[currentInst].gameObject.SetActive(false);
-            currentInst++;
+            currentInst = 5;
             instructPanels[currentInst].gameObject.SetActive(true);
-        }
-
-        if (currentInst == instructPanels.Length - 1)
-        {
+            menuBTN.SetActive(false);
             nextBTN.SetActive(false);
+            backBTN.SetActive(true);
         }
-        else
+        else if (currentInst < 4 && currentInst >= 1)
         {
+            instructPanels[currentInst].gameObject.SetActive(false);
+            currentInst += 1;
+            instructPanels[currentInst].gameObject.SetActive(true);
             nextBTN.SetActive(true);
         }
-        menuBTN.SetActive(false);
+        else if (currentInst == 0 )
+        {
+            instructPanels[currentInst].gameObject.SetActive(false);
+            currentInst += 1;
+            instructPanels[currentInst].gameObject.SetActive(true);
+            backBTN.SetActive(true);
+            menuBTN.SetActive(false);
+        }
+
+        counter.text = (currentInst + 1).ToString() + "/6";
         counter.text = (currentInst + 1).ToString() + "/6";
     }
 }
