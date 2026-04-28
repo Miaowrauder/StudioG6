@@ -165,7 +165,7 @@ AnimationClip:
     - time: 0
       value: {fileID: -330576293, guid: 6a366087ebedbe34db6cae11779f5fe7, type: 3}
     - time: 0.33333334
-      value: {fileID: -1960107542, guid: 6a366087ebedbe34db6cae11779f5fe7, type: 3}
+      value: {fileID: -1171154444, guid: f9c92acd22e687144b5d33ced2f85bba, type: 3}
     attribute: m_Sprite
     path: CutControlIMG
     classID: 114
@@ -269,7 +269,7 @@ AnimationClip:
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
     - {fileID: -330576293, guid: 6a366087ebedbe34db6cae11779f5fe7, type: 3}
-    - {fileID: -1960107542, guid: 6a366087ebedbe34db6cae11779f5fe7, type: 3}
+    - {fileID: -1171154444, guid: f9c92acd22e687144b5d33ced2f85bba, type: 3}
     - {fileID: -1704985170, guid: 73981c4c17179b64ea8d74d23d6a608f, type: 3}
     - {fileID: -258452540, guid: 73981c4c17179b64ea8d74d23d6a608f, type: 3}
     - {fileID: 535539156, guid: 73981c4c17179b64ea8d74d23d6a608f, type: 3}

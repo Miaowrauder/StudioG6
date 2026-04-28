@@ -159,7 +159,14 @@ public class MenuManager : MonoBehaviour
             instructPanels[currentInst].gameObject.SetActive(true);
         }
 
-
+        if (currentInst == instructPanels.Length - 1)
+        {
+            nextBTN.SetActive(false);
+        }
+        else
+        {
+            nextBTN.SetActive(true);
+        }
         if (currentInst == 0)
         {
             backBTN.SetActive(false);
@@ -170,7 +177,7 @@ public class MenuManager : MonoBehaviour
             backBTN.SetActive(true);
             menuBTN.SetActive(false);
         }
-        counter.text = (currentInst + 1).ToString() + "/4";
+        counter.text = (currentInst + 1).ToString() + "/6";
     }
     public void OnNext()
     {
@@ -190,6 +197,6 @@ public class MenuManager : MonoBehaviour
             nextBTN.SetActive(true);
         }
         menuBTN.SetActive(false);
-        counter.text = (currentInst + 1).ToString() + "/4";
+        counter.text = (currentInst + 1).ToString() + "/6";
     }
 }
