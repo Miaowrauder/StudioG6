@@ -91,7 +91,10 @@ public class playerMovement : MonoBehaviour
         {
             isTrailing = true;
             animator.SetBool("Cutting", true);
-            iceCutting.Play();
+            if (Time.timeScale != 0 && canMove)
+            {
+                iceCutting.Play();
+            }
             if(trailReset)
             {
                 currentPoint = 0;
