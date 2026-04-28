@@ -43,6 +43,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private AudioSource[] dmgSFX;
     [SerializeField] private AudioSource hittingSFX;
     [SerializeField] private AudioSource laughSFX;
+    [SerializeField] private AudioSource skateSFX;
     
     void Start()
     {
@@ -306,5 +307,9 @@ public class Enemy : MonoBehaviour
         GameObject temp = Instantiate(splashPrefab, transform.position, Quaternion.identity);
         temp.transform.Rotate(-90f, 0f, 0f);
         Invoke("Destroy", 1f);
+    }
+    public void playSkateSFX()
+    {
+        skateSFX.Play();
     }
 }

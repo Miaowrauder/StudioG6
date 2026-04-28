@@ -22,13 +22,13 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Vector2 offset = new Vector2(10,10);
+        Vector2 offset = new Vector2(10, 10);
         Cursor.SetCursor(cursorImg, offset, CursorMode.Auto);
         canPause = true;
         Cursor.visible = true;
-        
 
-        if(isMain)
+
+        if (isMain)
         {
             OnMain();
         }
@@ -38,31 +38,31 @@ public class MenuManager : MonoBehaviour
             optionsPanel.SetActive(false);
             Unpause();
         }
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.M) && !isMain)
+        if (Input.GetKeyDown(KeyCode.M) && !isMain)
         {
-            if(!isPaused)
+            if (!isPaused)
             {
                 Pause();
             }
-            else if(isPaused)
+            else if (isPaused)
             {
                 Unpause();
             }
         }
-        
+
     }
 
     void FixedUpdate()
     {
-        if(failTimeScale)
+        if (failTimeScale)
         {
-            if(Time.timeScale > 0.05f)
+            if (Time.timeScale > 0.05f)
             {
                 Time.timeScale -= 0.05f;
             }
@@ -159,7 +159,14 @@ public class MenuManager : MonoBehaviour
             instructPanels[currentInst].gameObject.SetActive(true);
         }
 
-
+        if (currentInst == instructPanels.Length - 1)
+        {
+            nextBTN.SetActive(false);
+        }
+        else
+        {
+            nextBTN.SetActive(true);
+        }
         if (currentInst == 0)
         {
             backBTN.SetActive(false);
@@ -170,7 +177,7 @@ public class MenuManager : MonoBehaviour
             backBTN.SetActive(true);
             menuBTN.SetActive(false);
         }
-        counter.text = (currentInst + 1).ToString() + "/4";
+        counter.text = (currentInst + 1).ToString() + "/6";
     }
     public void OnNext()
     {
@@ -180,7 +187,7 @@ public class MenuManager : MonoBehaviour
             currentInst++;
             instructPanels[currentInst].gameObject.SetActive(true);
         }
-        
+
         if (currentInst == instructPanels.Length - 1)
         {
             nextBTN.SetActive(false);
@@ -190,6 +197,6 @@ public class MenuManager : MonoBehaviour
             nextBTN.SetActive(true);
         }
         menuBTN.SetActive(false);
-        counter.text = (currentInst + 1).ToString() + "/4";
+        counter.text = (currentInst + 1).ToString() + "/6";
     }
 }
