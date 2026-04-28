@@ -516,6 +516,7 @@ MonoBehaviour:
   menuBTN: {fileID: 1832240884}
   nextBTN: {fileID: 1959461344}
   counter: {fileID: 807482002}
+  currentInst: 0
   isMain: 1
   canPause: 0
 --- !u!4 &317285552
@@ -1478,7 +1479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8feeb87eb7006264e9f1130546d5d829, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1e7251472d979494b98a5dd30d817d7e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
