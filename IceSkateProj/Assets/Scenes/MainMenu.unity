@@ -2988,6 +2988,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnNext
       objectReference: {fileID: 0}
+    - target: {fileID: 2867158982604264334, guid: 702fdda6831647d44b883829c91b429b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4794402883758600319, guid: 702fdda6831647d44b883829c91b429b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5517843035957556655, guid: 702fdda6831647d44b883829c91b429b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3097,6 +3107,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8362599051305886640, guid: 702fdda6831647d44b883829c91b429b,
+        type: 3}
+      propertyPath: m_text
+      value: 'While ice skating around the rink, you can build up your attack combo
+        so when the time comes where you face off with a goblin, you''ll be able
+        to attack.
+
+        Pressing the SPACE key will make you do a twirl above
+        the ice, this will increase your current attack combo by 1 (minimum of 0,
+        maximum of 5).
+
+
+        To signal how much attack combo you currently have,
+        a blue music note will appear next to your character alongside a scaling
+        musical cue.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
