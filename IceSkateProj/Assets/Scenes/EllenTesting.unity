@@ -68249,7 +68249,7 @@ MonoBehaviour:
   currentMode: 0
   currentRes: 0
   currentColour: 0
-  masterMixer: {fileID: 24100000, guid: 9c0317c7524512144a1b18c7aa010bda, type: 2}
+  masterMixer: {fileID: 24100000, guid: 3701b6f80431c80468c2555801a59737, type: 2}
   mstrSlider: {fileID: 2016898919}
   mstrTxt: {fileID: 2045347069}
   musicSlider: {fileID: 810325737}
