@@ -6936,7 +6936,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c90a11e58bd8f6040b1e064be7eddaf2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -14399,8 +14399,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveFinished: 1
   waveNumber: 0
-  waveSpawnPoints: 60
-  waveMultiplier: 1.5
+  waveSpawnPoints: 50
+  waveMultiplier: 1.3
   currentEnemies: 0
   points: 0
   falseIcePrefab: {fileID: 5286752305859536510, guid: 8e1b5f52fb0fca642b7fe788f2771f3d,
@@ -19110,9 +19110,9 @@ AudioSource:
   m_GameObject: {fileID: 399978300}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -4341364674391975323, guid: 9c0317c7524512144a1b18c7aa010bda,
+  OutputAudioMixerGroup: {fileID: -4341364674391975323, guid: 3701b6f80431c80468c2555801a59737,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 8c1db37460ed19542ae0dbce13f367bd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 933abff33d0ba594c97c974c5ba99e51, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.3
   m_Pitch: 1
@@ -29731,7 +29731,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 1253b51f9995d5c48b5bcd9a2d2fe78f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.24
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -36883,7 +36883,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 88e42d165eed5b240942f88d19f9dfdc, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.24
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -51748,7 +51748,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 096a80561cc777a4ab893b3ab4c72ff5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -61619,7 +61619,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 329a6c470d8abb34fba5ff8fc1240481, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -62027,7 +62027,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 28ae7682685ed5f49ad36a6f5debe17b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -65069,13 +65069,13 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 20dad8ac4e53a854a905f85db220bd83, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 130
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -65797,7 +65797,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: a991a278fd18b3a4e8cb6f7b38eae9d0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0.32
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -68217,6 +68217,7 @@ MonoBehaviour:
   menuBTN: {fileID: 0}
   nextBTN: {fileID: 0}
   counter: {fileID: 0}
+  currentInst: 0
   isMain: 0
   canPause: 1
 --- !u!4 &1873222970
@@ -69985,8 +69986,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 869144231}
   m_HandleRect: {fileID: 869144229}
   m_Direction: 2
-  m_Value: 0.5646628
-  m_Size: 0.78683907
+  m_Value: 0.5646629
+  m_Size: 0.7868391
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

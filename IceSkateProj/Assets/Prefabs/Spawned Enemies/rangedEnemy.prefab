@@ -5447,7 +5447,7 @@ MonoBehaviour:
     type: 3}
   spawnCost: 10
   multiplier: 1
-  waveEnabled: 3
+  waveEnabled: 5
   health: 2
   damageImmune: 0
   isRanged: 1

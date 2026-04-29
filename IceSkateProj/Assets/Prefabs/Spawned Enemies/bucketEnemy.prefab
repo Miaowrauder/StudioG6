@@ -400,7 +400,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 23a39cb8286daee4788be6c775ab2e75, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -789,7 +789,7 @@ MonoBehaviour:
     type: 3}
   spawnCost: 15
   multiplier: 1
-  waveEnabled: 6
+  waveEnabled: 3
   health: 2
   damageImmune: 1
   isRanged: 0
